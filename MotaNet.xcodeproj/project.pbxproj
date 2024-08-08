@@ -14,6 +14,11 @@
 		843684F42C653BDA00FA935E /* MotaNetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843684F32C653BDA00FA935E /* MotaNetTests.swift */; };
 		843684FE2C653BDA00FA935E /* MotaNetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843684FD2C653BDA00FA935E /* MotaNetUITests.swift */; };
 		843685002C653BDA00FA935E /* MotaNetUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843684FF2C653BDA00FA935E /* MotaNetUITestsLaunchTests.swift */; };
+		8436851B2C653F1700FA935E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436851A2C653F1700FA935E /* User.swift */; };
+		8436851E2C653FF700FA935E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8436851D2C653FF700FA935E /* FirebaseAuth */; };
+		843685202C653FF700FA935E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8436851F2C653FF700FA935E /* FirebaseFirestore */; };
+		843685222C653FF700FA935E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 843685212C653FF700FA935E /* FirebaseStorage */; };
+		843685282C6540DE00FA935E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843685272C6540DE00FA935E /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,8 @@
 		843684F92C653BDA00FA935E /* MotaNetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotaNetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		843684FD2C653BDA00FA935E /* MotaNetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotaNetUITests.swift; sourceTree = "<group>"; };
 		843684FF2C653BDA00FA935E /* MotaNetUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotaNetUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8436851A2C653F1700FA935E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		843685272C6540DE00FA935E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8436851E2C653FF700FA935E /* FirebaseAuth in Frameworks */,
+				843685202C653FF700FA935E /* FirebaseFirestore in Frameworks */,
+				843685222C653FF700FA935E /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +151,7 @@
 		8436850D2C653BEF00FA935E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8436851A2C653F1700FA935E /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +166,14 @@
 		8436850F2C653BF700FA935E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				843685152C653D5600FA935E /* Authentication */,
+				843685132C653D5400FA935E /* Components */,
+				843685142C653D5500FA935E /* Feed */,
+				843685122C653D5300FA935E /* Profile */,
+				843685112C653D5100FA935E /* Root */,
+				843685162C653DA600FA935E /* Search */,
+				843685182C653DDE00FA935E /* TabBar */,
+				843685192C653DED00FA935E /* WorkoutLibrary */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -165,6 +184,87 @@
 				843684E22C653BD900FA935E /* MotaNetApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		843685112C653D5100FA935E /* Root */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		843685122C653D5300FA935E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		843685132C653D5400FA935E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		843685142C653D5500FA935E /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		843685152C653D5600FA935E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				843685262C65406100FA935E /* View */,
+				843685252C65406000FA935E /* ViewModel */,
+				843685232C65405600FA935E /* Service */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		843685162C653DA600FA935E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		843685182C653DDE00FA935E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				843685272C6540DE00FA935E /* MainTabView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		843685192C653DED00FA935E /* WorkoutLibrary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WorkoutLibrary;
+			sourceTree = "<group>";
+		};
+		843685232C65405600FA935E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		843685252C65406000FA935E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		843685262C65406100FA935E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +283,11 @@
 			dependencies = (
 			);
 			name = MotaNet;
+			packageProductDependencies = (
+				8436851D2C653FF700FA935E /* FirebaseAuth */,
+				8436851F2C653FF700FA935E /* FirebaseFirestore */,
+				843685212C653FF700FA935E /* FirebaseStorage */,
+			);
 			productName = MotaNet;
 			productReference = 843684DF2C653BD900FA935E /* MotaNet.app */;
 			productType = "com.apple.product-type.application";
@@ -255,6 +360,9 @@
 				Base,
 			);
 			mainGroup = 843684D62C653BD900FA935E;
+			packageReferences = (
+				8436851C2C653FF700FA935E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 843684E02C653BD900FA935E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -299,6 +407,8 @@
 			files = (
 				843684E52C653BD900FA935E /* ContentView.swift in Sources */,
 				843684E32C653BD900FA935E /* MotaNetApp.swift in Sources */,
+				8436851B2C653F1700FA935E /* User.swift in Sources */,
+				843685282C6540DE00FA935E /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +738,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8436851C2C653FF700FA935E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8436851D2C653FF700FA935E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8436851C2C653FF700FA935E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		8436851F2C653FF700FA935E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8436851C2C653FF700FA935E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		843685212C653FF700FA935E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8436851C2C653FF700FA935E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 843684D72C653BD900FA935E /* Project object */;
 }

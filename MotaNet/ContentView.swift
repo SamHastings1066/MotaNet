@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            MainTabView(user: User.MOCK_USERS[0])
         }
         .padding()
     }
