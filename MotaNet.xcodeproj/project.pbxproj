@@ -94,7 +94,11 @@
 		843684E12C653BD900FA935E /* MotaNet */ = {
 			isa = PBXGroup;
 			children = (
-				843684E22C653BD900FA935E /* MotaNetApp.swift */,
+				843685102C653BF900FA935E /* App */,
+				8436850F2C653BF700FA935E /* Core */,
+				8436850E2C653BF500FA935E /* Extensions */,
+				8436850D2C653BEF00FA935E /* Model */,
+				8436850C2C653BEB00FA935E /* Services */,
 				843684E42C653BD900FA935E /* ContentView.swift */,
 				843684E62C653BDA00FA935E /* Assets.xcassets */,
 				843684E82C653BDA00FA935E /* Preview Content */,
@@ -125,6 +129,42 @@
 				843684FF2C653BDA00FA935E /* MotaNetUITestsLaunchTests.swift */,
 			);
 			path = MotaNetUITests;
+			sourceTree = "<group>";
+		};
+		8436850C2C653BEB00FA935E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8436850D2C653BEF00FA935E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8436850E2C653BF500FA935E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8436850F2C653BF700FA935E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		843685102C653BF900FA935E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				843684E22C653BD900FA935E /* MotaNetApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
