@@ -29,19 +29,6 @@ final class Exercise: Codable, Hashable, Identifiable, Sendable {
     let category: Category
     let images: [String]
     
-    init() {
-        id = NSUUID().uuidString
-        name = ""
-        force = nil
-        level = Level.beginner
-        mechanic = nil
-        equipment = nil
-        primaryMuscles = [Muscle.abdominals]
-        secondaryMuscles = [Muscle.abdominals]
-        instructions = [""]
-        category = Category.cardio
-        images = [""]
-    }
     
     var imageURLs: [String] {
         images.map { imageString in

@@ -7,159 +7,113 @@
 
 import Foundation
 
-
-import Foundation
-
 struct WorkoutStats {
-    var totalReps: Int
-    var totalVolume: Int
-    var musclesUsed: [String: Int]
-    var uniqueExercises: [String]
+    let totalReps: Int
+    let totalVolume: Int
+    let musclesUsed: [String: Int]
+    let uniqueExerciseNames: Set<String>
     
-    init(totalReps: Int = 0, totalVolume: Int = 0, musclesUsed: [String: Int] = [:], uniqueExercises: [String] = []) {
-        self.totalReps = totalReps
-        self.totalVolume = totalVolume
-        self.musclesUsed = musclesUsed
-        self.uniqueExercises = uniqueExercises
-    }
-}
-
-protocol Workout: Sendable {
-    var supersets: [Superset] { get set }
-    func computeWorkoutStats() -> WorkoutStats
-}
-
-extension Workout {
-    
-    func computeWorkoutStats() -> WorkoutStats {
-            var totalReps = 0
-            var totalVolume = 0
-            var muscleUsageDict = [String: Int]()
-            var exerciseNames: Set<String> = []
-
-            for superset in self.supersets {
-                for round in superset.rounds {
-                    for singleset in round.singlesets {
-                        totalReps += singleset.reps
-                        totalVolume += singleset.reps * singleset.weight
-                        
-                        if let exercise = singleset.exercise {
-                            exerciseNames.insert(exercise.name)
-                            
-                            for primaryMuscle in exercise.primaryMuscles {
-                                muscleUsageDict[primaryMuscle.rawValue, default: 0] += singleset.reps * singleset.weight
-                            }
-    //                        for secondaryMuscle in exercise.secondaryMuscles {
-    //                            muscleUsageDict[secondaryMuscle.rawValue, default: 0] += singleset.reps * singleset.weight
-    //                        }
-                        }
+    static func compute(from workout: any Workout) -> WorkoutStats {
+        var totalReps = 0
+        var totalVolume = 0
+        var muscleUsageDict = [String: Int]()
+        var exerciseNames: Set<String> = []
+        
+        for superset in workout.supersets {
+            for round in superset.rounds {
+                for singleset in round.singlesets {
+                    totalReps += singleset.reps
+                    totalVolume += singleset.reps * singleset.weight
+                    
+                    
+                    exerciseNames.insert(singleset.exercise.name)
+                    
+                    for primaryMuscle in singleset.exercise.primaryMuscles {
+                        muscleUsageDict[primaryMuscle.rawValue, default: 0] += singleset.reps * singleset.weight
                     }
+                    //                        for secondaryMuscle in singleset.exercise.secondaryMuscles {
+                    //                            muscleUsageDict[secondaryMuscle.rawValue, default: 0] += singleset.reps * singleset.weight
+                    //                        }
+                    
                 }
             }
-
-            return WorkoutStats(totalReps: totalReps, totalVolume: totalVolume, musclesUsed: muscleUsageDict, uniqueExercises: Array(exerciseNames))
         }
-    
+        
+        return WorkoutStats(
+            totalReps: totalReps,
+            totalVolume: totalVolume,
+            musclesUsed: muscleUsageDict,
+            uniqueExerciseNames: exerciseNames
+        )
+    }
 }
 
+protocol Workout: Identifiable, Sendable {
+    var id: String { get }
+    var name: String { get set }
+    var supersets: [Superset] { get set }
+    var startTime: Date { get set }
+}
 
-
-struct WorkoutTemplate: Sendable, Workout {
-    let id = NSUUID().uuidString
+struct WorkoutTemplate: Workout {
+    let id = UUID().uuidString
     var name: String
-    let timeStamp: Date
     var supersets: [Superset]
-    
-    init(name: String = "New Workout", timestamp: Date = Date(), supersets: [Superset] = [] ) {
-        self.name = name
-        self.timeStamp = timestamp
-        self.supersets = supersets
-    }
-    
-    
+    var startTime: Date = Date()
 }
 
-extension WorkoutTemplate {
-    
-}
 
-struct WorkoutCompleted: Sendable, Workout {
-    let id = NSUUID().uuidString
+struct WorkoutCompleted: Workout {
+    let id = UUID().uuidString
     var name: String
-    let timeStamp: Date
     var supersets: [Superset]
-    var startTime: Date
-    var endTime: Date
-    
-    
-    init(name: String = "Completed Workout", timestamp: Date = Date(), supersets: [Superset] = [], startTime: Date = Date(), endTime: Date = Date()) {
-        self.name = name
-        self.timeStamp = timestamp
-        self.supersets = supersets
-        self.startTime = startTime
-        self.endTime = endTime
-    }
-    
-    init(workout: WorkoutTemplate, startTime: Date = Date(), endTime: Date = Date()) {
-        self.name = workout.name
-        self.timeStamp = workout.timeStamp
-        self.supersets = workout.supersets
-        self.startTime = startTime
-        self.endTime = endTime
-    }
-
+    var startTime: Date = Date()
+    var endTime: Date?
 }
 
+extension WorkoutCompleted {
+    static var MOCK_WORKOUTS: [WorkoutCompleted] = [
+        WorkoutCompleted(name: "Full body",
+                supersets: [
+                    Superset(
+                        rounds: [
+                            Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[0], weight: 100, reps: 10), Singleset(exercise: Exercise.MOCK_EXERCISES[1], weight: 90, reps: 15)], rest: 60),
+                            Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[0], weight: 100, reps: 10), Singleset(exercise: Exercise.MOCK_EXERCISES[1], weight: 90, reps: 15)], rest: 60)
+                        ]
+                    ),
+                    Superset(
+                        rounds: [
+                            Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 100, reps: 20)], rest: 60),
+                        ]
+                    )
+                ]
+               )
+        
+    ]
+}
 
 struct Superset: Sendable {
-    var timestamp: Date
-    var rounds: [Round]
+    var timestamp: Date = Date()
+    var rounds: [Round] = []
     var orderedRounds: [Round] {
         rounds.sorted{$0.timestamp < $1.timestamp}
     }
     
-    init(timestamp: Date = Date(), rounds: [Round] = []) {
-        self.timestamp = timestamp
-        self.rounds = rounds
-    }
     
-   
 }
 
 struct Round: Sendable {
-    let timestamp: Date
-    var singlesets: [Singleset]
-    var rest: Int
-    
-    init(timestamp: Date = Date(), singlesets: [Singleset] = [], rest: Int = 0) {
-        self.timestamp = timestamp
-        self.singlesets = singlesets
-        self.rest = rest
-    }
+    let timestamp: Date = Date()
+    var singlesets: [Singleset] = []
+    var rest: Int = 0
     
 }
 
 
 struct Singleset: Sendable {
-    var timestamp: Date
-    var exercise: Exercise?
-    var weight: Int
-    var reps: Int
-    
-    var imageName: String? {
-        if !(exercise?.imageURLs.isEmpty ?? false) {
-            return exercise?.imageURLs[0]
-        } else {
-            return nil
-        }
-    }
-    
-    init(timestamp: Date = Date(), exercise: Exercise? = Exercise(), weight: Int = 0, reps: Int = 0) {
-        self.timestamp = timestamp
-        self.exercise = exercise
-        self.weight = weight
-        self.reps = reps
-    }
-    
+    var timestamp: Date = Date()
+    var exercise: Exercise
+    var weight: Int = 0
+    var reps: Int = 0
     
 }
