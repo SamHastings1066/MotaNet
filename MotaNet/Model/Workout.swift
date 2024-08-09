@@ -54,6 +54,7 @@ protocol Workout: Identifiable, Sendable {
     var name: String { get set }
     var supersets: [Superset] { get set }
     var startTime: Date { get set }
+    var user: User? { get set }
 }
 
 struct WorkoutTemplate: Workout {
@@ -62,6 +63,7 @@ struct WorkoutTemplate: Workout {
     var name: String
     var supersets: [Superset]
     var startTime: Date = Date()
+    var user: User?
 }
 
 
@@ -71,7 +73,10 @@ struct WorkoutCompleted: Workout {
     var name: String
     var supersets: [Superset]
     var startTime: Date = Date()
-    var endTime: Date?
+    var endTime: Date
+    var user: User?
+    var caption: String = ""
+    var likes: Int = 0
 }
 
 extension WorkoutCompleted {
@@ -85,7 +90,13 @@ extension WorkoutCompleted {
                 Superset(
                     rounds: Array(repeating: Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[1], weight: 80, reps: 10)], rest: 120), count: 8)
                 )
-            ]
+            ],
+            startTime: Date(),
+            endTime: Date().addingTimeInterval(TimeInterval(1)),
+            user: User.MOCK_USERS[0],
+            caption: "Light work.",
+            likes: 476
+            
         ),
         WorkoutCompleted(
             name: "Upper body volume",
@@ -102,7 +113,12 @@ extension WorkoutCompleted {
                         Singleset(exercise: Exercise.MOCK_EXERCISES[5], weight: 55, reps: 10)
                     ], rest: 120), count: 8)
                 )
-            ]
+            ],
+            startTime: Date(),
+            endTime: Date().addingTimeInterval(TimeInterval(1)),
+            user: User.MOCK_USERS[0],
+            caption: "Exhausted!",
+            likes: 476
         )
     ]
 }

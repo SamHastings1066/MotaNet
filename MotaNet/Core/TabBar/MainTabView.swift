@@ -13,14 +13,14 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $selectedIndex) {
-            Text("Feed View")
+            FeedView()
                 .onAppear{
                     selectedIndex = 0
                 }
                 .tabItem {
                     Image(systemName: "house")
                 }.tag(0)
-            Text("Search View")
+            SearchView()
                 .onAppear{
                     selectedIndex = 1
                 }
