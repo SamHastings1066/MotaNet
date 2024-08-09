@@ -9,11 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var registrationViewModel = RegistrationViewModel()
+    
     var body: some View {
-        VStack {
-            MainTabView(user: User.MOCK_USERS[0])
+        Group {
+            if AuthService.shared.userSession == nil {
+                LoginView()
+                    .environment(registrationViewModel)
+            } else if let currentUser = AuthService.shared.currentUser {
+                MainTabView(user: currentUser)
+            }
         }
-        .padding()
     }
 }
 
