@@ -50,6 +50,9 @@
 		8473A32C2C669D5200B92948 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A32B2C669D5200B92948 /* CalendarView.swift */; };
 		8473A32E2C669D7700B92948 /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8473A32D2C669D7700B92948 /* HorizonCalendar */; };
 		8473A3302C66A8E900B92948 /* CompletedWorkoutsForDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A32F2C66A8E900B92948 /* CompletedWorkoutsForDayView.swift */; };
+		8473A3362C66AABA00B92948 /* WorkoutLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3352C66AABA00B92948 /* WorkoutLibraryView.swift */; };
+		8473A3382C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */; };
+		8473A33A2C66D55F00B92948 /* XSmallUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3392C66D55F00B92948 /* XSmallUserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +114,9 @@
 		8473A3252C66935600B92948 /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
 		8473A32B2C669D5200B92948 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		8473A32F2C66A8E900B92948 /* CompletedWorkoutsForDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedWorkoutsForDayView.swift; sourceTree = "<group>"; };
+		8473A3352C66AABA00B92948 /* WorkoutLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutLibraryView.swift; sourceTree = "<group>"; };
+		8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateWorkoutSummaryView.swift; sourceTree = "<group>"; };
+		8473A3392C66D55F00B92948 /* XSmallUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XSmallUserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +327,8 @@
 		843685192C653DED00FA935E /* WorkoutLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				8473A3342C66AA8200B92948 /* View */,
+				8473A3332C66AA7D00B92948 /* ViewModel */,
 			);
 			path = WorkoutLibrary;
 			sourceTree = "<group>";
@@ -381,6 +389,8 @@
 				8473A3052C66629500B92948 /* CompletedWorkoutSummaryView.swift */,
 				8473A3072C66659200B92948 /* PieChartView.swift */,
 				8473A31D2C6692C400B92948 /* IGTextFieldModifier.swift */,
+				8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */,
+				8473A3392C66D55F00B92948 /* XSmallUserView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,6 +460,21 @@
 			isa = PBXGroup;
 			children = (
 				843684E42C653BD900FA935E /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8473A3332C66AA7D00B92948 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8473A3342C66AA8200B92948 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8473A3352C66AABA00B92948 /* WorkoutLibraryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -603,6 +628,7 @@
 				8473A2F62C65483A00B92948 /* EditProfileView.swift in Sources */,
 				8473A3042C6646F900B92948 /* CompletedWorkoutSummaryListView.swift in Sources */,
 				8473A2F42C6547E700B92948 /* ProfileStatView.swift in Sources */,
+				8473A3362C66AABA00B92948 /* WorkoutLibraryView.swift in Sources */,
 				8473A2F82C65488B00B92948 /* EditProfileViewModel.swift in Sources */,
 				8473A3242C66933B00B92948 /* CreatePasswordView.swift in Sources */,
 				8473A2FA2C6548D200B92948 /* ImageUploader.swift in Sources */,
@@ -612,11 +638,13 @@
 				8473A32C2C669D5200B92948 /* CalendarView.swift in Sources */,
 				8473A3082C66659200B92948 /* PieChartView.swift in Sources */,
 				843684E32C653BD900FA935E /* MotaNetApp.swift in Sources */,
+				8473A3382C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift in Sources */,
 				8473A31C2C66928600B92948 /* LoginView.swift in Sources */,
 				8473A30C2C667CC600B92948 /* FeedView.swift in Sources */,
 				8473A30E2C667CD100B92948 /* FeedCell.swift in Sources */,
 				8473A30A2C6669BD00B92948 /* DateExtensions.swift in Sources */,
 				8436852A2C6542CF00FA935E /* ProfileView.swift in Sources */,
+				8473A33A2C66D55F00B92948 /* XSmallUserView.swift in Sources */,
 				8473A31E2C6692C400B92948 /* IGTextFieldModifier.swift in Sources */,
 				8473A3302C66A8E900B92948 /* CompletedWorkoutsForDayView.swift in Sources */,
 				8473A3002C65908B00B92948 /* Exercise.swift in Sources */,

@@ -27,7 +27,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(1)
-            Text("WorkoutLibraryView")
+            WorkoutLibraryView()
                 .onAppear{
                     selectedIndex = 2
                 }

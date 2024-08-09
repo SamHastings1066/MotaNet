@@ -13,16 +13,9 @@ struct FeedCell: View {
     var body: some View {
         VStack {
             // Image + username
-            HStack {
-                if let user = workout.user {
-                    CircularProfileImageView(user: user, size: .xSmall)
-                    Text(user.username)
-                        .font(.footnote)
-                        .fontWeight(.semibold)
-                }
-                Spacer()
+            if let user = workout.user {
+                XSmallUserView(user: user)
             }
-            .padding(.leading, 8)
             // WorkoutSummary
             CompletedWorkoutSummaryView(workout: workout)
             

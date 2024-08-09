@@ -66,6 +66,42 @@ struct WorkoutTemplate: Workout {
     var user: User?
 }
 
+extension WorkoutTemplate {
+    static var MOCK_WORKOUTS: [WorkoutTemplate] = [
+        WorkoutTemplate(
+            name: "Lower body volume",
+            supersets: [
+                Superset(
+                    rounds: Array(repeating: Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[0], weight: 60, reps: 11)], rest: 120), count: 10)
+                ),
+                Superset(
+                    rounds: Array(repeating: Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[1], weight: 80, reps: 10)], rest: 120), count: 8)
+                )
+            ],
+            startTime: Date(),
+            user: User.MOCK_USERS[0]
+        ),
+        WorkoutTemplate(
+            name: "Upper body volume",
+            supersets: [
+                Superset(
+                    rounds: Array(repeating: Round(singlesets: [
+                        Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 70, reps: 14),
+                        Singleset(exercise: Exercise.MOCK_EXERCISES[3], weight: 75, reps: 14)
+                    ], rest: 90), count: 8)
+                ),
+                Superset(
+                    rounds: Array(repeating: Round(singlesets: [
+                        Singleset(exercise: Exercise.MOCK_EXERCISES[4], weight: 80, reps: 11),
+                        Singleset(exercise: Exercise.MOCK_EXERCISES[5], weight: 55, reps: 10)
+                    ], rest: 120), count: 8)
+                )
+            ],
+            startTime: Date(),
+            user: User.MOCK_USERS[0]
+        )
+    ]
+}
 
 struct WorkoutCompleted: Workout, Hashable {
     static func == (lhs: WorkoutCompleted, rhs: WorkoutCompleted) -> Bool {

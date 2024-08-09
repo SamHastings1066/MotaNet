@@ -11,8 +11,10 @@ struct CompletedWorkoutsForDayView: View {
     let workouts: [WorkoutCompleted]
     
     var body: some View {
-        CompletedWorkoutSummaryListView(workouts: workouts)
-            .padding()
+        ForEach(workouts) { workout in
+            CompletedWorkoutSummaryView(workout: workout)
+        }
+        .padding()
     }
 }
 

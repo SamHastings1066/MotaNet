@@ -23,7 +23,9 @@ struct ProfileView: View {
                 // Header
                 ProfileHeaderView(user: user)
                 // post grid view
-                CompletedWorkoutSummaryListView(workouts: workouts)
+                    ForEach(workouts) { workout in
+                        CompletedWorkoutSummaryView(workout: workout)
+                    }
                     .padding()
             }
             .navigationTitle("Profile")
