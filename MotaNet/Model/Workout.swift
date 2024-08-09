@@ -73,24 +73,37 @@ struct WorkoutCompleted: Workout {
 
 extension WorkoutCompleted {
     static var MOCK_WORKOUTS: [WorkoutCompleted] = [
-        WorkoutCompleted(name: "Full body",
-                supersets: [
-                    Superset(
-                        rounds: [
-                            Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[0], weight: 100, reps: 10), Singleset(exercise: Exercise.MOCK_EXERCISES[1], weight: 90, reps: 15)], rest: 60),
-                            Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[0], weight: 100, reps: 10), Singleset(exercise: Exercise.MOCK_EXERCISES[1], weight: 90, reps: 15)], rest: 60)
-                        ]
-                    ),
-                    Superset(
-                        rounds: [
-                            Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 100, reps: 20)], rest: 60),
-                        ]
-                    )
-                ]
-               )
-        
+        WorkoutCompleted(
+            name: "Lower body volume",
+            supersets: [
+                Superset(
+                    rounds: Array(repeating: Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[0], weight: 60, reps: 11)], rest: 120), count: 10)
+                ),
+                Superset(
+                    rounds: Array(repeating: Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[1], weight: 80, reps: 10)], rest: 120), count: 8)
+                )
+            ]
+        ),
+        WorkoutCompleted(
+            name: "Upper body volume",
+            supersets: [
+                Superset(
+                    rounds: Array(repeating: Round(singlesets: [
+                        Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 70, reps: 14),
+                        Singleset(exercise: Exercise.MOCK_EXERCISES[3], weight: 75, reps: 14)
+                    ], rest: 90), count: 8)
+                ),
+                Superset(
+                    rounds: Array(repeating: Round(singlesets: [
+                        Singleset(exercise: Exercise.MOCK_EXERCISES[4], weight: 80, reps: 11),
+                        Singleset(exercise: Exercise.MOCK_EXERCISES[5], weight: 55, reps: 10)
+                    ], rest: 120), count: 8)
+                )
+            ]
+        )
     ]
 }
+
 
 struct Superset: Sendable {
     var timestamp: Date = Date()
