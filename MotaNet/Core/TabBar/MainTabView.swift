@@ -41,7 +41,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "calendar")
                 }.tag(3)
-            Text("CurrentUserProfileView")
+            ProfileView(user: user)
                 .onAppear{
                     selectedIndex = 4
                 }

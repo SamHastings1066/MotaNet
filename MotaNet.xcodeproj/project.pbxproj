@@ -19,6 +19,17 @@
 		843685202C653FF700FA935E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8436851F2C653FF700FA935E /* FirebaseFirestore */; };
 		843685222C653FF700FA935E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 843685212C653FF700FA935E /* FirebaseStorage */; };
 		843685282C6540DE00FA935E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843685272C6540DE00FA935E /* MainTabView.swift */; };
+		8436852A2C6542CF00FA935E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843685292C6542CF00FA935E /* ProfileView.swift */; };
+		8436852E2C65434C00FA935E /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436852D2C65434C00FA935E /* ProfileHeaderView.swift */; };
+		843685332C6545A700FA935E /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843685322C6545A700FA935E /* CircularProfileImageView.swift */; };
+		8473A2F22C65472C00B92948 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8473A2F12C65472C00B92948 /* Kingfisher */; };
+		8473A2F42C6547E700B92948 /* ProfileStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F32C6547E700B92948 /* ProfileStatView.swift */; };
+		8473A2F62C65483A00B92948 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F52C65483A00B92948 /* EditProfileView.swift */; };
+		8473A2F82C65488B00B92948 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F72C65488B00B92948 /* EditProfileViewModel.swift */; };
+		8473A2FA2C6548D200B92948 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F92C6548D200B92948 /* ImageUploader.swift */; };
+		8473A2FC2C6583A800B92948 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8473A2FB2C6583A800B92948 /* GoogleService-Info.plist */; };
+		8473A2FE2C658F0700B92948 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2FD2C658F0700B92948 /* Workout.swift */; };
+		8473A3002C65908B00B92948 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2FF2C65908B00B92948 /* Exercise.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +62,16 @@
 		843684FF2C653BDA00FA935E /* MotaNetUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotaNetUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8436851A2C653F1700FA935E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		843685272C6540DE00FA935E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		843685292C6542CF00FA935E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8436852D2C65434C00FA935E /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		843685322C6545A700FA935E /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
+		8473A2F32C6547E700B92948 /* ProfileStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStatView.swift; sourceTree = "<group>"; };
+		8473A2F52C65483A00B92948 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		8473A2F72C65488B00B92948 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		8473A2F92C6548D200B92948 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		8473A2FB2C6583A800B92948 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8473A2FD2C658F0700B92948 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		8473A2FF2C65908B00B92948 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8473A2F22C65472C00B92948 /* Kingfisher in Frameworks */,
 				8436851E2C653FF700FA935E /* FirebaseAuth in Frameworks */,
 				843685202C653FF700FA935E /* FirebaseFirestore in Frameworks */,
 				843685222C653FF700FA935E /* FirebaseStorage in Frameworks */,
@@ -88,6 +110,7 @@
 				843684F22C653BDA00FA935E /* MotaNetTests */,
 				843684FC2C653BDA00FA935E /* MotaNetUITests */,
 				843684E02C653BD900FA935E /* Products */,
+				8473A2F02C65472C00B92948 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +127,7 @@
 		843684E12C653BD900FA935E /* MotaNet */ = {
 			isa = PBXGroup;
 			children = (
+				8473A2FB2C6583A800B92948 /* GoogleService-Info.plist */,
 				843685102C653BF900FA935E /* App */,
 				8436850F2C653BF700FA935E /* Core */,
 				8436850E2C653BF500FA935E /* Extensions */,
@@ -144,6 +168,7 @@
 		8436850C2C653BEB00FA935E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8473A2F92C6548D200B92948 /* ImageUploader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -152,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				8436851A2C653F1700FA935E /* User.swift */,
+				8473A2FD2C658F0700B92948 /* Workout.swift */,
+				8473A2FF2C65908B00B92948 /* Exercise.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,6 +223,8 @@
 		843685122C653D5300FA935E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				8436852C2C6542DD00FA935E /* View */,
+				8436852B2C6542DB00FA935E /* ViewModel */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -203,6 +232,8 @@
 		843685132C653D5400FA935E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				843685302C65456800FA935E /* View */,
+				843685312C65457300FA935E /* ViewModel */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -267,6 +298,47 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8436852B2C6542DB00FA935E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8473A2F72C65488B00B92948 /* EditProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8436852C2C6542DD00FA935E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				843685292C6542CF00FA935E /* ProfileView.swift */,
+				8436852D2C65434C00FA935E /* ProfileHeaderView.swift */,
+				8473A2F32C6547E700B92948 /* ProfileStatView.swift */,
+				8473A2F52C65483A00B92948 /* EditProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		843685302C65456800FA935E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				843685322C6545A700FA935E /* CircularProfileImageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		843685312C65457300FA935E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8473A2F02C65472C00B92948 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -287,6 +359,7 @@
 				8436851D2C653FF700FA935E /* FirebaseAuth */,
 				8436851F2C653FF700FA935E /* FirebaseFirestore */,
 				843685212C653FF700FA935E /* FirebaseStorage */,
+				8473A2F12C65472C00B92948 /* Kingfisher */,
 			);
 			productName = MotaNet;
 			productReference = 843684DF2C653BD900FA935E /* MotaNet.app */;
@@ -362,6 +435,7 @@
 			mainGroup = 843684D62C653BD900FA935E;
 			packageReferences = (
 				8436851C2C653FF700FA935E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8436852F2C65455600FA935E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 843684E02C653BD900FA935E /* Products */;
 			projectDirPath = "";
@@ -381,6 +455,7 @@
 			files = (
 				843684EA2C653BDA00FA935E /* Preview Assets.xcassets in Resources */,
 				843684E72C653BDA00FA935E /* Assets.xcassets in Resources */,
+				8473A2FC2C6583A800B92948 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,10 +480,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8473A2F62C65483A00B92948 /* EditProfileView.swift in Sources */,
+				8473A2F42C6547E700B92948 /* ProfileStatView.swift in Sources */,
+				8473A2F82C65488B00B92948 /* EditProfileViewModel.swift in Sources */,
+				8473A2FA2C6548D200B92948 /* ImageUploader.swift in Sources */,
+				843685332C6545A700FA935E /* CircularProfileImageView.swift in Sources */,
 				843684E52C653BD900FA935E /* ContentView.swift in Sources */,
+				8436852E2C65434C00FA935E /* ProfileHeaderView.swift in Sources */,
 				843684E32C653BD900FA935E /* MotaNetApp.swift in Sources */,
+				8436852A2C6542CF00FA935E /* ProfileView.swift in Sources */,
+				8473A3002C65908B00B92948 /* Exercise.swift in Sources */,
 				8436851B2C653F1700FA935E /* User.swift in Sources */,
 				843685282C6540DE00FA935E /* MainTabView.swift in Sources */,
+				8473A2FE2C658F0700B92948 /* Workout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +832,14 @@
 				minimumVersion = 11.0.0;
 			};
 		};
+		8436852F2C65455600FA935E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -765,6 +857,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8436851C2C653FF700FA935E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		8473A2F12C65472C00B92948 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8436852F2C65455600FA935E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
