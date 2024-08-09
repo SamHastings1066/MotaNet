@@ -47,6 +47,9 @@
 		8473A3222C66932800B92948 /* CreateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3212C66932800B92948 /* CreateUsernameView.swift */; };
 		8473A3242C66933B00B92948 /* CreatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3232C66933B00B92948 /* CreatePasswordView.swift */; };
 		8473A3262C66935600B92948 /* CompleteSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3252C66935600B92948 /* CompleteSignUpView.swift */; };
+		8473A32C2C669D5200B92948 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A32B2C669D5200B92948 /* CalendarView.swift */; };
+		8473A32E2C669D7700B92948 /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8473A32D2C669D7700B92948 /* HorizonCalendar */; };
+		8473A3302C66A8E900B92948 /* CompletedWorkoutsForDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A32F2C66A8E900B92948 /* CompletedWorkoutsForDayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,8 @@
 		8473A3212C66932800B92948 /* CreateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameView.swift; sourceTree = "<group>"; };
 		8473A3232C66933B00B92948 /* CreatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordView.swift; sourceTree = "<group>"; };
 		8473A3252C66935600B92948 /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
+		8473A32B2C669D5200B92948 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		8473A32F2C66A8E900B92948 /* CompletedWorkoutsForDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedWorkoutsForDayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +120,7 @@
 			files = (
 				8473A2F22C65472C00B92948 /* Kingfisher in Frameworks */,
 				8436851E2C653FF700FA935E /* FirebaseAuth in Frameworks */,
+				8473A32E2C669D7700B92948 /* HorizonCalendar in Frameworks */,
 				843685202C653FF700FA935E /* FirebaseFirestore in Frameworks */,
 				843685222C653FF700FA935E /* FirebaseStorage in Frameworks */,
 			);
@@ -230,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				843685152C653D5600FA935E /* Authentication */,
+				8473A3272C669C4100B92948 /* Calendar */,
 				843685132C653D5400FA935E /* Components */,
 				843685142C653D5500FA935E /* Feed */,
 				843685122C653D5300FA935E /* Profile */,
@@ -406,6 +413,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8473A3272C669C4100B92948 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				8473A3292C669C8800B92948 /* View */,
+				8473A3282C669C7800B92948 /* ViewModel */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		8473A3282C669C7800B92948 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8473A3292C669C8800B92948 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8473A32B2C669D5200B92948 /* CalendarView.swift */,
+				8473A32F2C66A8E900B92948 /* CompletedWorkoutsForDayView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -427,6 +459,7 @@
 				8436851F2C653FF700FA935E /* FirebaseFirestore */,
 				843685212C653FF700FA935E /* FirebaseStorage */,
 				8473A2F12C65472C00B92948 /* Kingfisher */,
+				8473A32D2C669D7700B92948 /* HorizonCalendar */,
 			);
 			productName = MotaNet;
 			productReference = 843684DF2C653BD900FA935E /* MotaNet.app */;
@@ -503,6 +536,7 @@
 			packageReferences = (
 				8436851C2C653FF700FA935E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8436852F2C65455600FA935E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				8473A32A2C669D3E00B92948 /* XCRemoteSwiftPackageReference "HorizonCalendar" */,
 			);
 			productRefGroup = 843684E02C653BD900FA935E /* Products */;
 			projectDirPath = "";
@@ -559,6 +593,7 @@
 				843685332C6545A700FA935E /* CircularProfileImageView.swift in Sources */,
 				843684E52C653BD900FA935E /* ContentView.swift in Sources */,
 				8436852E2C65434C00FA935E /* ProfileHeaderView.swift in Sources */,
+				8473A32C2C669D5200B92948 /* CalendarView.swift in Sources */,
 				8473A3082C66659200B92948 /* PieChartView.swift in Sources */,
 				843684E32C653BD900FA935E /* MotaNetApp.swift in Sources */,
 				8473A31C2C66928600B92948 /* LoginView.swift in Sources */,
@@ -567,6 +602,7 @@
 				8473A30A2C6669BD00B92948 /* DateExtensions.swift in Sources */,
 				8436852A2C6542CF00FA935E /* ProfileView.swift in Sources */,
 				8473A31E2C6692C400B92948 /* IGTextFieldModifier.swift in Sources */,
+				8473A3302C66A8E900B92948 /* CompletedWorkoutsForDayView.swift in Sources */,
 				8473A3002C65908B00B92948 /* Exercise.swift in Sources */,
 				8436851B2C653F1700FA935E /* User.swift in Sources */,
 				843685282C6540DE00FA935E /* MainTabView.swift in Sources */,
@@ -924,6 +960,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		8473A32A2C669D3E00B92948 /* XCRemoteSwiftPackageReference "HorizonCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/HorizonCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -946,6 +990,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8436852F2C65455600FA935E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		8473A32D2C669D7700B92948 /* HorizonCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8473A32A2C669D3E00B92948 /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
+			productName = HorizonCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -34,7 +34,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "dumbbell")
                 }.tag(2)
-            Text("CalendarView")
+            CalendarView(user: user)
                 .onAppear{
                     selectedIndex = 3
                 }

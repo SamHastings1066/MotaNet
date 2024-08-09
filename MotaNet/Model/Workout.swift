@@ -67,7 +67,15 @@ struct WorkoutTemplate: Workout {
 }
 
 
-struct WorkoutCompleted: Workout {
+struct WorkoutCompleted: Workout, Hashable {
+    static func == (lhs: WorkoutCompleted, rhs: WorkoutCompleted) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let id = UUID().uuidString
     let ownerId = UUID().uuidString
     var name: String
