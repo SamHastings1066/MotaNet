@@ -10,6 +10,9 @@ import SwiftUI
 struct ProfileView: View {
     
     let user: User
+    let workouts: [WorkoutCompleted] = WorkoutCompleted.MOCK_WORKOUTS
+    
+    
     
 //    var posts: [Post] {
 //        return Post.MOCK_POSTS.filter{ $0.user?.username == user.username}
@@ -20,7 +23,8 @@ struct ProfileView: View {
                 // Header
                 ProfileHeaderView(user: user)
                 // post grid view
-                //PostGridView(user: user) - WorkoutGridView
+                CompletedWorkoutSummaryListView(workouts: workouts)
+                    .padding()
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)

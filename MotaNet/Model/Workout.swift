@@ -50,6 +50,7 @@ struct WorkoutStats {
 
 protocol Workout: Identifiable, Sendable {
     var id: String { get }
+    var ownerId: String { get }
     var name: String { get set }
     var supersets: [Superset] { get set }
     var startTime: Date { get set }
@@ -57,6 +58,7 @@ protocol Workout: Identifiable, Sendable {
 
 struct WorkoutTemplate: Workout {
     let id = UUID().uuidString
+    let ownerId = UUID().uuidString
     var name: String
     var supersets: [Superset]
     var startTime: Date = Date()
@@ -65,6 +67,7 @@ struct WorkoutTemplate: Workout {
 
 struct WorkoutCompleted: Workout {
     let id = UUID().uuidString
+    let ownerId = UUID().uuidString
     var name: String
     var supersets: [Superset]
     var startTime: Date = Date()
