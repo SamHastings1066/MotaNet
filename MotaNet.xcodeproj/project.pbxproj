@@ -173,7 +173,6 @@
 				8436850E2C653BF500FA935E /* Extensions */,
 				8436850D2C653BEF00FA935E /* Model */,
 				8436850C2C653BEB00FA935E /* Services */,
-				843684E42C653BD900FA935E /* ContentView.swift */,
 				843684E62C653BDA00FA935E /* Assets.xcassets */,
 				843684E82C653BDA00FA935E /* Preview Content */,
 			);
@@ -259,6 +258,8 @@
 		843685112C653D5100FA935E /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				8473A3322C66AA4700B92948 /* View */,
+				8473A3312C66AA3C00B92948 /* ViewModel */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -434,6 +435,21 @@
 			children = (
 				8473A32B2C669D5200B92948 /* CalendarView.swift */,
 				8473A32F2C66A8E900B92948 /* CompletedWorkoutsForDayView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8473A3312C66AA3C00B92948 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8473A3322C66AA4700B92948 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				843684E42C653BD900FA935E /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
