@@ -53,6 +53,8 @@
 		8473A3362C66AABA00B92948 /* WorkoutLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3352C66AABA00B92948 /* WorkoutLibraryView.swift */; };
 		8473A3382C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */; };
 		8473A33A2C66D55F00B92948 /* XSmallUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3392C66D55F00B92948 /* XSmallUserView.swift */; };
+		8473A33C2C67A15500B92948 /* DefaultExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A33B2C67A15500B92948 /* DefaultExerciseView.swift */; };
+		8473A33E2C67AA3C00B92948 /* WorkoutTemplateDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A33D2C67AA3C00B92948 /* WorkoutTemplateDetailScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		8473A3352C66AABA00B92948 /* WorkoutLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutLibraryView.swift; sourceTree = "<group>"; };
 		8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateWorkoutSummaryView.swift; sourceTree = "<group>"; };
 		8473A3392C66D55F00B92948 /* XSmallUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XSmallUserView.swift; sourceTree = "<group>"; };
+		8473A33B2C67A15500B92948 /* DefaultExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultExerciseView.swift; sourceTree = "<group>"; };
+		8473A33D2C67AA3C00B92948 /* WorkoutTemplateDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplateDetailScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +395,7 @@
 				8473A31D2C6692C400B92948 /* IGTextFieldModifier.swift */,
 				8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */,
 				8473A3392C66D55F00B92948 /* XSmallUserView.swift */,
+				8473A33B2C67A15500B92948 /* DefaultExerciseView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				8473A3352C66AABA00B92948 /* WorkoutLibraryView.swift */,
+				8473A33D2C67AA3C00B92948 /* WorkoutTemplateDetailScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -641,6 +647,7 @@
 				8473A3382C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift in Sources */,
 				8473A31C2C66928600B92948 /* LoginView.swift in Sources */,
 				8473A30C2C667CC600B92948 /* FeedView.swift in Sources */,
+				8473A33E2C67AA3C00B92948 /* WorkoutTemplateDetailScreen.swift in Sources */,
 				8473A30E2C667CD100B92948 /* FeedCell.swift in Sources */,
 				8473A30A2C6669BD00B92948 /* DateExtensions.swift in Sources */,
 				8436852A2C6542CF00FA935E /* ProfileView.swift in Sources */,
@@ -650,6 +657,7 @@
 				8473A3002C65908B00B92948 /* Exercise.swift in Sources */,
 				8436851B2C653F1700FA935E /* User.swift in Sources */,
 				843685282C6540DE00FA935E /* MainTabView.swift in Sources */,
+				8473A33C2C67A15500B92948 /* DefaultExerciseView.swift in Sources */,
 				8473A31A2C66923600B92948 /* UserService.swift in Sources */,
 				8473A2FE2C658F0700B92948 /* Workout.swift in Sources */,
 				8473A3262C66935600B92948 /* CompleteSignUpView.swift in Sources */,

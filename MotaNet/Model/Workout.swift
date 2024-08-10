@@ -168,7 +168,8 @@ extension WorkoutCompleted {
 }
 
 
-struct Superset: Sendable {
+struct Superset: Sendable, Identifiable {
+    let id = UUID().uuidString
     var timestamp: Date = Date()
     var rounds: [Round] = []
     var orderedRounds: [Round] {
@@ -178,7 +179,8 @@ struct Superset: Sendable {
     
 }
 
-struct Round: Sendable {
+struct Round: Sendable, Identifiable {
+    let id = UUID().uuidString
     let timestamp: Date = Date()
     var singlesets: [Singleset] = []
     var rest: Int = 0
