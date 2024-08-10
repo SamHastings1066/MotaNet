@@ -1,5 +1,5 @@
 //
-//  WorkoutTemplateDetailScreen.swift
+//  WorkoutTemplateDetailView.swift
 //  MotaNet
 //
 //  Created by sam hastings on 10/08/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WorkoutTemplateDetailScreen: View {
+struct WorkoutTemplateDetailView: View {
     let workout: WorkoutTemplate
     var body: some View {
         List {
@@ -20,6 +20,6 @@ struct WorkoutTemplateDetailScreen: View {
 
 #Preview {
     NavigationStack {
-        WorkoutTemplateDetailScreen(workout: WorkoutTemplate.MOCK_WORKOUTS[0])
+        WorkoutTemplateDetailView(workout: WorkoutTemplate.MOCK_WORKOUTS[0])
     }
 }
