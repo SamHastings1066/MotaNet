@@ -12,7 +12,7 @@ struct WorkoutTemplateDetailScreen: View {
     var body: some View {
         List {
             ForEach(workout.supersets) {superset in
-                Text("Superset")
+                SupersetSummaryView(superset: superset)
             }
         }
     }

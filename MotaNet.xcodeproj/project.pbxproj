@@ -53,8 +53,10 @@
 		8473A3362C66AABA00B92948 /* WorkoutLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3352C66AABA00B92948 /* WorkoutLibraryView.swift */; };
 		8473A3382C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */; };
 		8473A33A2C66D55F00B92948 /* XSmallUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3392C66D55F00B92948 /* XSmallUserView.swift */; };
-		8473A33C2C67A15500B92948 /* DefaultExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A33B2C67A15500B92948 /* DefaultExerciseView.swift */; };
+		8473A33C2C67A15500B92948 /* ExerciseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A33B2C67A15500B92948 /* ExerciseImageView.swift */; };
 		8473A33E2C67AA3C00B92948 /* WorkoutTemplateDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A33D2C67AA3C00B92948 /* WorkoutTemplateDetailScreen.swift */; };
+		8473A3402C67C54D00B92948 /* SupersetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A33F2C67C54D00B92948 /* SupersetSummaryView.swift */; };
+		8473A3422C67C62400B92948 /* SupersetSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3412C67C62400B92948 /* SupersetSummaryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,8 +121,10 @@
 		8473A3352C66AABA00B92948 /* WorkoutLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutLibraryView.swift; sourceTree = "<group>"; };
 		8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateWorkoutSummaryView.swift; sourceTree = "<group>"; };
 		8473A3392C66D55F00B92948 /* XSmallUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XSmallUserView.swift; sourceTree = "<group>"; };
-		8473A33B2C67A15500B92948 /* DefaultExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultExerciseView.swift; sourceTree = "<group>"; };
+		8473A33B2C67A15500B92948 /* ExerciseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseImageView.swift; sourceTree = "<group>"; };
 		8473A33D2C67AA3C00B92948 /* WorkoutTemplateDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplateDetailScreen.swift; sourceTree = "<group>"; };
+		8473A33F2C67C54D00B92948 /* SupersetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetSummaryView.swift; sourceTree = "<group>"; };
+		8473A3412C67C62400B92948 /* SupersetSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetSummaryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,7 +399,7 @@
 				8473A31D2C6692C400B92948 /* IGTextFieldModifier.swift */,
 				8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */,
 				8473A3392C66D55F00B92948 /* XSmallUserView.swift */,
-				8473A33B2C67A15500B92948 /* DefaultExerciseView.swift */,
+				8473A33B2C67A15500B92948 /* ExerciseImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -472,6 +476,7 @@
 		8473A3332C66AA7D00B92948 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8473A3412C67C62400B92948 /* SupersetSummaryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 			children = (
 				8473A3352C66AABA00B92948 /* WorkoutLibraryView.swift */,
 				8473A33D2C67AA3C00B92948 /* WorkoutTemplateDetailScreen.swift */,
+				8473A33F2C67C54D00B92948 /* SupersetSummaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8473A3122C66892100B92948 /* SearchView.swift in Sources */,
+				8473A3422C67C62400B92948 /* SupersetSummaryViewModel.swift in Sources */,
 				8473A3182C66920600B92948 /* AuthService.swift in Sources */,
 				8473A3162C6691D700B92948 /* RegistrationViewModel.swift in Sources */,
 				8473A2F62C65483A00B92948 /* EditProfileView.swift in Sources */,
@@ -640,6 +647,7 @@
 				8473A2FA2C6548D200B92948 /* ImageUploader.swift in Sources */,
 				843685332C6545A700FA935E /* CircularProfileImageView.swift in Sources */,
 				843684E52C653BD900FA935E /* ContentView.swift in Sources */,
+				8473A3402C67C54D00B92948 /* SupersetSummaryView.swift in Sources */,
 				8436852E2C65434C00FA935E /* ProfileHeaderView.swift in Sources */,
 				8473A32C2C669D5200B92948 /* CalendarView.swift in Sources */,
 				8473A3082C66659200B92948 /* PieChartView.swift in Sources */,
@@ -657,7 +665,7 @@
 				8473A3002C65908B00B92948 /* Exercise.swift in Sources */,
 				8436851B2C653F1700FA935E /* User.swift in Sources */,
 				843685282C6540DE00FA935E /* MainTabView.swift in Sources */,
-				8473A33C2C67A15500B92948 /* DefaultExerciseView.swift in Sources */,
+				8473A33C2C67A15500B92948 /* ExerciseImageView.swift in Sources */,
 				8473A31A2C66923600B92948 /* UserService.swift in Sources */,
 				8473A2FE2C658F0700B92948 /* Workout.swift in Sources */,
 				8473A3262C66935600B92948 /* CompleteSignUpView.swift in Sources */,
