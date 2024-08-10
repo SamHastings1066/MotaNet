@@ -20,7 +20,7 @@ extension Date {
         let dayFormatter = NumberFormatter()
         dayFormatter.numberStyle = .ordinal
         
-        let dayString = dayFormatter.string(from: NSNumber(value: day)) ?? "\(day)"
+        //let dayString = dayFormatter.string(from: NSNumber(value: day)) ?? "\(day)"
         return "\(formatter.string(from: self))"
     }
 }
