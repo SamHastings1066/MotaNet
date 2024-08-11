@@ -12,14 +12,22 @@ struct WorkoutTemplateDetailView: View {
     var body: some View {
         List {
             ForEach(workout.supersets) {superset in
-                SupersetSummaryView(superset: superset)
+                NavigationLink(value: superset) {
+                    SupersetSummaryView(superset: superset)
+                }
+                
             }
+        }
+        .navigationTitle(workout.name)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(for: Superset.self) { superset in
+            SupersetDetailView(superset: superset)
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        WorkoutTemplateDetailView(workout: WorkoutTemplate.MOCK_WORKOUTS[0])
+        WorkoutTemplateDetailView(workout: WorkoutTemplate.MOCK_WORKOUTS[1])
     }
 }

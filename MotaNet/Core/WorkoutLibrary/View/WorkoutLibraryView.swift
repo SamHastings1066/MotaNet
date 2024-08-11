@@ -29,36 +29,50 @@ struct WorkoutLibraryView: View {
                     .padding()
                     .pickerStyle(.segmented)
                     .searchable(text: $searchText)
+                    .navigationTitle("Workout Library")
+                    .navigationBarTitleDisplayMode(.inline)
                     
                     
                     // WorkoutTemplateList
                     if selectedLibrary == .saved {
                         List {
                             ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
-                                VStack {
-                                    if let user = workout.user {
-                                        XSmallUserView(user: user)
+                                NavigationLink(value: workout) {
+                                    VStack {
+                                        if let user = workout.user {
+                                            XSmallUserView(user: user)
+                                        }
+                                        TemplateWorkoutSummaryView(workout: workout)
                                     }
-                                    TemplateWorkoutSummaryView(workout: workout)
                                 }
                             }
                             .onDelete(perform: { indexSet in
                                 //
                             })
-                        }.listStyle(.inset)
+                        }
+                        .listStyle(.inset)
+                        .navigationDestination(for: WorkoutTemplate.self) { workout in
+                            WorkoutTemplateDetailView(workout: workout)
+                        }
                         
                         //.padding()
                     } else if selectedLibrary == .community {
                         List {
                             ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
-                                VStack {
-                                    if let user = workout.user {
-                                        XSmallUserView(user: user)
+                                NavigationLink(value: workout) {
+                                    VStack {
+                                        if let user = workout.user {
+                                            XSmallUserView(user: user)
+                                        }
+                                        TemplateWorkoutSummaryView(workout: workout)
                                     }
-                                    TemplateWorkoutSummaryView(workout: workout)
                                 }
                             }
-                        }.listStyle(.inset)
+                        }
+                        .listStyle(.inset)
+                        .navigationDestination(for: WorkoutTemplate.self) { workout in
+                            WorkoutTemplateDetailView(workout: workout)
+                        }
                     }
                     
                     Spacer()

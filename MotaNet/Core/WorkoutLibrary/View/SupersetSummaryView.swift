@@ -19,30 +19,7 @@ struct SupersetSummaryView: View {
         HStack {
             VStack(alignment:.leading) {
                 ForEach(viewModel.exerciseSummaries) { exerciseSummary in
-                    HStack {
-                        ExerciseImageView(exercise: exerciseSummary.exercise, size: .small)
-                            .padding(.horizontal,4)
-                        //Spacer()
-                        VStack(alignment: .leading) {
-                            Text(exerciseSummary.exercise.name)
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                            HStack {
-                                VStack{
-                                    Text("Reps")
-                                    Text(exerciseSummary.consistentReps == nil ? "-" : "\(exerciseSummary.consistentReps!)")
-                                }
-                                .font(.footnote)
-                                //.fontWeight(.semibold)
-                                VStack{
-                                    Text("Weight")
-                                    Text(exerciseSummary.consistentWeight == nil ? "-" : "\(exerciseSummary.consistentWeight!)")
-                                }
-                                .font(.footnote)
-                                //.fontWeight(.semibold)
-                            }
-                        }
-                    }
+                    SinglesetView(exercise: exerciseSummary.exercise, reps: exerciseSummary.consistentReps, weight: exerciseSummary.consistentWeight)
                 }
             }
             Spacer()

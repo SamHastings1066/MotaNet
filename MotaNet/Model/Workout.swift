@@ -58,7 +58,16 @@ protocol Workout: Identifiable, Sendable {
     var user: User? { get set }
 }
 
-struct WorkoutTemplate: Workout {
+struct WorkoutTemplate: Workout, Hashable {
+    
+    static func == (lhs: WorkoutTemplate, rhs: WorkoutTemplate) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let id = UUID().uuidString
     let ownerId = UUID().uuidString
     var name: String
@@ -188,7 +197,16 @@ extension WorkoutCompleted {
 }
 
 /// `SuperSet` is a collection of  rounds.
-struct Superset: Sendable, Identifiable {
+struct Superset: Sendable, Identifiable, Hashable {
+    
+    static func == (lhs: Superset, rhs: Superset) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let id = UUID().uuidString
     var timestamp: Date = Date()
     var rounds: [Round] = []
