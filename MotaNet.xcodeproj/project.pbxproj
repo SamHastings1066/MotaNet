@@ -25,6 +25,8 @@
 		8440CD732C68431F0082773B /* SupersetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD722C68431F0082773B /* SupersetDetailView.swift */; };
 		8440CD752C6846770082773B /* SinglesetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD742C6846770082773B /* SinglesetView.swift */; };
 		8440CD772C6A987C0082773B /* WorkoutTemplateDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD762C6A987C0082773B /* WorkoutTemplateDetailViewModel.swift */; };
+		8440CD792C6A9EFF0082773B /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD782C6A9EFF0082773B /* AddExerciseView.swift */; };
+		8440CD7B2C6AA00B0082773B /* ExerciseRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD7A2C6AA00B0082773B /* ExerciseRowView.swift */; };
 		8473A2F22C65472C00B92948 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8473A2F12C65472C00B92948 /* Kingfisher */; };
 		8473A2F42C6547E700B92948 /* ProfileStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F32C6547E700B92948 /* ProfileStatView.swift */; };
 		8473A2F62C65483A00B92948 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F52C65483A00B92948 /* EditProfileView.swift */; };
@@ -98,6 +100,8 @@
 		8440CD722C68431F0082773B /* SupersetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetDetailView.swift; sourceTree = "<group>"; };
 		8440CD742C6846770082773B /* SinglesetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglesetView.swift; sourceTree = "<group>"; };
 		8440CD762C6A987C0082773B /* WorkoutTemplateDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplateDetailViewModel.swift; sourceTree = "<group>"; };
+		8440CD782C6A9EFF0082773B /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
+		8440CD7A2C6AA00B0082773B /* ExerciseRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRowView.swift; sourceTree = "<group>"; };
 		8473A2F32C6547E700B92948 /* ProfileStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStatView.swift; sourceTree = "<group>"; };
 		8473A2F52C65483A00B92948 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		8473A2F72C65488B00B92948 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -496,6 +500,8 @@
 				8473A33F2C67C54D00B92948 /* SupersetSummaryView.swift */,
 				8440CD722C68431F0082773B /* SupersetDetailView.swift */,
 				8440CD742C6846770082773B /* SinglesetView.swift */,
+				8440CD782C6A9EFF0082773B /* AddExerciseView.swift */,
+				8440CD7A2C6AA00B0082773B /* ExerciseRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -645,6 +651,7 @@
 			files = (
 				8473A3122C66892100B92948 /* SearchView.swift in Sources */,
 				8473A3422C67C62400B92948 /* SupersetSummaryViewModel.swift in Sources */,
+				8440CD792C6A9EFF0082773B /* AddExerciseView.swift in Sources */,
 				8473A3182C66920600B92948 /* AuthService.swift in Sources */,
 				8473A3162C6691D700B92948 /* RegistrationViewModel.swift in Sources */,
 				8473A2F62C65483A00B92948 /* EditProfileView.swift in Sources */,
@@ -681,6 +688,7 @@
 				8473A2FE2C658F0700B92948 /* Workout.swift in Sources */,
 				8473A3262C66935600B92948 /* CompleteSignUpView.swift in Sources */,
 				8473A3202C6692F500B92948 /* AddEmailView.swift in Sources */,
+				8440CD7B2C6AA00B0082773B /* ExerciseRowView.swift in Sources */,
 				8440CD732C68431F0082773B /* SupersetDetailView.swift in Sources */,
 				8473A3062C66629500B92948 /* CompletedWorkoutSummaryView.swift in Sources */,
 				8473A3222C66932800B92948 /* CreateUsernameView.swift in Sources */,

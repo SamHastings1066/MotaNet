@@ -63,6 +63,9 @@ struct WorkoutTemplateDetailView: View {
                 }
             }
             .padding()
+            .popover(isPresented: $isAddExercisePresented, content: {
+                AddExerciseView(workout: $viewModel.workout)
+            })
 
         }
     }
