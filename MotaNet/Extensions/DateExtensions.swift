@@ -16,7 +16,7 @@ extension Date {
         formatter.dateFormat = "E, d MMM"  // e.g., "Tue, 3 May"
         
         // Optionally, add ordinal suffixes if needed:
-        let day = Calendar.current.component(.day, from: self)
+        //let day = Calendar.current.component(.day, from: self)
         let dayFormatter = NumberFormatter()
         dayFormatter.numberStyle = .ordinal
         
