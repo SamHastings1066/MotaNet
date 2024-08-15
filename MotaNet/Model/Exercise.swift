@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import SwiftData
 
+@Model
 final class Exercise: Codable, Hashable, Identifiable, Sendable {
     
     static func == (lhs: Exercise, rhs: Exercise) -> Bool {
@@ -29,10 +31,81 @@ final class Exercise: Codable, Hashable, Identifiable, Sendable {
     let category: Category
     let images: [String]
     
+    init(id: String, name: String, force: Force?, level: Level, mechanic: Mechanic?, equipment: Equipment?, primaryMuscles: [Muscle], secondaryMuscles: [Muscle], instructions: [String], category: Category, images: [String]) {
+        self.id = id
+        self.name = name
+        self.force = force
+        self.level = level
+        self.mechanic = mechanic
+        self.equipment = equipment
+        self.primaryMuscles = primaryMuscles
+        self.secondaryMuscles = secondaryMuscles
+        self.instructions = instructions
+        self.category = category
+        self.images = images
+    }
+    
+    convenience init?(data: [String: Any]) {
+        guard let id = data["id"] as? String,
+              let name = data["name"] as? String,
+              let levelString = data["level"] as? String,
+              let level = Level(rawValue: levelString),
+              let primaryMusclesStrings = data["primaryMuscles"] as? [String],
+              let secondaryMusclesStrings = data["secondaryMuscles"] as? [String],
+              let instructions = data["instructions"] as? [String],
+              let categoryString = data["category"] as? String,
+              let category = Category(rawValue: categoryString),
+              let images = data["images"] as? [String] else {
+            return nil
+        }
+        
+        let force = (data["force"] as? String).flatMap { Force(rawValue: $0) }
+        let mechanic = (data["mechanic"] as? String).flatMap { Mechanic(rawValue: $0) }
+        let equipment = (data["equipment"] as? String).flatMap { Equipment(rawValue: $0) }
+        
+        let primaryMuscles = primaryMusclesStrings.compactMap { Muscle(rawValue: $0) }
+        let secondaryMuscles = secondaryMusclesStrings.compactMap { Muscle(rawValue: $0) }
+        
+        self.init(id: id, name: name, force: force, level: level, mechanic: mechanic, equipment: equipment, primaryMuscles: primaryMuscles, secondaryMuscles: secondaryMuscles, instructions: instructions, category: category, images: images)
+    }
+    
+    required init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.force = try container.decodeIfPresent(Force.self, forKey: .force)
+        self.level = try container.decode(Level.self, forKey: .level)
+        self.mechanic = try container.decodeIfPresent(Mechanic.self, forKey: .mechanic)
+        self.equipment = try container.decodeIfPresent(Equipment.self, forKey: .equipment)
+        self.primaryMuscles = try container.decode([Muscle].self, forKey: .primaryMuscles)
+        self.secondaryMuscles = try container.decode([Muscle].self, forKey: .secondaryMuscles)
+        self.instructions = try container.decode([String].self, forKey: .instructions)
+        self.category = try container.decode(Category.self, forKey: .category)
+        self.images = try container.decode([String].self, forKey: .images)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(force, forKey: .force)
+        try container.encode(level, forKey: .level)
+        try container.encode(mechanic, forKey: .mechanic)
+        try container.encode(equipment, forKey: .equipment)
+        try container.encode(primaryMuscles, forKey: .primaryMuscles)
+        try container.encode(secondaryMuscles, forKey: .secondaryMuscles)
+        try container.encode(instructions, forKey: .instructions)
+        try container.encode(category, forKey: .category)
+        try container.encode(images, forKey: .images)
+    }
     
     var imageURLs: [String] {
         images.map { imageString in
             imageString.hasSuffix(".jpg") ? String(imageString.dropLast(4)) : imageString }
+    }
+    
+    enum CodingKeys: CodingKey {
+        case id, name, force, level, mechanic, equipment, primaryMuscles, secondaryMuscles, instructions, category, images
     }
     
     enum Force: String, Codable {

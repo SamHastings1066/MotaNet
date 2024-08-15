@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddExerciseView: View {
     @Environment(\.dismiss) private var dismiss
+    @Query private var exercises: [Exercise]
     @Binding var workout: WorkoutTemplate
     @State private var exerciseToAdd: Exercise?
     @State private var showAlert = false
@@ -27,7 +29,8 @@ struct AddExerciseView: View {
     
     var body: some View {
         List {
-            ForEach(Exercise.MOCK_EXERCISES) { exercise in
+            //ForEach(Exercise.MOCK_EXERCISES) { exercise in
+            ForEach(exercises) { exercise in
                 ExerciseRowView(exercise: exercise)
                     .onTapGesture {
                         exerciseToAdd = exercise
@@ -63,5 +66,34 @@ struct AddExerciseView: View {
 }
 
 #Preview {
-    AddExerciseView(workout: .constant(WorkoutTemplate.MOCK_WORKOUTS[0]))
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(
+            for: Exercise.self,
+            configurations: config
+        )
+        let descriptor = FetchDescriptor<Exercise>()
+        let existingExercises = try container.mainContext.fetch(descriptor)
+        guard existingExercises.isEmpty else {
+            print("Exercises already exist")
+            return AddExerciseView(workout: .constant(WorkoutTemplate.MOCK_WORKOUTS[0]))
+                .modelContainer(container)
+        }
+        guard let url = Bundle.main.url(forResource: "exercises", withExtension: "json") else {
+            fatalError("Failed to find exercises.json")
+        }
+        let data = try Data(contentsOf: url)
+        let exercises = try JSONDecoder().decode([Exercise].self, from: data)
+        for exercise in exercises {
+            container.mainContext.insert(exercise)
+        }
+        print("Exercises created")
+        
+        return AddExerciseView(workout: .constant(WorkoutTemplate.MOCK_WORKOUTS[0]))
+            .modelContainer(container)
+    } catch {
+        print("error setting up model container: \(error.localizedDescription)")
+        return Text("Empty")
+    }
+    
 }
