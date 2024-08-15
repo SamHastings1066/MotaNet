@@ -27,6 +27,8 @@
 		8440CD772C6A987C0082773B /* WorkoutTemplateDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD762C6A987C0082773B /* WorkoutTemplateDetailViewModel.swift */; };
 		8440CD792C6A9EFF0082773B /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD782C6A9EFF0082773B /* AddExerciseView.swift */; };
 		8440CD7B2C6AA00B0082773B /* ExerciseRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD7A2C6AA00B0082773B /* ExerciseRowView.swift */; };
+		8440CD802C6E70790082773B /* Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD7F2C6E70790082773B /* Firestore.swift */; };
+		8440CD822C6E709E0082773B /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = 8440CD812C6E709E0082773B /* exercises.json */; };
 		8473A2F22C65472C00B92948 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8473A2F12C65472C00B92948 /* Kingfisher */; };
 		8473A2F42C6547E700B92948 /* ProfileStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F32C6547E700B92948 /* ProfileStatView.swift */; };
 		8473A2F62C65483A00B92948 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F52C65483A00B92948 /* EditProfileView.swift */; };
@@ -102,6 +104,8 @@
 		8440CD762C6A987C0082773B /* WorkoutTemplateDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplateDetailViewModel.swift; sourceTree = "<group>"; };
 		8440CD782C6A9EFF0082773B /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		8440CD7A2C6AA00B0082773B /* ExerciseRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRowView.swift; sourceTree = "<group>"; };
+		8440CD7F2C6E70790082773B /* Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firestore.swift; sourceTree = "<group>"; };
+		8440CD812C6E709E0082773B /* exercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
 		8473A2F32C6547E700B92948 /* ProfileStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStatView.swift; sourceTree = "<group>"; };
 		8473A2F52C65483A00B92948 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		8473A2F72C65488B00B92948 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -191,12 +195,14 @@
 		843684E12C653BD900FA935E /* MotaNet */ = {
 			isa = PBXGroup;
 			children = (
+				8440CD812C6E709E0082773B /* exercises.json */,
 				8473A2FB2C6583A800B92948 /* GoogleService-Info.plist */,
 				843685102C653BF900FA935E /* App */,
 				8436850F2C653BF700FA935E /* Core */,
 				8436850E2C653BF500FA935E /* Extensions */,
 				8436850D2C653BEF00FA935E /* Model */,
 				8436850C2C653BEB00FA935E /* Services */,
+				8440CD7C2C6E70000082773B /* Scripts */,
 				843684E62C653BDA00FA935E /* Assets.xcassets */,
 				843684E82C653BDA00FA935E /* Preview Content */,
 			);
@@ -421,6 +427,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		8440CD7C2C6E70000082773B /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				8440CD7F2C6E70790082773B /* Firestore.swift */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		8473A2F02C65472C00B92948 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -623,6 +637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				843684EA2C653BDA00FA935E /* Preview Assets.xcassets in Resources */,
+				8440CD822C6E709E0082773B /* exercises.json in Resources */,
 				843684E72C653BDA00FA935E /* Assets.xcassets in Resources */,
 				8473A2FC2C6583A800B92948 /* GoogleService-Info.plist in Resources */,
 			);
@@ -663,6 +678,7 @@
 				8473A2FA2C6548D200B92948 /* ImageUploader.swift in Sources */,
 				8440CD752C6846770082773B /* SinglesetView.swift in Sources */,
 				843685332C6545A700FA935E /* CircularProfileImageView.swift in Sources */,
+				8440CD802C6E70790082773B /* Firestore.swift in Sources */,
 				843684E52C653BD900FA935E /* ContentView.swift in Sources */,
 				8473A3402C67C54D00B92948 /* SupersetSummaryView.swift in Sources */,
 				8436852E2C65434C00FA935E /* ProfileHeaderView.swift in Sources */,
