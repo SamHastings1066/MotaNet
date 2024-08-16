@@ -96,26 +96,26 @@ extension WorkoutTemplate {
             )
             mockWorkouts.append(lowerBodyVolume)
             
-//            let upperBodyVolume = WorkoutTemplate(
-//                name: "Upper body volume",
-//                supersets: [
-//                    try Superset(
-//                        rounds: Array(repeating: Round(singlesets: [
-//                            Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 70, reps: 14),
-//                            Singleset(exercise: Exercise.MOCK_EXERCISES[3], weight: 75, reps: 14)
-//                        ], rest: 90), count: 8)
-//                    ),
-//                    try Superset(
-//                        rounds: Array(repeating: Round(singlesets: [
-//                            Singleset(exercise: Exercise.MOCK_EXERCISES[4], weight: 80, reps: 11),
-//                            Singleset(exercise: Exercise.MOCK_EXERCISES[5], weight: 55, reps: 10)
-//                        ], rest: 120), count: 8)
-//                    )
-//                ],
-//                startTime: Date(),
-//                user: User.MOCK_USERS[0]
-//            )
-//            mockWorkouts.append(upperBodyVolume)
+            let upperBodyVolume = WorkoutTemplate(
+                name: "Upper body volume",
+                supersets: [
+                    try Superset(
+                        rounds: Array(repeating: Round(singlesets: [
+                            Singleset(timestamp: Date(), weight: 70, reps: 14, exerciseId: "Dumbbell_Bench_Press", exerciseName: "Dumbbell Bench Press", exerciseImageUrls: ["Dumbbell_Bench_Press/0.jpg", "Dumbbell_Bench_Press/1.jpg"], primaryMuscles: [.quadriceps]),
+                            Singleset(timestamp: Date(), weight: 75, reps: 14, exerciseId: "Seated_Cable_Rows", exerciseName: "Seated Cable Rows", exerciseImageUrls: ["Seated_Cable_Rows/0.jpg", "Seated_Cable_Rows/1.jpg"], primaryMuscles: [.quadriceps])
+                        ], rest: 90), count: 8)
+                    ),
+                    try Superset(
+                        rounds: Array(repeating: Round(singlesets: [
+                            Singleset(timestamp: Date(), weight: 80, reps: 11, exerciseId: "Wide-Grip_Lat_Pulldown", exerciseName: "Wide-Grip Lat Pulldown", exerciseImageUrls: ["Wide-Grip_Lat_Pulldown/0.jpg", "Wide-Grip_Lat_Pulldown/1.jpg"], primaryMuscles: [.quadriceps]),
+                            Singleset(timestamp: Date(), weight: 55, reps: 10, exerciseId: "Dumbbell_Shoulder_Press", exerciseName: "Dumbbell Shoulder Press", exerciseImageUrls: ["Dumbbell_Shoulder_Press/0.jpg", "Dumbbell_Shoulder_Press/1.jpg"], primaryMuscles: [.quadriceps])
+                        ], rest: 120), count: 8)
+                    )
+                ],
+                startTime: Date(),
+                user: User.MOCK_USERS[0]
+            )
+            mockWorkouts.append(upperBodyVolume)
         } catch {
             print("Error creating mock workout \(error)")
         }
@@ -166,29 +166,29 @@ extension WorkoutCompleted {
             )
             mockWorkouts.append(lowerBodyVolume)
             
-//            let upperBodyVolume = WorkoutCompleted(
-//                name: "Upper body volume",
-//                supersets: [
-//                    try Superset(
-//                        rounds: Array(repeating: Round(singlesets: [
-//                            Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 70, reps: 14),
-//                            Singleset(exercise: Exercise.MOCK_EXERCISES[3], weight: 75, reps: 14)
-//                        ], rest: 90), count: 8)
-//                    ),
-//                    try Superset(
-//                        rounds: Array(repeating: Round(singlesets: [
-//                            Singleset(exercise: Exercise.MOCK_EXERCISES[4], weight: 80, reps: 11),
-//                            Singleset(exercise: Exercise.MOCK_EXERCISES[5], weight: 55, reps: 10)
-//                        ], rest: 120), count: 8)
-//                    )
-//                ],
-//                startTime: Date(),
-//                endTime: Date().addingTimeInterval(TimeInterval(1)),
-//                user: User.MOCK_USERS[0],
-//                caption: "Exhausted!",
-//                likes: 476
-//            )
-//            mockWorkouts.append(upperBodyVolume)
+            let upperBodyVolume = WorkoutCompleted(
+                name: "Upper body volume",
+                supersets: [
+                    try Superset(
+                        rounds: Array(repeating: Round(singlesets: [
+                            Singleset(timestamp: Date(), weight: 70, reps: 14, exerciseId: "Dumbbell_Bench_Press", exerciseName: "Dumbbell Bench Press", exerciseImageUrls: ["Dumbbell_Bench_Press/0.jpg", "Dumbbell_Bench_Press/1.jpg"], primaryMuscles: [.quadriceps]),
+                            Singleset(timestamp: Date(), weight: 75, reps: 14, exerciseId: "Seated_Cable_Rows", exerciseName: "Seated Cable Rows", exerciseImageUrls: ["Seated_Cable_Rows/0.jpg", "Seated_Cable_Rows/1.jpg"], primaryMuscles: [.quadriceps])
+                        ], rest: 90), count: 8)
+                    ),
+                    try Superset(
+                        rounds: Array(repeating: Round(singlesets: [
+                            Singleset(timestamp: Date(), weight: 80, reps: 11, exerciseId: "Wide-Grip_Lat_Pulldown", exerciseName: "Wide-Grip Lat Pulldown", exerciseImageUrls: ["Wide-Grip_Lat_Pulldown/0.jpg", "Wide-Grip_Lat_Pulldown/1.jpg"], primaryMuscles: [.quadriceps]),
+                            Singleset(timestamp: Date(), weight: 55, reps: 10, exerciseId: "Dumbbell_Shoulder_Press", exerciseName: "Dumbbell Shoulder Press", exerciseImageUrls: ["Dumbbell_Shoulder_Press/0.jpg", "Dumbbell_Shoulder_Press/1.jpg"], primaryMuscles: [.quadriceps])
+                        ], rest: 120), count: 8)
+                    )
+                ],
+                startTime: Date(),
+                endTime: Date().addingTimeInterval(TimeInterval(1)),
+                user: User.MOCK_USERS[0],
+                caption: "Exhausted!",
+                likes: 476
+            )
+            mockWorkouts.append(upperBodyVolume)
         } catch {
             print("Error creating mock workout \(error)")
         }
