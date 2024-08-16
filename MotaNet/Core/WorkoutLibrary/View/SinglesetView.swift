@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct SinglesetView: View {
-    let exercise: Exercise
+    let imageUrls: [String]
+    let exerciseName: String
     let reps: Int?
     let weight: Int?
     var body: some View {
         HStack {
-            ExerciseImageView(exercise: exercise, size: .small)
+            ExerciseImageView(imageURLs: imageUrls, size: .small)
                 .padding(.horizontal,4)
             //Spacer()
             VStack(alignment: .leading) {
-                Text(exercise.name)
+                Text(exerciseName)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 HStack {
@@ -40,5 +41,5 @@ struct SinglesetView: View {
 }
 
 #Preview {
-    SinglesetView(exercise: Exercise.MOCK_EXERCISES[0], reps: 12, weight: 70)
+    SinglesetView(imageUrls: Exercise.MOCK_EXERCISES[0].images, exerciseName: Exercise.MOCK_EXERCISES[0].name, reps: 12, weight: 70)
 }

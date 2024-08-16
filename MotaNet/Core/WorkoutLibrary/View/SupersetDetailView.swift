@@ -14,7 +14,7 @@ struct SupersetDetailView: View {
             ForEach(superset.rounds) { round in
                 VStack(alignment: .listRowSeparatorLeading) {
                     ForEach(round.singlesets) { singletset in
-                        SinglesetView(exercise: singletset.exercise, reps: singletset.reps, weight: singletset.weight)
+                        SinglesetView(imageUrls: singletset.exerciseImageUrls, exerciseName: singletset.exerciseName, reps: singletset.reps, weight: singletset.weight)
                     }
                     HStack {
                         Spacer()

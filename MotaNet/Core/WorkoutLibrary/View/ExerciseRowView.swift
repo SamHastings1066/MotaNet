@@ -11,7 +11,7 @@ struct ExerciseRowView: View {
     let exercise: Exercise
     var body: some View {
         HStack {
-            ExerciseImageView(exercise: exercise, size: .small)
+            ExerciseImageView(imageURLs: exercise.imageURLs, size: .small)
                 .padding(.horizontal,4)
             //Spacer()
             Text(exercise.name)

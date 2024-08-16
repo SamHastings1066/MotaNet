@@ -19,7 +19,7 @@ struct SupersetSummaryView: View {
         HStack {
             VStack(alignment:.leading) {
                 ForEach(viewModel.exerciseSummaries) { exerciseSummary in
-                    SinglesetView(exercise: exerciseSummary.exercise, reps: exerciseSummary.consistentReps, weight: exerciseSummary.consistentWeight)
+                    SinglesetView(imageUrls: exerciseSummary.imageUrls, exerciseName: exerciseSummary.exerciseName, reps: exerciseSummary.consistentReps, weight: exerciseSummary.consistentWeight)
                 }
             }
             Spacer()

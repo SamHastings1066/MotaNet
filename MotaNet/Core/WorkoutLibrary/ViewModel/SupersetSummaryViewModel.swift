@@ -28,7 +28,8 @@ class SupersetSummaryViewModel {
             let consistentReps = superset.rounds.allSatisfy{$0.singlesets[exerciseIdx].reps == firstRoundReps} ? firstRoundReps : nil
             let consistentWeight = superset.rounds.allSatisfy{$0.singlesets[exerciseIdx].weight == firstRoundWeight} ? firstRoundWeight : nil
             summaries.append(ExerciseSummary(
-                exercise: superset.rounds[0].singlesets[exerciseIdx].exercise,
+                exerciseName: superset.rounds[0].singlesets[exerciseIdx].exerciseName,
+                imageUrls: superset.rounds[0].singlesets[exerciseIdx].exerciseImageUrls,
                 consistentReps: consistentReps,
                 consistentWeight: consistentWeight
             ))
@@ -48,7 +49,8 @@ class SupersetSummaryViewModel {
 
 struct ExerciseSummary: Identifiable {
     let id = UUID()
-    var exercise: Exercise
+    var exerciseName: String
+    var imageUrls: [String]
     var consistentReps: Int?
     var consistentWeight: Int?
 }

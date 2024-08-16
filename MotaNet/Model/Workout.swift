@@ -26,9 +26,9 @@ struct WorkoutStats {
                     totalVolume += singleset.reps * singleset.weight
                     
                     
-                    exerciseNames.insert(singleset.exercise.name)
+                    exerciseNames.insert(singleset.exerciseName)
                     
-                    for primaryMuscle in singleset.exercise.primaryMuscles {
+                    for primaryMuscle in singleset.primaryMuscles {
                         muscleUsageDict[primaryMuscle.rawValue, default: 0] += singleset.reps * singleset.weight
                     }
                     //                        for secondaryMuscle in singleset.exercise.secondaryMuscles {
@@ -84,10 +84,10 @@ extension WorkoutTemplate {
                 name: "Lower body volume",
                 supersets: [
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[0], weight: 60, reps: 11)], rest: 120), count: 10)
+                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120), count: 10)
                     ),
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[1], weight: 80, reps: 10)], rest: 120), count: 8)
+                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120), count: 8)
                     )
                 ],
                 startTime: Date(),
@@ -96,26 +96,26 @@ extension WorkoutTemplate {
             )
             mockWorkouts.append(lowerBodyVolume)
             
-            let upperBodyVolume = WorkoutTemplate(
-                name: "Upper body volume",
-                supersets: [
-                    try Superset(
-                        rounds: Array(repeating: Round(singlesets: [
-                            Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 70, reps: 14),
-                            Singleset(exercise: Exercise.MOCK_EXERCISES[3], weight: 75, reps: 14)
-                        ], rest: 90), count: 8)
-                    ),
-                    try Superset(
-                        rounds: Array(repeating: Round(singlesets: [
-                            Singleset(exercise: Exercise.MOCK_EXERCISES[4], weight: 80, reps: 11),
-                            Singleset(exercise: Exercise.MOCK_EXERCISES[5], weight: 55, reps: 10)
-                        ], rest: 120), count: 8)
-                    )
-                ],
-                startTime: Date(),
-                user: User.MOCK_USERS[0]
-            )
-            mockWorkouts.append(upperBodyVolume)
+//            let upperBodyVolume = WorkoutTemplate(
+//                name: "Upper body volume",
+//                supersets: [
+//                    try Superset(
+//                        rounds: Array(repeating: Round(singlesets: [
+//                            Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 70, reps: 14),
+//                            Singleset(exercise: Exercise.MOCK_EXERCISES[3], weight: 75, reps: 14)
+//                        ], rest: 90), count: 8)
+//                    ),
+//                    try Superset(
+//                        rounds: Array(repeating: Round(singlesets: [
+//                            Singleset(exercise: Exercise.MOCK_EXERCISES[4], weight: 80, reps: 11),
+//                            Singleset(exercise: Exercise.MOCK_EXERCISES[5], weight: 55, reps: 10)
+//                        ], rest: 120), count: 8)
+//                    )
+//                ],
+//                startTime: Date(),
+//                user: User.MOCK_USERS[0]
+//            )
+//            mockWorkouts.append(upperBodyVolume)
         } catch {
             print("Error creating mock workout \(error)")
         }
@@ -151,10 +151,10 @@ extension WorkoutCompleted {
                 name: "Lower body volume",
                 supersets: [
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[0], weight: 60, reps: 11)], rest: 120), count: 10)
+                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120), count: 10)
                     ),
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(exercise: Exercise.MOCK_EXERCISES[1], weight: 80, reps: 10)], rest: 120), count: 8)
+                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120), count: 8)
                     )
                 ],
                 startTime: Date(),
@@ -166,29 +166,29 @@ extension WorkoutCompleted {
             )
             mockWorkouts.append(lowerBodyVolume)
             
-            let upperBodyVolume = WorkoutCompleted(
-                name: "Upper body volume",
-                supersets: [
-                    try Superset(
-                        rounds: Array(repeating: Round(singlesets: [
-                            Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 70, reps: 14),
-                            Singleset(exercise: Exercise.MOCK_EXERCISES[3], weight: 75, reps: 14)
-                        ], rest: 90), count: 8)
-                    ),
-                    try Superset(
-                        rounds: Array(repeating: Round(singlesets: [
-                            Singleset(exercise: Exercise.MOCK_EXERCISES[4], weight: 80, reps: 11),
-                            Singleset(exercise: Exercise.MOCK_EXERCISES[5], weight: 55, reps: 10)
-                        ], rest: 120), count: 8)
-                    )
-                ],
-                startTime: Date(),
-                endTime: Date().addingTimeInterval(TimeInterval(1)),
-                user: User.MOCK_USERS[0],
-                caption: "Exhausted!",
-                likes: 476
-            )
-            mockWorkouts.append(upperBodyVolume)
+//            let upperBodyVolume = WorkoutCompleted(
+//                name: "Upper body volume",
+//                supersets: [
+//                    try Superset(
+//                        rounds: Array(repeating: Round(singlesets: [
+//                            Singleset(exercise: Exercise.MOCK_EXERCISES[2], weight: 70, reps: 14),
+//                            Singleset(exercise: Exercise.MOCK_EXERCISES[3], weight: 75, reps: 14)
+//                        ], rest: 90), count: 8)
+//                    ),
+//                    try Superset(
+//                        rounds: Array(repeating: Round(singlesets: [
+//                            Singleset(exercise: Exercise.MOCK_EXERCISES[4], weight: 80, reps: 11),
+//                            Singleset(exercise: Exercise.MOCK_EXERCISES[5], weight: 55, reps: 10)
+//                        ], rest: 120), count: 8)
+//                    )
+//                ],
+//                startTime: Date(),
+//                endTime: Date().addingTimeInterval(TimeInterval(1)),
+//                user: User.MOCK_USERS[0],
+//                caption: "Exhausted!",
+//                likes: 476
+//            )
+//            mockWorkouts.append(upperBodyVolume)
         } catch {
             print("Error creating mock workout \(error)")
         }
@@ -225,10 +225,10 @@ struct Superset: Sendable, Identifiable, Hashable {
     static func validateRounds(_ rounds: [Round]) -> Bool {
         guard let firstRound = rounds.first else { return true }
         
-        let firstRoundExercises = firstRound.singlesets.map { $0.exercise }
+        let firstRoundExercises = firstRound.singlesets.map { $0.exerciseId }
         
         for round in rounds {
-            let roundExercises = round.singlesets.map { $0.exercise }
+            let roundExercises = round.singlesets.map { $0.exerciseId }
             if roundExercises != firstRoundExercises {
                 return false
             }
@@ -256,8 +256,33 @@ struct Round: Sendable, Identifiable {
 struct Singleset: Sendable, Identifiable {
     let id = UUID().uuidString
     var timestamp: Date = Date()
-    var exercise: Exercise
+    //var exercise: Exercise
     var weight: Int = 0
     var reps: Int = 0
+    var exerciseId: String
+    var exerciseName: String
+    var exerciseImageUrls: [String]
+    var primaryMuscles: [Exercise.Muscle]
+    
+    init(timestamp: Date, weight: Int, reps: Int, exerciseId: String, exerciseName: String, exerciseImageUrls: [String], primaryMuscles: [Exercise.Muscle]) {
+        self.timestamp = timestamp
+        self.weight = weight
+        self.reps = reps
+        self.exerciseId = exerciseId
+        self.exerciseName = exerciseName
+        self.exerciseImageUrls = exerciseImageUrls
+        self.primaryMuscles = primaryMuscles
+    }
+    init(timestamp: Date = Date(), exercise: Exercise, weight: Int, reps: Int) {
+        self.timestamp = timestamp
+        self.weight = weight
+        self.reps = reps
+        self.exerciseId = exercise.id
+        self.exerciseName = exercise.name
+        self.exerciseImageUrls = exercise.images
+        self.primaryMuscles = exercise.primaryMuscles
+    }
+    
+    
     
 }

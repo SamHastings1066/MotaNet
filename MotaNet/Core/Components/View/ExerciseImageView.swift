@@ -25,10 +25,10 @@ enum ExerciseImageSize {
 }
 
 struct ExerciseImageView: View {
-    let exercise: Exercise
+    let imageURLs: [String]
     let size: ExerciseImageSize
     var body: some View {
-        if let image = UIImage(named: exercise.imageURLs[0]) {
+        if let image = UIImage(named: imageURLs[0]) {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFill()
@@ -50,7 +50,7 @@ struct ExerciseImageView: View {
 
 #Preview {
     Group {
-        ExerciseImageView(exercise: Exercise.MOCK_EXERCISES[0], size: .small).padding()
-        ExerciseImageView(exercise: Exercise.MOCK_EXERCISES[1], size: .small)
+        ExerciseImageView(imageURLs: Exercise.MOCK_EXERCISES[0].images, size: .small).padding()
+        ExerciseImageView(imageURLs: Exercise.MOCK_EXERCISES[1].images, size: .small)
     }
 }
