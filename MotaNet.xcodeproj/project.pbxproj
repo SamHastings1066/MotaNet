@@ -30,6 +30,7 @@
 		8440CD802C6E70790082773B /* Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD7F2C6E70790082773B /* Firestore.swift */; };
 		8440CD822C6E709E0082773B /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = 8440CD812C6E709E0082773B /* exercises.json */; };
 		8440CD842C6E85E80082773B /* ExerciseDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CD832C6E85E80082773B /* ExerciseDownloader.swift */; };
+		8440CDA32C6EC43E0082773B /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440CDA22C6EC43E0082773B /* SwiftDataManager.swift */; };
 		8473A2F22C65472C00B92948 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8473A2F12C65472C00B92948 /* Kingfisher */; };
 		8473A2F42C6547E700B92948 /* ProfileStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F32C6547E700B92948 /* ProfileStatView.swift */; };
 		8473A2F62C65483A00B92948 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A2F52C65483A00B92948 /* EditProfileView.swift */; };
@@ -108,6 +109,7 @@
 		8440CD7F2C6E70790082773B /* Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firestore.swift; sourceTree = "<group>"; };
 		8440CD812C6E709E0082773B /* exercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
 		8440CD832C6E85E80082773B /* ExerciseDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDownloader.swift; sourceTree = "<group>"; };
+		8440CDA22C6EC43E0082773B /* SwiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
 		8473A2F32C6547E700B92948 /* ProfileStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStatView.swift; sourceTree = "<group>"; };
 		8473A2F52C65483A00B92948 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		8473A2F72C65488B00B92948 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				8436850D2C653BEF00FA935E /* Model */,
 				8436850C2C653BEB00FA935E /* Services */,
 				8440CD7C2C6E70000082773B /* Scripts */,
+				8440CD852C6EC2980082773B /* SwiftData */,
 				843684E62C653BDA00FA935E /* Assets.xcassets */,
 				843684E82C653BDA00FA935E /* Preview Content */,
 			);
@@ -436,6 +439,14 @@
 				8440CD7F2C6E70790082773B /* Firestore.swift */,
 			);
 			path = Scripts;
+			sourceTree = "<group>";
+		};
+		8440CD852C6EC2980082773B /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				8440CDA22C6EC43E0082773B /* SwiftDataManager.swift */,
+			);
+			path = SwiftData;
 			sourceTree = "<group>";
 		};
 		8473A2F02C65472C00B92948 /* Frameworks */ = {
@@ -710,6 +721,7 @@
 				8473A3202C6692F500B92948 /* AddEmailView.swift in Sources */,
 				8440CD7B2C6AA00B0082773B /* ExerciseRowView.swift in Sources */,
 				8440CD732C68431F0082773B /* SupersetDetailView.swift in Sources */,
+				8440CDA32C6EC43E0082773B /* SwiftDataManager.swift in Sources */,
 				8473A3062C66629500B92948 /* CompletedWorkoutSummaryView.swift in Sources */,
 				8473A3222C66932800B92948 /* CreateUsernameView.swift in Sources */,
 				8473A3142C6691CC00B92948 /* LoginViewModel.swift in Sources */,
