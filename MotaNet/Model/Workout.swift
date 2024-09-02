@@ -49,7 +49,7 @@ struct WorkoutStats {
 }
 
 /// A `Workout` is a collection of supersets.
-protocol Workout: Identifiable, Sendable {
+protocol Workout: Identifiable, Sendable, Codable {
     var id: String { get }
     var ownerId: String { get }
     var name: String { get set }
@@ -68,8 +68,8 @@ struct WorkoutTemplate: Workout, Hashable {
         hasher.combine(id)
     }
     
-    let id = UUID().uuidString
-    let ownerId = UUID().uuidString
+    var id = UUID().uuidString
+    var ownerId = UUID().uuidString
     var name: String
     var supersets: [Superset]
     var startTime: Date = Date()
@@ -84,10 +84,10 @@ extension WorkoutTemplate {
                 name: "Lower body volume",
                 supersets: [
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120), count: 10)
+                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120), count: 3)
                     ),
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120), count: 8)
+                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120), count: 3)
                     )
                 ],
                 startTime: Date(),
@@ -103,13 +103,13 @@ extension WorkoutTemplate {
                         rounds: Array(repeating: Round(singlesets: [
                             Singleset(timestamp: Date(), weight: 70, reps: 14, exerciseId: "Dumbbell_Bench_Press", exerciseName: "Dumbbell Bench Press", exerciseImageUrls: ["Dumbbell_Bench_Press/0.jpg", "Dumbbell_Bench_Press/1.jpg"], primaryMuscles: [.quadriceps]),
                             Singleset(timestamp: Date(), weight: 75, reps: 14, exerciseId: "Seated_Cable_Rows", exerciseName: "Seated Cable Rows", exerciseImageUrls: ["Seated_Cable_Rows/0.jpg", "Seated_Cable_Rows/1.jpg"], primaryMuscles: [.quadriceps])
-                        ], rest: 90), count: 8)
+                        ], rest: 90), count: 3)
                     ),
                     try Superset(
                         rounds: Array(repeating: Round(singlesets: [
                             Singleset(timestamp: Date(), weight: 80, reps: 11, exerciseId: "Wide-Grip_Lat_Pulldown", exerciseName: "Wide-Grip Lat Pulldown", exerciseImageUrls: ["Wide-Grip_Lat_Pulldown/0.jpg", "Wide-Grip_Lat_Pulldown/1.jpg"], primaryMuscles: [.quadriceps]),
                             Singleset(timestamp: Date(), weight: 55, reps: 10, exerciseId: "Dumbbell_Shoulder_Press", exerciseName: "Dumbbell Shoulder Press", exerciseImageUrls: ["Dumbbell_Shoulder_Press/0.jpg", "Dumbbell_Shoulder_Press/1.jpg"], primaryMuscles: [.quadriceps])
-                        ], rest: 120), count: 8)
+                        ], rest: 120), count: 3)
                     )
                 ],
                 startTime: Date(),
@@ -132,8 +132,8 @@ struct WorkoutCompleted: Workout, Hashable {
         hasher.combine(id)
     }
     
-    let id = UUID().uuidString
-    let ownerId = UUID().uuidString
+    var id = UUID().uuidString
+    var ownerId = UUID().uuidString
     var name: String
     var supersets: [Superset]
     var startTime: Date = Date()
@@ -151,10 +151,10 @@ extension WorkoutCompleted {
                 name: "Lower body volume",
                 supersets: [
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120), count: 10)
+                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120), count: 3)
                     ),
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120), count: 8)
+                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120), count: 3)
                     )
                 ],
                 startTime: Date(),
@@ -173,13 +173,13 @@ extension WorkoutCompleted {
                         rounds: Array(repeating: Round(singlesets: [
                             Singleset(timestamp: Date(), weight: 70, reps: 14, exerciseId: "Dumbbell_Bench_Press", exerciseName: "Dumbbell Bench Press", exerciseImageUrls: ["Dumbbell_Bench_Press/0.jpg", "Dumbbell_Bench_Press/1.jpg"], primaryMuscles: [.quadriceps]),
                             Singleset(timestamp: Date(), weight: 75, reps: 14, exerciseId: "Seated_Cable_Rows", exerciseName: "Seated Cable Rows", exerciseImageUrls: ["Seated_Cable_Rows/0.jpg", "Seated_Cable_Rows/1.jpg"], primaryMuscles: [.quadriceps])
-                        ], rest: 90), count: 8)
+                        ], rest: 90), count: 3)
                     ),
                     try Superset(
                         rounds: Array(repeating: Round(singlesets: [
                             Singleset(timestamp: Date(), weight: 80, reps: 11, exerciseId: "Wide-Grip_Lat_Pulldown", exerciseName: "Wide-Grip Lat Pulldown", exerciseImageUrls: ["Wide-Grip_Lat_Pulldown/0.jpg", "Wide-Grip_Lat_Pulldown/1.jpg"], primaryMuscles: [.quadriceps]),
                             Singleset(timestamp: Date(), weight: 55, reps: 10, exerciseId: "Dumbbell_Shoulder_Press", exerciseName: "Dumbbell Shoulder Press", exerciseImageUrls: ["Dumbbell_Shoulder_Press/0.jpg", "Dumbbell_Shoulder_Press/1.jpg"], primaryMuscles: [.quadriceps])
-                        ], rest: 120), count: 8)
+                        ], rest: 120), count: 3)
                     )
                 ],
                 startTime: Date(),
@@ -197,7 +197,7 @@ extension WorkoutCompleted {
 }
 
 /// `SuperSet` is a collection of  rounds.
-struct Superset: Sendable, Identifiable, Hashable {
+struct Superset: Sendable, Identifiable, Hashable, Codable {
     
     static func == (lhs: Superset, rhs: Superset) -> Bool {
         lhs.id == rhs.id
@@ -207,7 +207,7 @@ struct Superset: Sendable, Identifiable, Hashable {
         hasher.combine(id)
     }
     
-    let id = UUID().uuidString
+    var id = UUID().uuidString
     var timestamp: Date = Date()
     var rounds: [Round] = []
     //    var orderedRounds: [Round] {
@@ -244,17 +244,17 @@ struct Superset: Sendable, Identifiable, Hashable {
 }
 
 /// `Round` is a collection of singlesets.
-struct Round: Sendable, Identifiable {
-    let id = UUID().uuidString
-    let timestamp: Date = Date()
+struct Round: Sendable, Identifiable, Codable {
+    var id = UUID().uuidString
+    var timestamp: Date = Date()
     var singlesets: [Singleset] = []
     var rest: Int = 0
     
 }
 
 /// `SingleSet` is the smallest component of a workout. It comprises the exercise being undertaken as well as the parameters of that exercise e.g. weight, repetitions.
-struct Singleset: Sendable, Identifiable {
-    let id = UUID().uuidString
+struct Singleset: Sendable, Identifiable, Codable {
+    var id = UUID().uuidString
     var timestamp: Date = Date()
     //var exercise: Exercise
     var weight: Int = 0

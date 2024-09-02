@@ -54,3 +54,63 @@ func uploadExercisesToFirestore(jsonFilePath: String) {
         print("Error reading or decoding JSON file: \(error)")
     }
 }
+
+
+struct FirestoreUploader {
+    static func uploadMockWorkouts() async throws {
+        let db = Firestore.firestore()
+        
+        // Upload Workout Templates
+        for workout in WorkoutTemplate.MOCK_WORKOUTS {
+            let workoutDoc = db.collection("WorkoutTemplates")
+                .document(workout.id)
+            
+            try workoutDoc.setData(from: workout)
+            
+            // Upload Supersets
+            for superset in workout.supersets {
+                let supersetDoc = workoutDoc.collection("Supersets").document(superset.id)
+                try supersetDoc.setData(from: superset)
+                
+                // Upload Rounds
+                for round in superset.rounds {
+                    let roundDoc = supersetDoc.collection("Rounds").document(round.id)
+                    try roundDoc.setData(from: round)
+                    
+                    // Upload Singlesets
+                    for singleset in round.singlesets {
+                        let singlesetDoc = roundDoc.collection("Singlesets").document(singleset.id)
+                        try singlesetDoc.setData(from: singleset)
+                    }
+                }
+            }
+        }
+        
+        // Upload Completed Workouts
+        for workout in WorkoutCompleted.MOCK_WORKOUTS {
+            let workoutDoc = db.collection("WorkoutsCompleted")
+                .document(workout.id)
+            
+            try workoutDoc.setData(from: workout)
+            
+            // Upload Supersets
+            for superset in workout.supersets {
+                let supersetDoc = workoutDoc.collection("Supersets").document(superset.id)
+                try supersetDoc.setData(from: superset)
+                
+                // Upload Rounds
+                for round in superset.rounds {
+                    let roundDoc = supersetDoc.collection("Rounds").document(round.id)
+                    try roundDoc.setData(from: round)
+                    
+                    // Upload Singlesets
+                    for singleset in round.singlesets {
+                        let singlesetDoc = roundDoc.collection("Singlesets").document(singleset.id)
+                        try singlesetDoc.setData(from: singleset)
+                    }
+                }
+            }
+        }
+    }
+}
+
