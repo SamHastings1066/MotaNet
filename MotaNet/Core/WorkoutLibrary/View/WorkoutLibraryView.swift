@@ -105,7 +105,7 @@ struct WorkoutLibraryView: View {
             }
         }
         
-        Spacer()
+        //Spacer()
     }
 }
 
