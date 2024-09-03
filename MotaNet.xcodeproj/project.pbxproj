@@ -67,6 +67,8 @@
 		8473A3402C67C54D00B92948 /* SupersetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A33F2C67C54D00B92948 /* SupersetSummaryView.swift */; };
 		8473A3422C67C62400B92948 /* SupersetSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3412C67C62400B92948 /* SupersetSummaryViewModel.swift */; };
 		847763502C87488200D62511 /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477634F2C87488200D62511 /* WorkoutService.swift */; };
+		84F8E5AB2C874C1100698A1E /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5AA2C874C1100698A1E /* FeedViewModel.swift */; };
+		84F8E5AD2C875A7F00698A1E /* WorkoutLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5AC2C875A7F00698A1E /* WorkoutLibraryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +147,8 @@
 		8473A33F2C67C54D00B92948 /* SupersetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetSummaryView.swift; sourceTree = "<group>"; };
 		8473A3412C67C62400B92948 /* SupersetSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetSummaryViewModel.swift; sourceTree = "<group>"; };
 		8477634F2C87488200D62511 /* WorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
+		84F8E5AA2C874C1100698A1E /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		84F8E5AC2C875A7F00698A1E /* WorkoutLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutLibraryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,8 +328,8 @@
 		843685142C653D5500FA935E /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				8473A30B2C667CC600B92948 /* FeedView.swift */,
-				8473A30D2C667CD100B92948 /* FeedCell.swift */,
+				847763512C874AC800D62511 /* View */,
+				847763522C874AD200D62511 /* ViewModel */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -519,6 +523,7 @@
 			children = (
 				8473A3412C67C62400B92948 /* SupersetSummaryViewModel.swift */,
 				8440CD762C6A987C0082773B /* WorkoutTemplateDetailViewModel.swift */,
+				84F8E5AC2C875A7F00698A1E /* WorkoutLibraryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -535,6 +540,23 @@
 				8440CD7A2C6AA00B0082773B /* ExerciseRowView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		847763512C874AC800D62511 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8473A30B2C667CC600B92948 /* FeedView.swift */,
+				8473A30D2C667CD100B92948 /* FeedCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		847763522C874AD200D62511 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84F8E5AA2C874C1100698A1E /* FeedViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -691,6 +713,7 @@
 				8473A3042C6646F900B92948 /* CompletedWorkoutSummaryListView.swift in Sources */,
 				8473A2F42C6547E700B92948 /* ProfileStatView.swift in Sources */,
 				8473A3362C66AABA00B92948 /* WorkoutLibraryView.swift in Sources */,
+				84F8E5AD2C875A7F00698A1E /* WorkoutLibraryViewModel.swift in Sources */,
 				8473A2F82C65488B00B92948 /* EditProfileViewModel.swift in Sources */,
 				8473A3242C66933B00B92948 /* CreatePasswordView.swift in Sources */,
 				8473A2FA2C6548D200B92948 /* ImageUploader.swift in Sources */,
@@ -716,6 +739,7 @@
 				8473A31E2C6692C400B92948 /* IGTextFieldModifier.swift in Sources */,
 				8473A3302C66A8E900B92948 /* CompletedWorkoutsForDayView.swift in Sources */,
 				8473A3002C65908B00B92948 /* Exercise.swift in Sources */,
+				84F8E5AB2C874C1100698A1E /* FeedViewModel.swift in Sources */,
 				8436851B2C653F1700FA935E /* User.swift in Sources */,
 				843685282C6540DE00FA935E /* MainTabView.swift in Sources */,
 				8473A33C2C67A15500B92948 /* ExerciseImageView.swift in Sources */,

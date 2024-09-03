@@ -16,27 +16,40 @@ struct WorkoutLibraryView: View {
     
     @State private var selectedLibrary: LibraryType = .saved
     @State var searchText = ""
+    @State var viewModel = WorkoutLibraryViewModel()
     
     var body: some View {
         NavigationStack {
-
-                    // Header
-                    Picker("Library", selection: $selectedLibrary) {
-                        ForEach(LibraryType.allCases) { type in
-                            Text(type.rawValue.capitalized)
+            
+            // Header
+            Picker("Library", selection: $selectedLibrary) {
+                ForEach(LibraryType.allCases) { type in
+                    Text(type.rawValue.capitalized)
+                }
+            }
+            .padding()
+            .pickerStyle(.segmented)
+            .searchable(text: $searchText)
+            .navigationTitle("Workout Library")
+            .navigationBarTitleDisplayMode(.inline)
+            
+            
+            // WorkoutTemplateList
+            if selectedLibrary == .saved {
+                if viewModel.isLoading {
+                    ProgressView()
+                        .task {
+                            await viewModel.loadAllTemplateWorkouts()
                         }
-                    }
-                    .padding()
-                    .pickerStyle(.segmented)
-                    .searchable(text: $searchText)
-                    .navigationTitle("Workout Library")
-                    .navigationBarTitleDisplayMode(.inline)
-                    
-                    
-                    // WorkoutTemplateList
-                    if selectedLibrary == .saved {
+                } else {
+                    if let errorMessage = viewModel.errorMessage {
+                        Text(errorMessage)
+                            .foregroundStyle(.red)
+                            .padding()
+                    } else {
                         List {
-                            ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
+                            //ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
+                            ForEach(viewModel.templateWorkouts) { workout in
                                 NavigationLink(value: workout) {
                                     VStack {
                                         if let user = workout.user {
@@ -54,11 +67,25 @@ struct WorkoutLibraryView: View {
                         .navigationDestination(for: WorkoutTemplate.self) { workout in
                             WorkoutTemplateDetailView(workout: workout)
                         }
-                        
-                        //.padding()
-                    } else if selectedLibrary == .community {
+                    }
+                }
+                
+                //.padding()
+            } else if selectedLibrary == .community {
+                if viewModel.isLoading {
+                    ProgressView()
+                        .task {
+                            await viewModel.loadAllTemplateWorkouts()
+                        }
+                } else {
+                    if let errorMessage = viewModel.errorMessage {
+                        Text(errorMessage)
+                            .foregroundStyle(.red)
+                            .padding()
+                    } else {
                         List {
-                            ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
+                            //ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
+                            ForEach(viewModel.templateWorkouts) { workout in
                                 NavigationLink(value: workout) {
                                     VStack {
                                         if let user = workout.user {
@@ -74,13 +101,15 @@ struct WorkoutLibraryView: View {
                             WorkoutTemplateDetailView(workout: workout)
                         }
                     }
-                    
-                    Spacer()
+                }
+            }
         }
+        
+        Spacer()
     }
 }
 
 #Preview {
-
-        WorkoutLibraryView()
+    
+    WorkoutLibraryView()
 }

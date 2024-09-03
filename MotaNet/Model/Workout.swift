@@ -171,7 +171,7 @@ extension WorkoutCompleted {
                 supersets: [
                     try Superset(
                         rounds: Array(repeating: Round(singlesets: [
-                            Singleset(timestamp: Date(), weight: 70, reps: 14, exerciseId: "Dumbbell_Bench_Press", exerciseName: "Dumbbell Bench Press", exerciseImageUrls: ["Dumbbell_Bench_Press/0.jpg", "Dumbbell_Bench_Press/1.jpg"], primaryMuscles: [.quadriceps]),
+                            Singleset(timestamp: Date(), weight: 70, reps: 20, exerciseId: "Dumbbell_Bench_Press", exerciseName: "Dumbbell Bench Press", exerciseImageUrls: ["Dumbbell_Bench_Press/0.jpg", "Dumbbell_Bench_Press/1.jpg"], primaryMuscles: [.quadriceps]),
                             Singleset(timestamp: Date(), weight: 75, reps: 14, exerciseId: "Seated_Cable_Rows", exerciseName: "Seated Cable Rows", exerciseImageUrls: ["Seated_Cable_Rows/0.jpg", "Seated_Cable_Rows/1.jpg"], primaryMuscles: [.quadriceps])
                         ], rest: 90), count: 3)
                     ),
