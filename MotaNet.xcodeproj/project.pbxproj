@@ -66,6 +66,7 @@
 		8473A33E2C67AA3C00B92948 /* WorkoutTemplateDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A33D2C67AA3C00B92948 /* WorkoutTemplateDetailView.swift */; };
 		8473A3402C67C54D00B92948 /* SupersetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A33F2C67C54D00B92948 /* SupersetSummaryView.swift */; };
 		8473A3422C67C62400B92948 /* SupersetSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473A3412C67C62400B92948 /* SupersetSummaryViewModel.swift */; };
+		847763502C87488200D62511 /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477634F2C87488200D62511 /* WorkoutService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		8473A33D2C67AA3C00B92948 /* WorkoutTemplateDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTemplateDetailView.swift; sourceTree = "<group>"; };
 		8473A33F2C67C54D00B92948 /* SupersetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetSummaryView.swift; sourceTree = "<group>"; };
 		8473A3412C67C62400B92948 /* SupersetSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetSummaryViewModel.swift; sourceTree = "<group>"; };
+		8477634F2C87488200D62511 /* WorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				8473A2F92C6548D200B92948 /* ImageUploader.swift */,
 				8473A3192C66923600B92948 /* UserService.swift */,
 				8440CD832C6E85E80082773B /* ExerciseDownloader.swift */,
+				8477634F2C87488200D62511 /* WorkoutService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 				8473A31C2C66928600B92948 /* LoginView.swift in Sources */,
 				8473A30C2C667CC600B92948 /* FeedView.swift in Sources */,
 				8473A33E2C67AA3C00B92948 /* WorkoutTemplateDetailView.swift in Sources */,
+				847763502C87488200D62511 /* WorkoutService.swift in Sources */,
 				8473A30E2C667CD100B92948 /* FeedCell.swift in Sources */,
 				8473A30A2C6669BD00B92948 /* DateExtensions.swift in Sources */,
 				8436852A2C6542CF00FA935E /* ProfileView.swift in Sources */,
