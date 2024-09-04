@@ -69,6 +69,7 @@
 		847763502C87488200D62511 /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477634F2C87488200D62511 /* WorkoutService.swift */; };
 		84F8E5AB2C874C1100698A1E /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5AA2C874C1100698A1E /* FeedViewModel.swift */; };
 		84F8E5AD2C875A7F00698A1E /* WorkoutLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5AC2C875A7F00698A1E /* WorkoutLibraryViewModel.swift */; };
+		84F8E5AF2C88A70300698A1E /* FeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5AE2C88A70300698A1E /* FeedCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		8477634F2C87488200D62511 /* WorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
 		84F8E5AA2C874C1100698A1E /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		84F8E5AC2C875A7F00698A1E /* WorkoutLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutLibraryViewModel.swift; sourceTree = "<group>"; };
+		84F8E5AE2C88A70300698A1E /* FeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -555,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				84F8E5AA2C874C1100698A1E /* FeedViewModel.swift */,
+				84F8E5AE2C88A70300698A1E /* FeedCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				8440CD752C6846770082773B /* SinglesetView.swift in Sources */,
 				843685332C6545A700FA935E /* CircularProfileImageView.swift in Sources */,
 				8440CD802C6E70790082773B /* Firestore.swift in Sources */,
+				84F8E5AF2C88A70300698A1E /* FeedCellViewModel.swift in Sources */,
 				843684E52C653BD900FA935E /* ContentView.swift in Sources */,
 				8473A3402C67C54D00B92948 /* SupersetSummaryView.swift in Sources */,
 				8436852E2C65434C00FA935E /* ProfileHeaderView.swift in Sources */,

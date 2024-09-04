@@ -9,12 +9,23 @@ import SwiftUI
 
 struct FeedCell: View {
     let workout: WorkoutCompleted
+    let viewModel = FeedCellViewModel()
     
     var body: some View {
         VStack {
             // Image + username
-            if let user = workout.user {
-                XSmallUserView(user: user)
+            if viewModel.isLoading {
+                ProgressView()
+                    .task {
+                        if let userId = workout.userId {
+                            await viewModel.loadUser(id: userId)
+                        }
+                    }
+            } else {
+                //if let user = workout.user {
+                if let user = viewModel.user {
+                    XSmallUserView(user: user)
+                }
             }
             // WorkoutSummary
             CompletedWorkoutSummaryView(workout: workout)

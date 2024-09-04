@@ -93,8 +93,8 @@ extension WorkoutTemplate {
                     )
                 ],
                 startTime: Date(),
-                user: User.MOCK_USERS[0]
-                
+                user: User.MOCK_USERS[0],
+                userId: "kNGoA7iAzxbWxlztKNUF4ojsN6v2"
             )
             mockWorkouts.append(lowerBodyVolume)
             
@@ -164,8 +164,8 @@ extension WorkoutCompleted {
                 endTime: Date().addingTimeInterval(TimeInterval(1)),
                 user: User.MOCK_USERS[0],
                 caption: "Light work.",
-                likes: 476
-                
+                likes: 476,
+                userId: "kNGoA7iAzxbWxlztKNUF4ojsN6v2"
             )
             mockWorkouts.append(lowerBodyVolume)
             
