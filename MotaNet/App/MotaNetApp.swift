@@ -46,6 +46,15 @@ struct MotaNetApp: App {
                         print("error setting up model container: \(error.localizedDescription)")
                     }
                 }
+                .task {
+                    do {
+                        // Run setup scripts here
+                        //let uploader = MockDataUploader()
+                        //try await uploader.createUser(email: "venom@example.com", password: "123456", username: "Venom")
+                    } catch {
+                        print("Could run script")
+                    }
+                }
             
         }
     }

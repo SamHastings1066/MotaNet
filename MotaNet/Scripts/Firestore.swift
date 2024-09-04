@@ -19,6 +19,7 @@ This will upload all of the exercises in the exercises.json file into individual
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
 func uploadExercisesToFirestore(jsonFilePath: String) {
     guard let url = Bundle.main.url(forResource: jsonFilePath, withExtension: "json") else {
@@ -55,13 +56,36 @@ func uploadExercisesToFirestore(jsonFilePath: String) {
     }
 }
 
+class MockDataUploader {
+    private let auth = Auth.auth()
+    var userSession: FirebaseAuth.User?
+    
+    func createUser(email: String, password: String, username: String) async throws {
+        do {
+            let result = try await auth.createUser(withEmail: email, password: password)
+            self.userSession = result.user
+            await self.uploadUserData(uid: result.user.uid, username: username, email: email)
+            try await FirestoreUploader.uploadMockWorkouts(uid: result.user.uid)
+        } catch {
+            print("DEBUG: Failed to register user with error \(error.localizedDescription)")
+        }
+    }
+    
+    private func uploadUserData(uid: String, username: String, email: String) async {
+        let user = User(id: uid, username: username, email: email)
+        guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
+        try? await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+    }
+}
 
 struct FirestoreUploader {
-    static func uploadMockWorkouts() async throws {
+    static func uploadMockWorkouts(uid: String) async throws {
         let db = Firestore.firestore()
         
         // Upload Workout Templates
-        for workout in WorkoutTemplate.MOCK_WORKOUTS {
+        for idx in WorkoutTemplate.MOCK_WORKOUTS.indices {
+            var workout = WorkoutTemplate.MOCK_WORKOUTS[idx]
+            workout.userId = uid
             let workoutDoc = db.collection("WorkoutTemplates")
                 .document(workout.id)
             

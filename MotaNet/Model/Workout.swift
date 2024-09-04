@@ -56,6 +56,7 @@ protocol Workout: Identifiable, Sendable, Codable {
     var supersets: [Superset] { get set }
     var startTime: Date { get set }
     var user: User? { get set }
+    var userId: String? { get set }
 }
 
 struct WorkoutTemplate: Workout, Hashable {
@@ -74,6 +75,7 @@ struct WorkoutTemplate: Workout, Hashable {
     var supersets: [Superset]
     var startTime: Date = Date()
     var user: User?
+    var userId: String?
 }
 
 extension WorkoutTemplate {
@@ -141,6 +143,7 @@ struct WorkoutCompleted: Workout, Hashable {
     var user: User?
     var caption: String = ""
     var likes: Int = 0
+    var userId: String?
 }
 
 extension WorkoutCompleted {
