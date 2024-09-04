@@ -49,8 +49,8 @@ struct MotaNetApp: App {
                 .task {
                     do {
                         // Run setup scripts here
-                        //let uploader = MockDataUploader()
-                        //try await uploader.createUser(email: "venom@example.com", password: "123456", username: "Venom")
+//                        let uploader = MockDataUploader()
+//                        try await uploader.createUser(email: "bp@example.com", password: "123456", username: "Black Panther")
                     } catch {
                         print("Could run script")
                     }

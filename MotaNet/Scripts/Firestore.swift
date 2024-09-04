@@ -86,54 +86,60 @@ struct FirestoreUploader {
         for idx in WorkoutTemplate.MOCK_WORKOUTS.indices {
             var workout = WorkoutTemplate.MOCK_WORKOUTS[idx]
             workout.userId = uid
+            
             let workoutDoc = db.collection("WorkoutTemplates")
                 .document(workout.id)
             
             try workoutDoc.setData(from: workout)
             
-            // Upload Supersets
-            for superset in workout.supersets {
-                let supersetDoc = workoutDoc.collection("Supersets").document(superset.id)
-                try supersetDoc.setData(from: superset)
-                
-                // Upload Rounds
-                for round in superset.rounds {
-                    let roundDoc = supersetDoc.collection("Rounds").document(round.id)
-                    try roundDoc.setData(from: round)
-                    
-                    // Upload Singlesets
-                    for singleset in round.singlesets {
-                        let singlesetDoc = roundDoc.collection("Singlesets").document(singleset.id)
-                        try singlesetDoc.setData(from: singleset)
-                    }
-                }
-            }
+            // Uncomment to create seperate collections
+//            // Upload Supersets
+//            for superset in workout.supersets {
+//                let supersetDoc = workoutDoc.collection("Supersets").document(superset.id)
+//                try supersetDoc.setData(from: superset)
+//                
+//                // Upload Rounds
+//                for round in superset.rounds {
+//                    let roundDoc = supersetDoc.collection("Rounds").document(round.id)
+//                    try roundDoc.setData(from: round)
+//                    
+//                    // Upload Singlesets
+//                    for singleset in round.singlesets {
+//                        let singlesetDoc = roundDoc.collection("Singlesets").document(singleset.id)
+//                        try singlesetDoc.setData(from: singleset)
+//                    }
+//                }
+//            }
         }
         
         // Upload Completed Workouts
-        for workout in WorkoutCompleted.MOCK_WORKOUTS {
+        for idx in WorkoutCompleted.MOCK_WORKOUTS.indices {
+            var workout = WorkoutCompleted.MOCK_WORKOUTS[idx]
+            workout.userId = uid
+            
             let workoutDoc = db.collection("WorkoutsCompleted")
                 .document(workout.id)
             
             try workoutDoc.setData(from: workout)
             
-            // Upload Supersets
-            for superset in workout.supersets {
-                let supersetDoc = workoutDoc.collection("Supersets").document(superset.id)
-                try supersetDoc.setData(from: superset)
-                
-                // Upload Rounds
-                for round in superset.rounds {
-                    let roundDoc = supersetDoc.collection("Rounds").document(round.id)
-                    try roundDoc.setData(from: round)
-                    
-                    // Upload Singlesets
-                    for singleset in round.singlesets {
-                        let singlesetDoc = roundDoc.collection("Singlesets").document(singleset.id)
-                        try singlesetDoc.setData(from: singleset)
-                    }
-                }
-            }
+            // Uncomment to create seperate collections
+//            // Upload Supersets
+//            for superset in workout.supersets {
+//                let supersetDoc = workoutDoc.collection("Supersets").document(superset.id)
+//                try supersetDoc.setData(from: superset)
+//                
+//                // Upload Rounds
+//                for round in superset.rounds {
+//                    let roundDoc = supersetDoc.collection("Rounds").document(round.id)
+//                    try roundDoc.setData(from: round)
+//                    
+//                    // Upload Singlesets
+//                    for singleset in round.singlesets {
+//                        let singlesetDoc = roundDoc.collection("Singlesets").document(singleset.id)
+//                        try singlesetDoc.setData(from: singleset)
+//                    }
+//                }
+//            }
         }
     }
 }
