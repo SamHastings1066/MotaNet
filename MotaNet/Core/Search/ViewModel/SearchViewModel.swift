@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+@Observable
+class SearchViewModel {
+    var users: [User] = []
+    var isLoading = true
+    var errorMessage: String?
+    
+    func loadUsers() async {
+        isLoading = true
+        do {
+            users = try await UserService.fetchAllUsers()
+            errorMessage = nil
+        } catch {
+            errorMessage = "Could not load users: \(error.localizedDescription)"
+        }
+        isLoading = false
+    }
+}

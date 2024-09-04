@@ -11,30 +11,38 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var searchText = ""
-    //@State var viewModel = SearchViewModel()
+    @State var viewModel = SearchViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 12) {
-                    ForEach(User.MOCK_USERS) { user in
-                        NavigationLink(value: user) {
-                            HStack {
-                                CircularProfileImageView(user: user, size: .xSmall)
-                                
-                                VStack(alignment: .leading) {
-                                    Text(user.username)
-                                        .fontWeight(.semibold)
-                                    if let fullname = user.fullname {
-                                        Text(fullname)
-                                    }
-                                }
-                                .font(.footnote)
-                                
-                                Spacer()
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .task {
+                                await viewModel.loadUsers()
                             }
-                            .foregroundStyle(.black)
-                            .padding(.horizontal)
+                    } else {
+                        ForEach(viewModel.users) { user in
+                        //ForEach(User.MOCK_USERS) { user in
+                            NavigationLink(value: user) {
+                                HStack {
+                                    CircularProfileImageView(user: user, size: .xSmall)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(user.username)
+                                            .fontWeight(.semibold)
+                                        if let fullname = user.fullname {
+                                            Text(fullname)
+                                        }
+                                    }
+                                    .font(.footnote)
+                                    
+                                    Spacer()
+                                }
+                                .foregroundStyle(.black)
+                                .padding(.horizontal)
+                            }
                         }
                     }
                 }
