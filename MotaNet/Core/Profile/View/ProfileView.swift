@@ -9,24 +9,28 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    let user: User
-    let workouts: [WorkoutCompleted] = WorkoutCompleted.MOCK_WORKOUTS
+    @State var viewModel: ProfileViewModel
     
-    
-    
-//    var posts: [Post] {
-//        return Post.MOCK_POSTS.filter{ $0.user?.username == user.username}
-//    }
+    init(user: User) {
+        _viewModel = State(initialValue: ProfileViewModel(user: user))
+    }
     
     var body: some View {
-            ScrollView {
-                // Header
-                ProfileHeaderView(user: user)
-                // post grid view
-                    ForEach(workouts) { workout in
-                        CompletedWorkoutSummaryView(workout: workout)
+        ScrollView {
+            // Header
+            ProfileHeaderView(user: viewModel.user)
+            // post grid view
+            if viewModel.isLoadingWorkouts {
+                ProgressView()
+                    .task {
+                        await viewModel.loadWorkouts()
                     }
-                    .padding()
+            } else {
+                    ForEach(viewModel.workouts) { workout in
+                            CompletedWorkoutSummaryView(workout: workout)
+                        }
+                        .padding()
+                }
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
