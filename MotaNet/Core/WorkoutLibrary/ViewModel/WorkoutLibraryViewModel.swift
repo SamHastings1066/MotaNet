@@ -11,7 +11,11 @@ import Foundation
 class WorkoutLibraryViewModel {
     
     var templateWorkouts: [WorkoutTemplate] = []
+    var templateWorkoutsForUser: [WorkoutTemplate] = []
+    var templateWorkoutsExcludingUser: [WorkoutTemplate] = []
     var isLoading = true
+    var isLoadingWorkoutsForUser = true
+    var isLoadingWorkoutsExcludingUser = true
     var errorMessage: String?
     
     func loadAllTemplateWorkouts() async {
@@ -23,5 +27,25 @@ class WorkoutLibraryViewModel {
             errorMessage = "Could not load template workouts: \(error.localizedDescription)"
         }
         isLoading = false
+    }
+    
+    func loadAllTemplateWorkoutsForUser(uid: String) async {
+        isLoadingWorkoutsForUser = true
+        do {
+            templateWorkoutsForUser = try await WorkoutService.fetchAllTemplateWorkoutsForUser(uid: uid)
+        } catch {
+            print("Could not load template workouts for user \(uid): \(error.localizedDescription)")
+        }
+        isLoadingWorkoutsForUser = false
+    }
+    
+    func loadAllTemplateWorkoutsExcludingUser(uid: String) async {
+        isLoadingWorkoutsExcludingUser = true
+        do {
+            templateWorkoutsExcludingUser = try await WorkoutService.fetchAllTemplateWorkoutsExcludingUser(uid: uid)
+        } catch {
+            print("Could not load template workouts excluding user \(uid): \(error.localizedDescription)")
+        }
+        isLoadingWorkoutsExcludingUser = false
     }
 }

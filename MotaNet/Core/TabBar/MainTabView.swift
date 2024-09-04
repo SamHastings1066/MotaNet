@@ -29,7 +29,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(1)
-            WorkoutLibraryView()
+            WorkoutLibraryView(user: user)
                 .onAppear{
                     selectedIndex = 2
                 }

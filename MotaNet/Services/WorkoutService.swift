@@ -15,6 +15,18 @@ struct WorkoutService {
         return snapshot.documents.compactMap{ try? $0.data(as: WorkoutTemplate.self)}
     }
     
+    // fetch all template workouts for a given user
+    static func fetchAllTemplateWorkoutsForUser(uid: String) async throws -> [WorkoutTemplate] {
+        let snapshot = try await Firestore.firestore().collection("WorkoutTemplates").whereField("userId", isEqualTo: uid).getDocuments()
+        return snapshot.documents.compactMap{ try? $0.data(as: WorkoutTemplate.self)}
+    }
+    
+    // fetach all template workouts exclduing those owned by a given user.
+    static func fetchAllTemplateWorkoutsExcludingUser(uid: String) async throws -> [WorkoutTemplate] {
+        let snapshot = try await Firestore.firestore().collection("WorkoutTemplates").whereField("userId", isNotEqualTo: uid).getDocuments()
+        return snapshot.documents.compactMap{ try? $0.data(as: WorkoutTemplate.self)}
+    }
+    
     static func fetchAllCompletedWorkouts() async throws -> [WorkoutCompleted] {
         let snapshot = try await Firestore.firestore().collection("WorkoutsCompleted").getDocuments()
         return snapshot.documents.compactMap{ try? $0.data(as: WorkoutCompleted.self)}

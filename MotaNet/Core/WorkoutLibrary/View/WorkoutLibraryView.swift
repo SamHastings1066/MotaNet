@@ -17,6 +17,7 @@ struct WorkoutLibraryView: View {
     @State private var selectedLibrary: LibraryType = .saved
     @State var searchText = ""
     @State var viewModel = WorkoutLibraryViewModel()
+    let user: User
     
     var body: some View {
         NavigationStack {
@@ -36,72 +37,62 @@ struct WorkoutLibraryView: View {
             
             // WorkoutTemplateList
             if selectedLibrary == .saved {
-                if viewModel.isLoading {
+                if viewModel.isLoadingWorkoutsForUser {
                     ProgressView()
                         .task {
-                            await viewModel.loadAllTemplateWorkouts()
+                            await viewModel.loadAllTemplateWorkoutsForUser(uid: user.id)
                         }
+                    Spacer()
                 } else {
-                    if let errorMessage = viewModel.errorMessage {
-                        Text(errorMessage)
-                            .foregroundStyle(.red)
-                            .padding()
-                    } else {
-                        List {
-                            //ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
-                            ForEach(viewModel.templateWorkouts) { workout in
-                                NavigationLink(value: workout) {
-                                    VStack {
-                                        if let user = workout.user {
-                                            XSmallUserView(user: user)
-                                        }
-                                        TemplateWorkoutSummaryView(workout: workout)
+                    List {
+                        //ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
+                        ForEach(viewModel.templateWorkoutsForUser) { workout in
+                            NavigationLink(value: workout) {
+                                VStack {
+                                    if let user = workout.user {
+                                        XSmallUserView(user: user)
                                     }
+                                    TemplateWorkoutSummaryView(workout: workout)
                                 }
                             }
-                            .onDelete(perform: { indexSet in
-                                //
-                            })
                         }
-                        .listStyle(.inset)
-                        .navigationDestination(for: WorkoutTemplate.self) { workout in
-                            WorkoutTemplateDetailView(workout: workout)
+                        .onDelete(perform: { indexSet in
+                            //
+                        })
+                    }
+                    .listStyle(.inset)
+                    .navigationDestination(for: WorkoutTemplate.self) { workout in
+                        WorkoutTemplateDetailView(workout: workout)
+                    }
+                }
+                //.padding()
+            } else if selectedLibrary == .community {
+                if viewModel.isLoadingWorkoutsExcludingUser {
+                    ProgressView()
+                        .task {
+                            await viewModel.loadAllTemplateWorkoutsExcludingUser(uid: user.id)
                         }
+                    Spacer()
+                } else {
+                    List {
+                        //ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
+                        ForEach(viewModel.templateWorkoutsExcludingUser) { workout in
+                            NavigationLink(value: workout) {
+                                VStack {
+                                    if let user = workout.user {
+                                        XSmallUserView(user: user)
+                                    }
+                                    TemplateWorkoutSummaryView(workout: workout)
+                                }
+                            }
+                        }
+                    }
+                    .listStyle(.inset)
+                    .navigationDestination(for: WorkoutTemplate.self) { workout in
+                        WorkoutTemplateDetailView(workout: workout)
                     }
                 }
                 
-                //.padding()
-            } else if selectedLibrary == .community {
-                if viewModel.isLoading {
-                    ProgressView()
-                        .task {
-                            await viewModel.loadAllTemplateWorkouts()
-                        }
-                } else {
-                    if let errorMessage = viewModel.errorMessage {
-                        Text(errorMessage)
-                            .foregroundStyle(.red)
-                            .padding()
-                    } else {
-                        List {
-                            //ForEach(WorkoutTemplate.MOCK_WORKOUTS) { workout in
-                            ForEach(viewModel.templateWorkouts) { workout in
-                                NavigationLink(value: workout) {
-                                    VStack {
-                                        if let user = workout.user {
-                                            XSmallUserView(user: user)
-                                        }
-                                        TemplateWorkoutSummaryView(workout: workout)
-                                    }
-                                }
-                            }
-                        }
-                        .listStyle(.inset)
-                        .navigationDestination(for: WorkoutTemplate.self) { workout in
-                            WorkoutTemplateDetailView(workout: workout)
-                        }
-                    }
-                }
             }
         }
         
@@ -111,5 +102,5 @@ struct WorkoutLibraryView: View {
 
 #Preview {
     
-    WorkoutLibraryView()
+    WorkoutLibraryView(user: User.MOCK_USERS[0])
 }
