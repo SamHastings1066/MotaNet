@@ -31,4 +31,9 @@ struct WorkoutService {
         let snapshot = try await Firestore.firestore().collection("WorkoutsCompleted").getDocuments()
         return snapshot.documents.compactMap{ try? $0.data(as: WorkoutCompleted.self)}
     }
+    
+    static func fetchAllCompletedWorkoutsForUser(uid: String) async throws -> [WorkoutCompleted] {
+        let snapshot = try await Firestore.firestore().collection("WorkoutsCompleted").whereField("userId", isEqualTo: uid).getDocuments()
+        return snapshot.documents.compactMap{ try? $0.data(as: WorkoutCompleted.self)}
+    }
 }
