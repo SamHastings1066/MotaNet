@@ -18,6 +18,7 @@ struct AddExerciseView: View {
     @State private var reps = ""
     @State private var weight = ""
     @State private var currentPage: Int = 0
+    @State private var searchText = ""
     let pageLength = 15
     
     func addSuperset(exercise: Exercise) {
@@ -33,15 +34,21 @@ struct AddExerciseView: View {
     private func fetchExerciseIfNecessary(exercise: Exercise) {
         if let lastExercise = exercises.last, lastExercise == exercise {
             currentPage += 1
-            performFetch(currentPage: currentPage)
+            performFetch(currentPage: currentPage, searchText: searchText)
         }
     }
     
-    private func performFetch(currentPage: Int) {
+    private func performFetch(currentPage: Int, searchText: String) {
         var fetchDescriptor = FetchDescriptor<Exercise>()
         fetchDescriptor.fetchLimit = pageLength
         fetchDescriptor.fetchOffset = currentPage * pageLength
         fetchDescriptor.sortBy = [.init(\.name, order: .forward)]
+        
+        if !searchText.isEmpty {
+            fetchDescriptor.predicate = #Predicate { exercise in
+                exercise.name.localizedStandardContains(searchText)
+            }
+        }
         
         do {
             self.exercises += try context.fetch(fetchDescriptor)
@@ -51,6 +58,7 @@ struct AddExerciseView: View {
     }
     
     var body: some View {
+        NavigationStack{
         List {
             //ForEach(Exercise.MOCK_EXERCISES) { exercise in
             ForEach(exercises) { exercise in
@@ -66,8 +74,14 @@ struct AddExerciseView: View {
             }
         }
         .onAppear {
-            performFetch(currentPage: currentPage)
+            performFetch(currentPage: currentPage, searchText: searchText)
         }
+        .searchable(text: $searchText)
+        .onChange(of: searchText, { oldValue, newValue in
+            currentPage = 0
+            exercises = []
+            performFetch(currentPage: currentPage, searchText: newValue)
+        })
         .alert("Add superset",
                isPresented: $showAlert,
                presenting: exerciseToAdd
@@ -91,6 +105,7 @@ struct AddExerciseView: View {
                 Text("\(exercise.name): please specify the number of reps and the weight.")
             }
         }
+    }
     }
 }
 
