@@ -16,24 +16,34 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        ScrollView {
-            // Header
-            ProfileHeaderView(user: viewModel.user)
-            // post grid view
-            if viewModel.isLoadingWorkouts {
-                ProgressView()
-                    .task {
-                        await viewModel.loadWorkouts()
-                    }
-            } else {
-                    ForEach(viewModel.workouts) { workout in
-                            CompletedWorkoutSummaryView(workout: workout)
+        NavigationStack {
+            ScrollView {
+                // Header
+                ProfileHeaderView(user: viewModel.user)
+                // post grid view
+                if viewModel.isLoadingWorkouts {
+                    ProgressView()
+                        .task {
+                            await viewModel.loadWorkouts()
                         }
-                        .padding()
+                } else {
+                    ForEach(viewModel.workouts) { workout in
+                        CompletedWorkoutSummaryView(workout: workout)
+                    }
+                    .padding()
                 }
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                NavigationLink(value: viewModel.user) {
+                    Image(systemName: "line.3.horizontal")
+                }
+            }
+            .navigationDestination(for: User.self) { user in
+                SettingsView(user: viewModel.user)
+            }
+        }
     }
 }
 

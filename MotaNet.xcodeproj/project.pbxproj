@@ -73,6 +73,8 @@
 		84F8E5B12C88BEDB00698A1E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5B02C88BEDB00698A1E /* SearchViewModel.swift */; };
 		84F8E5B32C88CD8900698A1E /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5B22C88CD8900698A1E /* CalendarViewModel.swift */; };
 		84F8E5B52C88D2C900698A1E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5B42C88D2C900698A1E /* ProfileViewModel.swift */; };
+		84F8E5B72C89F27500698A1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5B62C89F27500698A1E /* SettingsView.swift */; };
+		84F8E5B92C89F2A600698A1E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5B82C89F2A600698A1E /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +159,8 @@
 		84F8E5B02C88BEDB00698A1E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		84F8E5B22C88CD8900698A1E /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		84F8E5B42C88D2C900698A1E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		84F8E5B62C89F27500698A1E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		84F8E5B82C89F2A600698A1E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +416,7 @@
 			children = (
 				8473A2F72C65488B00B92948 /* EditProfileViewModel.swift */,
 				84F8E5B42C88D2C900698A1E /* ProfileViewModel.swift */,
+				84F8E5B82C89F2A600698A1E /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 				8436852D2C65434C00FA935E /* ProfileHeaderView.swift */,
 				8473A2F32C6547E700B92948 /* ProfileStatView.swift */,
 				8473A2F52C65483A00B92948 /* EditProfileView.swift */,
+				84F8E5B62C89F27500698A1E /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -725,6 +731,7 @@
 				8473A3042C6646F900B92948 /* CompletedWorkoutSummaryListView.swift in Sources */,
 				8473A2F42C6547E700B92948 /* ProfileStatView.swift in Sources */,
 				8473A3362C66AABA00B92948 /* WorkoutLibraryView.swift in Sources */,
+				84F8E5B72C89F27500698A1E /* SettingsView.swift in Sources */,
 				84F8E5AD2C875A7F00698A1E /* WorkoutLibraryViewModel.swift in Sources */,
 				8473A2F82C65488B00B92948 /* EditProfileViewModel.swift in Sources */,
 				8473A3242C66933B00B92948 /* CreatePasswordView.swift in Sources */,
@@ -769,6 +776,7 @@
 				8473A3062C66629500B92948 /* CompletedWorkoutSummaryView.swift in Sources */,
 				8473A3222C66932800B92948 /* CreateUsernameView.swift in Sources */,
 				8473A3142C6691CC00B92948 /* LoginViewModel.swift in Sources */,
+				84F8E5B92C89F2A600698A1E /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
