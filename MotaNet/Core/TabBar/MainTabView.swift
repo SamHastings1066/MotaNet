@@ -58,7 +58,7 @@ struct MainTabView: View {
 
 #Preview {
     do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let config = ModelConfiguration(isStoredInMemoryOnly: false)
         let container = try ModelContainer(
             for: Exercise.self,
             configurations: config

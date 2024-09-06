@@ -13,6 +13,8 @@ struct WorkoutTemplateDetailView: View {
     @State var isAddExercisePresented = false
     @State var addToLog = false
     @State private var supersetAdded = false
+    @State var workoutChangedAlertPresented = false
+    @Environment(\.dismiss) private var dismiss
     
     init(workout: WorkoutTemplate) {
         
@@ -36,7 +38,7 @@ struct WorkoutTemplateDetailView: View {
             .navigationDestination(for: Superset.self) { superset in
                 SupersetDetailView(superset: superset)
             }
-            //.navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack {
@@ -45,6 +47,11 @@ struct WorkoutTemplateDetailView: View {
                         }
                         .disabled(!viewModel.isWorkoutEditted)
                         EditButton()
+                    }
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Back", systemImage: "chevron.left") {
+                        viewModel.isWorkoutEditted ? workoutChangedAlertPresented = true : dismiss()
                     }
                 }
                 
@@ -77,13 +84,20 @@ struct WorkoutTemplateDetailView: View {
             .popover(isPresented: $isAddExercisePresented, content: {
                 AddExerciseView(workout: $viewModel.workout, supersetAdded: $supersetAdded)
             })
+            .alert("Leave screen without saving changes?", isPresented: $workoutChangedAlertPresented) {
+                Button("OK"){
+                    dismiss()
+                }
+                Button("Cancel", role: .cancel) {
+                    
+                }
+            }
             .onChange(of: supersetAdded) { oldValue, newValue in
                 if newValue {
                     viewModel.isWorkoutEditted = true
                     supersetAdded = false
                 }
             }
-
         }
     }
 }
