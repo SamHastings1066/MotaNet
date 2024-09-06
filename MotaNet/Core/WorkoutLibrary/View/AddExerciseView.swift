@@ -13,6 +13,7 @@ struct AddExerciseView: View {
     @Environment(\.modelContext) private var context
     @State private var exercises: [Exercise] = []
     @Binding var workout: WorkoutTemplate
+    @Binding var supersetAdded: Bool
     @State private var exerciseToAdd: Exercise?
     @State private var showAlert = false
     @State private var reps = ""
@@ -26,6 +27,7 @@ struct AddExerciseView: View {
             let weightInt: Int = Int(weight) ?? 0
             let repsInt: Int = Int(reps) ?? 0
             workout.supersets.append( try Superset(rounds: Array(repeating: Round(singlesets: [Singleset(exercise: exercise, weight: weightInt, reps: repsInt)], rest: 60), count: 3)))
+            supersetAdded = true
         } catch {
             print("Error adding superset: \(error.localizedDescription)")
         }
@@ -110,5 +112,5 @@ struct AddExerciseView: View {
 }
 
 #Preview { //@MainActor in
-    return AddExerciseView(workout: .constant(WorkoutTemplate.MOCK_WORKOUTS[0])).modelContainer(SwiftDataManager.shared.container)
+    return AddExerciseView(workout: .constant(WorkoutTemplate.MOCK_WORKOUTS[0]), supersetAdded: .constant(false)).modelContainer(SwiftDataManager.shared.container)
 }

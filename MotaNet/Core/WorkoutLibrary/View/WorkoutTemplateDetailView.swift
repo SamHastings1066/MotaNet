@@ -12,6 +12,7 @@ struct WorkoutTemplateDetailView: View {
     @State var viewModel: WorkoutTemplateDetailViewModel
     @State var isAddExercisePresented = false
     @State var addToLog = false
+    @State private var supersetAdded = false
     
     init(workout: WorkoutTemplate) {
         
@@ -35,8 +36,18 @@ struct WorkoutTemplateDetailView: View {
             .navigationDestination(for: Superset.self) { superset in
                 SupersetDetailView(superset: superset)
             }
+            //.navigationBarBackButtonHidden(true)
             .toolbar {
-                EditButton()
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        Button("Save") {
+                            viewModel.saveWorkout()
+                        }
+                        .disabled(!viewModel.isWorkoutEditted)
+                        EditButton()
+                    }
+                }
+                
             }
             HStack {
                 Button {
@@ -64,8 +75,14 @@ struct WorkoutTemplateDetailView: View {
             }
             .padding()
             .popover(isPresented: $isAddExercisePresented, content: {
-                AddExerciseView(workout: $viewModel.workout)
+                AddExerciseView(workout: $viewModel.workout, supersetAdded: $supersetAdded)
             })
+            .onChange(of: supersetAdded) { oldValue, newValue in
+                if newValue {
+                    viewModel.isWorkoutEditted = true
+                    supersetAdded = false
+                }
+            }
 
         }
     }

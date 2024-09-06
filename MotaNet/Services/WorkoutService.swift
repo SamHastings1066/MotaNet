@@ -10,6 +10,8 @@ import Firebase
 
 struct WorkoutService {
     
+    static let db = Firestore.firestore()
+    
     static func fetchAllTemplateWorkouts() async throws -> [WorkoutTemplate] {
         let snapshot = try await Firestore.firestore().collection("WorkoutTemplates").getDocuments()
         return snapshot.documents.compactMap{ try? $0.data(as: WorkoutTemplate.self)}
@@ -25,6 +27,13 @@ struct WorkoutService {
     static func fetchAllTemplateWorkoutsExcludingUser(uid: String) async throws -> [WorkoutTemplate] {
         let snapshot = try await Firestore.firestore().collection("WorkoutTemplates").whereField("userId", isNotEqualTo: uid).getDocuments()
         return snapshot.documents.compactMap{ try? $0.data(as: WorkoutTemplate.self)}
+    }
+    
+    static func updateTemplateWorkout(workout: WorkoutTemplate) throws {
+        let docRef = db.collection("WorkoutTemplates").document(workout.id)
+        
+        try docRef.setData(from: workout)
+        
     }
     
     static func fetchAllCompletedWorkouts() async throws -> [WorkoutCompleted] {
