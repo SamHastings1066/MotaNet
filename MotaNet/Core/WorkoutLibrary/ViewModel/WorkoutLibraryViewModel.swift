@@ -51,6 +51,9 @@ class WorkoutLibraryViewModel {
     
     func updateWorkout(_ updatedWorkout: WorkoutTemplate) {
         if let index = templateWorkoutsForUser.firstIndex(where: { $0.id == updatedWorkout.id }) {
+            var updatedWorkout = updatedWorkout
+            //TODO:  This is a hack. The updatedWorkout id is only changed so that the WorkoutTemplateDetailView refreshes. Find a better solution
+            updatedWorkout.id = UUID().uuidString
             templateWorkoutsForUser[index] = updatedWorkout
         }
     }

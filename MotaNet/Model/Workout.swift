@@ -59,8 +59,7 @@ protocol Workout: Identifiable, Sendable, Codable {
     var userId: String? { get set }
 }
 
-@Observable
-final class WorkoutTemplate: Workout, Hashable {
+struct WorkoutTemplate: Workout, Hashable {
     
     static func == (lhs: WorkoutTemplate, rhs: WorkoutTemplate) -> Bool {
         lhs.id == rhs.id
@@ -78,15 +77,6 @@ final class WorkoutTemplate: Workout, Hashable {
     var user: User?
     var userId: String?
     
-    init(id: String = UUID().uuidString, ownerId: String = UUID().uuidString, name: String, supersets: [Superset], startTime: Date, user: User? = nil, userId: String? = nil) {
-        self.id = id
-        self.ownerId = ownerId
-        self.name = name
-        self.supersets = supersets
-        self.startTime = startTime
-        self.user = user
-        self.userId = userId
-    }
 }
 
 extension WorkoutTemplate {

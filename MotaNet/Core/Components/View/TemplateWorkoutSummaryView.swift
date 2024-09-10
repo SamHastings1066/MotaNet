@@ -18,7 +18,7 @@ struct TemplateWorkoutSummaryView: View {
     }
     var body: some View {
         VStack(alignment: .leading) {
-            Text("\(workout.name))")
+            Text("\(workout.name)")
                 .font(.headline)
             Text("Reps: \(stats.totalReps)")
                 .font(.subheadline)
