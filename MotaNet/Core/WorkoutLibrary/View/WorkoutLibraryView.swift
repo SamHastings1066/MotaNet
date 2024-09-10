@@ -55,9 +55,6 @@ struct WorkoutLibraryView: View {
                                     TemplateWorkoutSummaryView(workout: workout)
                                 }
                             }
-                            .onAppear{
-                                print(workout.supersets.count)
-                            }
                         }
                         .onDelete(perform: { indexSet in
                             //

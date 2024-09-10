@@ -12,7 +12,6 @@ struct TemplateWorkoutSummaryView: View {
     let stats: WorkoutStats
     
     init(workout: WorkoutTemplate) {
-        print("INIT")
         self.workout = workout
         stats = WorkoutStats.compute(from: workout)
     }
