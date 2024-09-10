@@ -19,7 +19,8 @@ struct WorkoutService {
     
     // fetch all template workouts for a given user
     static func fetchAllTemplateWorkoutsForUser(uid: String) async throws -> [WorkoutTemplate] {
-        let snapshot = try await Firestore.firestore().collection("WorkoutTemplates").whereField("userId", isEqualTo: uid).getDocuments()
+        // "_userId" if WorkoutTemplate is a class, "userId" if it's a struct
+        let snapshot = try await Firestore.firestore().collection("WorkoutTemplates").whereField("_userId", isEqualTo: uid).getDocuments()
         return snapshot.documents.compactMap{ try? $0.data(as: WorkoutTemplate.self)}
     }
     

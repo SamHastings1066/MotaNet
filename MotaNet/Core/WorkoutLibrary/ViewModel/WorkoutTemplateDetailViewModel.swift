@@ -11,9 +11,11 @@ import Foundation
 class WorkoutTemplateDetailViewModel{
     var workout: WorkoutTemplate
     var isWorkoutEditted = false
+    var onSave: ((WorkoutTemplate) -> Void)?
     
-    init(workout: WorkoutTemplate) {
+    init(workout: WorkoutTemplate, onSave: ((WorkoutTemplate) -> Void)? = nil) {
         self.workout = workout
+        self.onSave = onSave
     }
     
     func removeSuperset(at offsets: IndexSet) {
@@ -30,6 +32,7 @@ class WorkoutTemplateDetailViewModel{
         do {
             try WorkoutService.updateTemplateWorkout(workout: workout)
             isWorkoutEditted = false
+            onSave?(workout)
         } catch {
             print("Could not update workout: \(error.localizedDescription)")
         }

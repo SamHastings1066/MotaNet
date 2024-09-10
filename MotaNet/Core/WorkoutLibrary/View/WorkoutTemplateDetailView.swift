@@ -16,9 +16,8 @@ struct WorkoutTemplateDetailView: View {
     @State var workoutChangedAlertPresented = false
     @Environment(\.dismiss) private var dismiss
     
-    init(workout: WorkoutTemplate) {
-        
-        self._viewModel = State(initialValue: WorkoutTemplateDetailViewModel(workout: workout))
+    init(viewModel: WorkoutTemplateDetailViewModel) {
+        self._viewModel = State(initialValue: viewModel)
     }
     
     var body: some View {
@@ -104,6 +103,6 @@ struct WorkoutTemplateDetailView: View {
 
 #Preview {
     NavigationStack {
-        WorkoutTemplateDetailView(workout: WorkoutTemplate.MOCK_WORKOUTS[1])
+        WorkoutTemplateDetailView(viewModel: WorkoutTemplateDetailViewModel(workout: WorkoutTemplate.MOCK_WORKOUTS[1]))
     }
 }

@@ -55,6 +55,9 @@ struct WorkoutLibraryView: View {
                                     TemplateWorkoutSummaryView(workout: workout)
                                 }
                             }
+                            .onAppear{
+                                print(workout.supersets.count)
+                            }
                         }
                         .onDelete(perform: { indexSet in
                             //
@@ -62,7 +65,12 @@ struct WorkoutLibraryView: View {
                     }
                     .listStyle(.inset)
                     .navigationDestination(for: WorkoutTemplate.self) { workout in
-                        WorkoutTemplateDetailView(workout: workout)
+                        //WorkoutTemplateDetailView(workout: workout)
+                        WorkoutTemplateDetailView(
+                            viewModel: WorkoutTemplateDetailViewModel(workout: workout) { updatedWorkout in
+                                viewModel.updateWorkout(updatedWorkout)
+                            }
+                        )
                     }
                 }
                 //.padding()
@@ -89,14 +97,13 @@ struct WorkoutLibraryView: View {
                     }
                     .listStyle(.inset)
                     .navigationDestination(for: WorkoutTemplate.self) { workout in
-                        WorkoutTemplateDetailView(workout: workout)
+                        WorkoutTemplateDetailView(viewModel: WorkoutTemplateDetailViewModel(workout: workout))
                     }
                 }
                 
             }
         }
         
-        //Spacer()
     }
 }
 
