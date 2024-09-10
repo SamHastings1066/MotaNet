@@ -71,18 +71,18 @@ struct LoginView: View {
                 }
                 .foregroundStyle(.gray)
                 
-                HStack {
-                    Image("facebook-logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30)
-                    
-                    Text("Continue to Facebook")
-                        .font(.footnote)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color(.systemBlue))
-                }
-                .padding(.top, 8)
+//                HStack {
+//                    Image("facebook-logo")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 30)
+//                    
+//                    Text("Continue to Facebook")
+//                        .font(.footnote)
+//                        .fontWeight(.semibold)
+//                        .foregroundStyle(Color(.systemBlue))
+//                }
+//                .padding(.top, 8)
                 
                 Spacer()
                 

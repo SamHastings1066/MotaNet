@@ -14,6 +14,7 @@ import FirebaseFirestore
     // This will govern view routing/presentation logic
     
     var userSession: FirebaseAuth.User?
+    var loggedIn: Bool? = nil
     var currentUser: User?
     private let auth = Auth.auth()
     private var authStateHandler: AuthStateDidChangeListenerHandle?
@@ -24,7 +25,12 @@ import FirebaseFirestore
             authStateHandler = auth.addStateDidChangeListener { auth, user in
                 self.userSession = user
                 if self.userSession != nil {
-                    Task { try await self.loadUserData() }
+                    Task {
+                        try await self.loadUserData()
+                        self.loggedIn = true
+                    }
+                } else {
+                    self.loggedIn = false
                 }
             }
         }
@@ -56,9 +62,7 @@ import FirebaseFirestore
     
     /// Fetch and load user sata from the firestore database.
     func loadUserData() async throws {
-        //registerAuthStateHandler()
         guard let currentUid = self.userSession?.uid else { return }
-        //let snapshot = try await Firestore.firestore().collection("users").document(currentUid).getDocument()
         currentUser = try await UserService.fetchUser(withUid: currentUid)
     }
     

@@ -13,12 +13,25 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if AuthService.shared.userSession == nil {
-                LoginView()
-                    .environment(registrationViewModel)
-            } else if let currentUser = AuthService.shared.currentUser {
+            content()
+        }
+    }
+    
+    @ViewBuilder
+    func content() -> some View {
+        switch AuthService.shared.loggedIn {
+        case false:
+            LoginView()
+                .environment(registrationViewModel)
+        case true:
+            if let currentUser = AuthService.shared.currentUser {
                 MainTabView(user: currentUser)
+            } else {
+                Text("No current user")
             }
+        default:
+            // TODO: Create better loading screen. Possibly the Mota Icon?
+            Text("LOADING...")
         }
     }
 }
