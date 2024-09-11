@@ -76,6 +76,7 @@ struct WorkoutTemplate: Workout, Hashable {
     var startTime: Date = Date()
     var user: User?
     var userId: String?
+    var lastUpdated: Date = Date()
     
 }
 

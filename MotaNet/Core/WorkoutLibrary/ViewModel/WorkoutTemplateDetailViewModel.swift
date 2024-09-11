@@ -30,6 +30,7 @@ class WorkoutTemplateDetailViewModel{
     
     func saveWorkout() {
         do {
+            workout.lastUpdated = Date()
             try WorkoutService.updateTemplateWorkout(workout: workout)
             isWorkoutEditted = false
             onSave?(workout)

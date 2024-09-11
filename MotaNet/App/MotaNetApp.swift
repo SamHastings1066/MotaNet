@@ -49,7 +49,8 @@ struct MotaNetApp: App {
                 .task {
                     do {
                         // Run setup scripts here
-                        //try await FirestoreUploader.uploadMockWorkouts(uid: "kNGoA7iAzxbWxlztKNUF4ojsN6v2")
+                        //try await FirestoreUploader.uploadMockWorkouts(uid: "GxT4Mtm9cGYhNxIJPxQTwDNzBCL2") // BlackPanther
+                        //try await FirestoreUploader.uploadMockWorkouts(uid: "kNGoA7iAzxbWxlztKNUF4ojsN6v2") // Sam1066
 //                        let uploader = MockDataUploader()
 //                        try await uploader.createUser(email: "bp@example.com", password: "123456", username: "Black Panther")
                     } catch {
