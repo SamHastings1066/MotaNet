@@ -74,9 +74,7 @@ struct WorkoutLibraryView: View {
                                 }
                             }
                         }
-                        .onDelete(perform: { indexSet in
-                            //
-                        })
+                        .onDelete(perform: viewModel.deleteWorkout)
                     }
                     .listStyle(.inset)
                     .navigationDestination(for: WorkoutTemplate.self) { workout in

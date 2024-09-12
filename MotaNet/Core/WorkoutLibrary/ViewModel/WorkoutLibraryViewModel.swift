@@ -55,6 +55,20 @@ class WorkoutLibraryViewModel {
         }
     }
     
+    func deleteWorkout(at offsets: IndexSet) {
+        for index in offsets {
+            let workout = templateWorkoutsForUser[index]
+            Task {
+                do {
+                    try await WorkoutService.deleteTemplateWorkout(workout)
+                } catch {
+                    print("Could not delete workout: \(error.localizedDescription)")
+                }
+            }
+        }
+        templateWorkoutsForUser.remove(atOffsets: offsets)
+    }
+    
     func createNewWorkout(userId uid: String) -> WorkoutTemplate {
         WorkoutTemplate(name: "New Workout", supersets: [], userId: uid)
     }

@@ -32,9 +32,12 @@ struct WorkoutService {
     
     static func updateTemplateWorkout(workout: WorkoutTemplate) throws {
         let docRef = db.collection("WorkoutTemplates").document(workout.id)
-        
         try docRef.setData(from: workout)
-        
+    }
+    
+    static func deleteTemplateWorkout(_ workout: WorkoutTemplate) async throws {
+        let docRef = db.collection("WorkoutTemplates").document(workout.id)
+        try await docRef.delete()
     }
     
     static func fetchAllCompletedWorkouts() async throws -> [WorkoutCompleted] {
