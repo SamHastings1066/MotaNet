@@ -24,36 +24,25 @@ struct WorkoutTemplateDetailView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            List {
-                ForEach(viewModel.workout.supersets) {superset in
-                    NavigationLink(value: superset) {
-                        SupersetSummaryView(superset: superset)
-                    }
-                    
+            if viewModel.workout.supersets.isEmpty {
+                ContentUnavailableView {
+                    Label("Empty workout", systemImage: "figure.run")
+                } description: {
+                    Text("Add exercises by tapping the + button.")
                 }
-                .onDelete(perform: viewModel.removeSuperset)
-                .onMove(perform: viewModel.moveSuperset)
-            }
-            .navigationTitle(viewModel.workout.name)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: Superset.self) { superset in
-                SupersetDetailView(superset: superset)
-            }
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
-                        Button("Save") {
-                            viewModel.saveWorkout()
+            } else {
+                List {
+                    ForEach(viewModel.workout.supersets) {superset in
+                        NavigationLink(value: superset) {
+                            SupersetSummaryView(superset: superset)
                         }
-                        .disabled(!viewModel.isWorkoutEditted)
-                        EditButton()
+                        
                     }
+                    .onDelete(perform: viewModel.removeSuperset)
+                    .onMove(perform: viewModel.moveSuperset)
                 }
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Back", systemImage: "chevron.left") {
-                        viewModel.isWorkoutEditted ? workoutChangedAlertPresented = true : dismiss()
-                    }
+                .navigationDestination(for: Superset.self) { superset in
+                    SupersetDetailView(superset: superset)
                 }
                 
             }
@@ -82,35 +71,56 @@ struct WorkoutTemplateDetailView: View {
                 }
             }
             .padding()
-            .popover(isPresented: $isAddExercisePresented, content: {
-                AddExerciseView(workout: $viewModel.workout, supersetAdded: $supersetAdded)
-            })
-            .alert("Leave screen without saving changes?", isPresented: $workoutChangedAlertPresented) {
-                Button("OK"){
-                    dismiss()
-                }
-                Button("Cancel", role: .cancel) {
-                    
-                }
-            }
-            .alert("Rename your workout", isPresented: $viewModel.newlyCreated) {
-                TextField("Reps...", text: $newWorkoutName)
-                    .keyboardType(.numberPad)
-                    .font(.footnote)
-                Button("OK"){
-                    // update workout name
-                    viewModel.renameWorkout(newWorkoutName)
-                    viewModel.newlyCreated = false
+            
+        }
+        .navigationTitle(viewModel.workout.name)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack {
+                    Button("Save") {
+                        viewModel.saveWorkout()
+                    }
+                    .disabled(!viewModel.isWorkoutEditted)
+                    EditButton()
                 }
             }
-            .onChange(of: supersetAdded) { oldValue, newValue in
-                if newValue {
-                    viewModel.isWorkoutEditted = true
-                    supersetAdded = false
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Back", systemImage: "chevron.left") {
+                    viewModel.isWorkoutEditted ? workoutChangedAlertPresented = true : dismiss()
                 }
             }
+            
         }
         
+        .popover(isPresented: $isAddExercisePresented, content: {
+            AddExerciseView(workout: $viewModel.workout, supersetAdded: $supersetAdded)
+        })
+        .alert("Leave screen without saving changes?", isPresented: $workoutChangedAlertPresented) {
+            Button("OK"){
+                dismiss()
+            }
+            Button("Cancel", role: .cancel) {
+                
+            }
+        }
+        .alert("Rename your workout", isPresented: $viewModel.newlyCreated) {
+            TextField("Reps...", text: $newWorkoutName)
+                .keyboardType(.numberPad)
+                .font(.footnote)
+            Button("OK"){
+                // update workout name
+                viewModel.renameWorkout(newWorkoutName)
+                viewModel.newlyCreated = false
+            }
+        }
+        .onChange(of: supersetAdded) { oldValue, newValue in
+            if newValue {
+                viewModel.isWorkoutEditted = true
+                supersetAdded = false
+            }
+        }
     }
 }
 
