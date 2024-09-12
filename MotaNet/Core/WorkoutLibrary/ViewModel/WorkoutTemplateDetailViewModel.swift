@@ -45,4 +45,14 @@ class WorkoutTemplateDetailViewModel{
             print("Could not update workout: \(error.localizedDescription)")
         }
     }
+    
+    func addWorkoutToLog() {
+        let completedWorkout = WorkoutCompleted.from(template: workout)
+        do {
+            try WorkoutService.updateCompletedWorkout(workout: completedWorkout)
+        } catch {
+            print("Could not update completed workout: \(error.localizedDescription)")
+        }
+        
+    }
 }

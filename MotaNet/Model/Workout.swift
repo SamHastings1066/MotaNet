@@ -141,11 +141,29 @@ struct WorkoutCompleted: Workout, Hashable {
     var name: String
     var supersets: [Superset]
     var startTime: Date = Date()
-    var endTime: Date
     var user: User?
     var caption: String = ""
     var likes: Int = 0
     var userId: String?
+}
+
+extension WorkoutCompleted {
+    /// Creates a `WorkoutCompleted` object from a `WorkoutTemplate`.
+    /// - Parameter template: The `WorkoutTemplate` object to copy data from.
+    /// - Returns: A new `WorkoutCompleted` object with values copied from the `WorkoutTemplate`.
+    static func from(template: WorkoutTemplate) -> WorkoutCompleted {
+        WorkoutCompleted(
+            id: UUID().uuidString,              // Generates a new UUID to differentiate the completed workout.
+            ownerId: template.ownerId,
+            name: template.name,
+            supersets: template.supersets,
+            startTime: Date(),                  // Sets the start time to the current time.
+            user: template.user,
+            caption: "",                        // Set default values for `caption` and `likes`.
+            likes: 0,
+            userId: template.userId
+        )
+    }
 }
 
 extension WorkoutCompleted {
@@ -163,7 +181,6 @@ extension WorkoutCompleted {
                     )
                 ],
                 startTime: Date(),
-                endTime: Date().addingTimeInterval(TimeInterval(1)),
                 user: User.MOCK_USERS[0],
                 caption: "Light work.",
                 likes: 476,
@@ -188,7 +205,6 @@ extension WorkoutCompleted {
                     )
                 ],
                 startTime: Date(),
-                endTime: Date().addingTimeInterval(TimeInterval(1)),
                 user: User.MOCK_USERS[0],
                 caption: "Exhausted!",
                 likes: 476

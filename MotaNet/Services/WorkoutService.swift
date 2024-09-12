@@ -49,4 +49,9 @@ struct WorkoutService {
         let snapshot = try await Firestore.firestore().collection("WorkoutsCompleted").whereField("userId", isEqualTo: uid).getDocuments()
         return snapshot.documents.compactMap{ try? $0.data(as: WorkoutCompleted.self)}
     }
+    
+    static func updateCompletedWorkout(workout: WorkoutCompleted) throws {
+        let docRef = db.collection("WorkoutsCompleted").document(workout.id)
+        try docRef.setData(from: workout)
+    }
 }

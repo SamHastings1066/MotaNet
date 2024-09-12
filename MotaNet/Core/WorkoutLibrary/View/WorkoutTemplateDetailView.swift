@@ -105,6 +105,14 @@ struct WorkoutTemplateDetailView: View {
                 
             }
         }
+        .alert("Add to workout history?", isPresented: $addToLog) {
+            Button("OK"){
+                viewModel.addWorkoutToLog()
+            }
+            Button("Cancel", role: .cancel) {
+                
+            }
+        }
         .alert("Rename your workout", isPresented: $viewModel.newlyCreated) {
             TextField("Reps...", text: $newWorkoutName)
                 .keyboardType(.numberPad)
