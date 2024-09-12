@@ -12,9 +12,11 @@ class WorkoutTemplateDetailViewModel{
     var workout: WorkoutTemplate
     var isWorkoutEditted = false
     var onSave: ((WorkoutTemplate) -> Void)?
+    var newlyCreated: Bool
     
-    init(workout: WorkoutTemplate, onSave: ((WorkoutTemplate) -> Void)? = nil) {
+    init(workout: WorkoutTemplate, newlyCreated: Bool = false, onSave: ((WorkoutTemplate) -> Void)? = nil) {
         self.workout = workout
+        self.newlyCreated = newlyCreated
         self.onSave = onSave
     }
     
@@ -25,6 +27,11 @@ class WorkoutTemplateDetailViewModel{
     
     func moveSuperset(from source: IndexSet, to destination: Int) {
         workout.supersets.move(fromOffsets: source, toOffset: destination)
+        isWorkoutEditted = true
+    }
+    
+    func renameWorkout(_ name: String) {
+        workout.name = name
         isWorkoutEditted = true
     }
     

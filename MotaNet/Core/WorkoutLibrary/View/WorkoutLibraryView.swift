@@ -17,6 +17,7 @@ struct WorkoutLibraryView: View {
     @State private var selectedLibrary: LibraryType = .saved
     @State var searchText = ""
     @State var viewModel = WorkoutLibraryViewModel()
+    @State private var isNewlyCreatedWorkout = false
     let user: User
     
     var body: some View {
@@ -33,6 +34,22 @@ struct WorkoutLibraryView: View {
             .searchable(text: $searchText)
             .navigationTitle("Workout Library")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                Button(action: {
+                    isNewlyCreatedWorkout = true
+                }, label: {
+                    Image(systemName: "plus")
+                })
+            }
+            .navigationDestination(isPresented: $isNewlyCreatedWorkout) {
+                let newWorkout = viewModel.createNewWorkout(userId: user.id)
+                WorkoutTemplateDetailView(
+                    viewModel: WorkoutTemplateDetailViewModel(workout: newWorkout, newlyCreated: true){ updatedWorkout in
+                        viewModel.updateWorkout(updatedWorkout)
+                        viewModel.templateWorkoutsForUser.append(updatedWorkout)
+                    }
+                )
+            }
             
             
             // WorkoutTemplateList
@@ -49,6 +66,7 @@ struct WorkoutLibraryView: View {
                         ForEach(viewModel.templateWorkoutsForUser) { workout in
                             NavigationLink(value: workout) {
                                 VStack {
+                                    // TODO: Update XSmallUserView to use userId not user since workouts will no longer have users, or else maybe they should have a small amount of info under the user property. Hmm...
                                     if let user = workout.user {
                                         XSmallUserView(user: user)
                                     }

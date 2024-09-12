@@ -12,12 +12,14 @@ struct WorkoutTemplateDetailView: View {
     @State var viewModel: WorkoutTemplateDetailViewModel
     @State var isAddExercisePresented = false
     @State var addToLog = false
+    @State var newWorkoutName: String
     @State private var supersetAdded = false
     @State var workoutChangedAlertPresented = false
     @Environment(\.dismiss) private var dismiss
     
     init(viewModel: WorkoutTemplateDetailViewModel) {
         self._viewModel = State(initialValue: viewModel)
+        self._newWorkoutName = State(initialValue: viewModel.workout.name)
     }
     
     var body: some View {
@@ -91,6 +93,16 @@ struct WorkoutTemplateDetailView: View {
                     
                 }
             }
+            .alert("Rename your workout", isPresented: $viewModel.newlyCreated) {
+                TextField("Reps...", text: $newWorkoutName)
+                    .keyboardType(.numberPad)
+                    .font(.footnote)
+                Button("OK"){
+                    // update workout name
+                    viewModel.renameWorkout(newWorkoutName)
+                    viewModel.newlyCreated = false
+                }
+            }
             .onChange(of: supersetAdded) { oldValue, newValue in
                 if newValue {
                     viewModel.isWorkoutEditted = true
@@ -98,6 +110,7 @@ struct WorkoutTemplateDetailView: View {
                 }
             }
         }
+        
     }
 }
 

@@ -54,4 +54,8 @@ class WorkoutLibraryViewModel {
             templateWorkoutsForUser[index] = updatedWorkout
         }
     }
+    
+    func createNewWorkout(userId uid: String) -> WorkoutTemplate {
+        WorkoutTemplate(name: "New Workout", supersets: [], userId: uid)
+    }
 }
