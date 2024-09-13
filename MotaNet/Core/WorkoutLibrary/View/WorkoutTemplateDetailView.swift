@@ -15,6 +15,7 @@ struct WorkoutTemplateDetailView: View {
     @State var newWorkoutName: String
     @State private var supersetAdded = false
     @State var workoutChangedAlertPresented = false
+    @State private var toast: Toast? = nil
     @Environment(\.dismiss) private var dismiss
     
     init(viewModel: WorkoutTemplateDetailViewModel) {
@@ -108,6 +109,7 @@ struct WorkoutTemplateDetailView: View {
         .alert("Add to workout history?", isPresented: $addToLog) {
             Button("OK"){
                 viewModel.addWorkoutToLog()
+                toast = Toast(style: .success, message: "Workout added to history.")
             }
             Button("Cancel", role: .cancel) {
                 
@@ -123,6 +125,7 @@ struct WorkoutTemplateDetailView: View {
                 viewModel.newlyCreated = false
             }
         }
+        .toastView(toast: $toast)
         .onChange(of: supersetAdded) { oldValue, newValue in
             if newValue {
                 viewModel.isWorkoutEditted = true

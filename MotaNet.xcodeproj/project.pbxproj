@@ -77,6 +77,8 @@
 		84F8E5B92C89F2A600698A1E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5B82C89F2A600698A1E /* SettingsViewModel.swift */; };
 		84F8E5BB2C8A17EC00698A1E /* AddExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5BA2C8A17EC00698A1E /* AddExerciseViewModel.swift */; };
 		84F8E5BF2C94893600698A1E /* CompletedWorkoutsForDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5BE2C94893600698A1E /* CompletedWorkoutsForDayViewModel.swift */; };
+		84F8E5C12C949DE400698A1E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5C02C949DE400698A1E /* ToastView.swift */; };
+		84F8E5C32C949E5300698A1E /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5C22C949E5300698A1E /* ViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +167,8 @@
 		84F8E5B82C89F2A600698A1E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		84F8E5BA2C8A17EC00698A1E /* AddExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewModel.swift; sourceTree = "<group>"; };
 		84F8E5BE2C94893600698A1E /* CompletedWorkoutsForDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedWorkoutsForDayViewModel.swift; sourceTree = "<group>"; };
+		84F8E5C02C949DE400698A1E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		84F8E5C22C949E5300698A1E /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				8473A3092C6669BD00B92948 /* DateExtensions.swift */,
+				84F8E5C22C949E5300698A1E /* ViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				8473A3372C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift */,
 				8473A3392C66D55F00B92948 /* XSmallUserView.swift */,
 				8473A33B2C67A15500B92948 /* ExerciseImageView.swift */,
+				84F8E5C02C949DE400698A1E /* ToastView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -758,6 +764,7 @@
 				8440CD772C6A987C0082773B /* WorkoutTemplateDetailViewModel.swift in Sources */,
 				8473A3382C66D3FF00B92948 /* TemplateWorkoutSummaryView.swift in Sources */,
 				8473A31C2C66928600B92948 /* LoginView.swift in Sources */,
+				84F8E5C12C949DE400698A1E /* ToastView.swift in Sources */,
 				8473A30C2C667CC600B92948 /* FeedView.swift in Sources */,
 				8473A33E2C67AA3C00B92948 /* WorkoutTemplateDetailView.swift in Sources */,
 				84F8E5B52C88D2C900698A1E /* ProfileViewModel.swift in Sources */,
@@ -784,6 +791,7 @@
 				8473A3062C66629500B92948 /* CompletedWorkoutSummaryView.swift in Sources */,
 				8473A3222C66932800B92948 /* CreateUsernameView.swift in Sources */,
 				8473A3142C6691CC00B92948 /* LoginViewModel.swift in Sources */,
+				84F8E5C32C949E5300698A1E /* ViewExtensions.swift in Sources */,
 				84F8E5B92C89F2A600698A1E /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
