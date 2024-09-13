@@ -17,22 +17,23 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
+            List {
                 // Header
                 ProfileHeaderView(user: viewModel.user)
                 // post grid view
                 if viewModel.isLoading {
                     ProgressView()
                         .task {
-                            await viewModel.loadWorkouts()
+                            await viewModel.loadWorkoutsForUser()
                         }
                 } else {
-                    ForEach(viewModel.completedWorkouts) { workout in
+                    ForEach(viewModel.completedWorkoutsForUser) { workout in
                         CompletedWorkoutSummaryView(workout: workout)
                     }
-                    .padding()
+                    .onDelete(perform: viewModel.deleteWorkout)
                 }
             }
+            .listStyle(.inset)
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

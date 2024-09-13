@@ -12,7 +12,7 @@ import Firebase
 class ProfileViewModel {
     
     let user: User
-    var completedWorkouts: [WorkoutCompleted] = []
+    var completedWorkoutsForUser: [WorkoutCompleted] = []
     var isLoading = true
     var errorMessage: String?
     
@@ -44,21 +44,35 @@ class ProfileViewModel {
                 return
             }
             
-            self.completedWorkouts = documents.compactMap{ try? $0.data(as: WorkoutCompleted.self) }
+            self.completedWorkoutsForUser = documents.compactMap{ try? $0.data(as: WorkoutCompleted.self) }
             self.errorMessage = nil
             self.isLoading = false
         }
     }
     
-    func loadWorkouts() async {
+    func loadWorkoutsForUser() async {
         isLoading = true
         do {
-            completedWorkouts = try await WorkoutService.fetchAllCompletedWorkoutsForUser(uid: user.id)
+            completedWorkoutsForUser = try await WorkoutService.fetchAllCompletedWorkoutsForUser(uid: user.id)
             errorMessage = nil
         } catch {
             errorMessage = "Could not fetch workouts for user \(user.id): \(error.localizedDescription)"
         }
         isLoading = false
+    }
+    
+    func deleteWorkout(at offsets: IndexSet) {
+        for index in offsets {
+            let workout = completedWorkoutsForUser[index]
+            Task {
+                do {
+                    try await WorkoutService.deleteCompletedWorkout(workout)
+                } catch {
+                    print("Could not delete workout: \(error.localizedDescription)")
+                }
+            }
+        }
+        completedWorkoutsForUser.remove(atOffsets: offsets)
     }
     
 }
