@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct CompletedWorkoutsForDayView: View {
-    let workouts: [WorkoutCompleted]
+    @State var viewModel: CompletedWorkoutsForDayViewModel
+    
+    init(workouts: [WorkoutCompleted]) {
+        _viewModel = State(initialValue: CompletedWorkoutsForDayViewModel(completedWorkoutsForUser: workouts))
+    }
     
     var body: some View {
-        ForEach(workouts) { workout in
-            CompletedWorkoutSummaryView(workout: workout)
+        List {
+            ForEach(viewModel.completedWorkoutsForUser) { completedWorkout in
+                CompletedWorkoutSummaryView(workout: completedWorkout)
+            }
+            .onDelete(perform: viewModel.deleteWorkout)
         }
-        .padding()
+        .listStyle(.inset)
     }
 }
 
