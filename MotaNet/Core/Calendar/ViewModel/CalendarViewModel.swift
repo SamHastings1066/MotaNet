@@ -33,6 +33,7 @@ class CalendarViewModel {
         listener?.remove()
     }
     
+    // TODO: This function is repeated in FeedViewModel and ProfileViewModel. Refactor architecture.
     func addWorkoutsListener() {
         isLoading = true
         listener = WorkoutService.db.collection("WorkoutsCompleted").addSnapshotListener { [weak self] snapshot, error in

@@ -21,13 +21,13 @@ struct ProfileView: View {
                 // Header
                 ProfileHeaderView(user: viewModel.user)
                 // post grid view
-                if viewModel.isLoadingWorkouts {
+                if viewModel.isLoading {
                     ProgressView()
                         .task {
                             await viewModel.loadWorkouts()
                         }
                 } else {
-                    ForEach(viewModel.workouts) { workout in
+                    ForEach(viewModel.completedWorkouts) { workout in
                         CompletedWorkoutSummaryView(workout: workout)
                     }
                     .padding()

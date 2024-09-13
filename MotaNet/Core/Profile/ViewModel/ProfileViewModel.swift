@@ -6,26 +6,59 @@
 //
 
 import Foundation
+import Firebase
 
 @Observable
 class ProfileViewModel {
     
     let user: User
-    var workouts: [WorkoutCompleted] = []
-    var isLoadingWorkouts = true
+    var completedWorkouts: [WorkoutCompleted] = []
+    var isLoading = true
+    var errorMessage: String?
+    
+    private var listener: ListenerRegistration?
     
     init(user: User) {
         self.user = user
+        addWorkoutsListener()
+    }
+    
+    deinit {
+        listener?.remove()
+    }
+    
+    // TODO: This function is repeated in FeedViewModel and ProfileViewModel. Refactor architecture.
+    func addWorkoutsListener() {
+        isLoading = true
+        listener = WorkoutService.db.collection("WorkoutsCompleted").addSnapshotListener { [weak self] snapshot, error in
+            guard let self else { return }
+            if let error {
+                self.errorMessage = "Could not load completed workouts: \(error.localizedDescription)"
+                self.isLoading = false
+                return
+            }
+            
+            guard let documents = snapshot?.documents else {
+                self.errorMessage = "No workouts found."
+                self.isLoading = false
+                return
+            }
+            
+            self.completedWorkouts = documents.compactMap{ try? $0.data(as: WorkoutCompleted.self) }
+            self.errorMessage = nil
+            self.isLoading = false
+        }
     }
     
     func loadWorkouts() async {
-        isLoadingWorkouts = true
+        isLoading = true
         do {
-            workouts = try await WorkoutService.fetchAllCompletedWorkoutsForUser(uid: user.id)
+            completedWorkouts = try await WorkoutService.fetchAllCompletedWorkoutsForUser(uid: user.id)
+            errorMessage = nil
         } catch {
-            print("Could not fetch workouts for user \(user.id): \(error.localizedDescription)")
+            errorMessage = "Could not fetch workouts for user \(user.id): \(error.localizedDescription)"
         }
-        isLoadingWorkouts = false
+        isLoading = false
     }
     
 }
