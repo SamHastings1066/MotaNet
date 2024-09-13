@@ -54,4 +54,9 @@ struct WorkoutService {
         let docRef = db.collection("WorkoutsCompleted").document(workout.id)
         try docRef.setData(from: workout)
     }
+    
+    static func deleteCompletedWorkout(_ workout: WorkoutTemplate) async throws {
+        let docRef = db.collection("WorkoutsCompleted").document(workout.id)
+        try await docRef.delete()
+    }
 }
