@@ -13,22 +13,26 @@ class CalendarViewModel {
     let calendar = Calendar.current
     let startDate: Date
     let endDate: Date
-    var workouts: [WorkoutCompleted] = []
-    var isLoadingWorkouts =  true
+    var completedWorkouts: [WorkoutCompleted] = []
+    var isLoading =  true
+    var errorMessage: String?
     
     init(user: User) {
         self.user = user
-        self.startDate = calendar.date(from: DateComponents(year: 2024, month: 08, day: 01))!
-        self.endDate = calendar.date(from: DateComponents(year: 2024, month: 10, day: 30))!
+        let currentYear = calendar.component(.year, from: Date())
+        let currentMonth = calendar.component(.month, from: Date())
+        self.startDate = calendar.date(from: DateComponents(year: currentYear, month: currentMonth, day: 1))!
+        self.endDate = calendar.date(from: DateComponents(year: currentYear, month: currentMonth + 1, day: 30))!
     }
     
-    func loadWorkouts() async {
-        isLoadingWorkouts = true
+    func loadCompletedWorkoutsForUser() async {
+        isLoading = true
         do {
-            workouts = try await WorkoutService.fetchAllCompletedWorkoutsForUser(uid: user.id)
+            completedWorkouts = try await WorkoutService.fetchAllCompletedWorkoutsForUser(uid: user.id)
+            errorMessage = nil
         } catch {
-            print("Error loading workouts: \(error.localizedDescription)")
+            errorMessage = "Could not load completed workouts: \(error.localizedDescription)"
         }
-        isLoadingWorkouts = false
+        isLoading = false
     }
 }

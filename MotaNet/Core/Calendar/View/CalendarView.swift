@@ -21,10 +21,10 @@ struct CalendarView: View {
     
     var body: some View {
         NavigationStack(path: $presentedWorkouts) {
-            if viewModel.isLoadingWorkouts {
+            if viewModel.isLoading {
                 ProgressView()
                     .task {
-                        await viewModel.loadWorkouts()
+                        await viewModel.loadCompletedWorkoutsForUser()
                     }
             } else {
                     CalendarViewRepresentable(
@@ -36,7 +36,7 @@ struct CalendarView: View {
                     .onDaySelection { day in
                         selectedDate = viewModel.calendar.date(from: day.components)
                         if let date = viewModel.calendar.date(from: day.components) {
-                            let workoutsForSelectedDay = viewModel.workouts.filter { workout in
+                            let workoutsForSelectedDay = viewModel.completedWorkouts.filter { workout in
                                 viewModel.calendar.isDate(workout.startTime, equalTo: date, toGranularity: .day)
                             }
                             presentedWorkouts = [workoutsForSelectedDay]
@@ -45,7 +45,7 @@ struct CalendarView: View {
                     .days { day in
                         let dateComponents = day.components
                         if let date = viewModel.calendar.date(from: dateComponents) {
-                            let filteredWorkouts = viewModel.workouts.filter { workout in
+                            let filteredWorkouts = viewModel.completedWorkouts.filter { workout in
                                 viewModel.calendar.isDate(workout.startTime, equalTo: date, toGranularity: .day)
                             }
                             let totalVolume: Int = filteredWorkouts.reduce(0) { $0 + WorkoutStats.compute(from: $1).totalVolume }
