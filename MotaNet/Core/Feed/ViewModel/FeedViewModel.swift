@@ -28,8 +28,8 @@ class FeedViewModel {
         isLoading = true
         listener = WorkoutService.db.collection("WorkoutsCompleted")
             .addSnapshotListener { [weak self] snapshot, error in
-                guard let self = self else { return }
-                if let error = error {
+                guard let self else { return }
+                if let error {
                     self.errorMessage = "Could not load completed workouts: \(error.localizedDescription)"
                     self.isLoading = false
                     return
