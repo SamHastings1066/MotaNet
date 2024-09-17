@@ -43,7 +43,7 @@ struct WorkoutLibraryView: View {
                     Image(systemName: "plus")
                 })
             }
-            .sheet(isPresented: $isNewlyCreatedWorkout) {
+            .fullScreenCover(isPresented: $isNewlyCreatedWorkout) {
                 //let newWorkout = viewModel.createNewWorkout(userId: user.id)
                 NavigationStack {
                     WorkoutTemplateDetailView(

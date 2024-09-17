@@ -104,16 +104,16 @@ extension WorkoutTemplate {
                 name: "Upper body volume",
                 supersets: [
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [
+                        rounds: [Round(singlesets: [
                             Singleset(timestamp: Date(), weight: 70, reps: 14, exerciseId: "Dumbbell_Bench_Press", exerciseName: "Dumbbell Bench Press", exerciseImageUrls: ["Dumbbell_Bench_Press/0.jpg", "Dumbbell_Bench_Press/1.jpg"], primaryMuscles: [.quadriceps]),
                             Singleset(timestamp: Date(), weight: 75, reps: 14, exerciseId: "Seated_Cable_Rows", exerciseName: "Seated Cable Rows", exerciseImageUrls: ["Seated_Cable_Rows/0.jpg", "Seated_Cable_Rows/1.jpg"], primaryMuscles: [.quadriceps])
-                        ], rest: 90), count: 3)
+                        ], rest: 90)]
                     ),
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [
+                        rounds: [ Round(singlesets: [
                             Singleset(timestamp: Date(), weight: 80, reps: 11, exerciseId: "Wide-Grip_Lat_Pulldown", exerciseName: "Wide-Grip Lat Pulldown", exerciseImageUrls: ["Wide-Grip_Lat_Pulldown/0.jpg", "Wide-Grip_Lat_Pulldown/1.jpg"], primaryMuscles: [.quadriceps]),
                             Singleset(timestamp: Date(), weight: 55, reps: 10, exerciseId: "Dumbbell_Shoulder_Press", exerciseName: "Dumbbell Shoulder Press", exerciseImageUrls: ["Dumbbell_Shoulder_Press/0.jpg", "Dumbbell_Shoulder_Press/1.jpg"], primaryMuscles: [.quadriceps])
-                        ], rest: 120), count: 3)
+                        ], rest: 120)]
                     )
                 ],
                 startTime: Date(),
@@ -192,16 +192,16 @@ extension WorkoutCompleted {
                 name: "Upper body volume",
                 supersets: [
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [
+                        rounds: [Round(singlesets: [
                             Singleset(timestamp: Date(), weight: 70, reps: 20, exerciseId: "Dumbbell_Bench_Press", exerciseName: "Dumbbell Bench Press", exerciseImageUrls: ["Dumbbell_Bench_Press/0.jpg", "Dumbbell_Bench_Press/1.jpg"], primaryMuscles: [.quadriceps]),
                             Singleset(timestamp: Date(), weight: 75, reps: 14, exerciseId: "Seated_Cable_Rows", exerciseName: "Seated Cable Rows", exerciseImageUrls: ["Seated_Cable_Rows/0.jpg", "Seated_Cable_Rows/1.jpg"], primaryMuscles: [.quadriceps])
-                        ], rest: 90), count: 3)
+                        ], rest: 90)]
                     ),
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [
+                        rounds: [Round(singlesets: [
                             Singleset(timestamp: Date(), weight: 80, reps: 11, exerciseId: "Wide-Grip_Lat_Pulldown", exerciseName: "Wide-Grip Lat Pulldown", exerciseImageUrls: ["Wide-Grip_Lat_Pulldown/0.jpg", "Wide-Grip_Lat_Pulldown/1.jpg"], primaryMuscles: [.quadriceps]),
                             Singleset(timestamp: Date(), weight: 55, reps: 10, exerciseId: "Dumbbell_Shoulder_Press", exerciseName: "Dumbbell Shoulder Press", exerciseImageUrls: ["Dumbbell_Shoulder_Press/0.jpg", "Dumbbell_Shoulder_Press/1.jpg"], primaryMuscles: [.quadriceps])
-                        ], rest: 120), count: 3)
+                        ], rest: 120)]
                     )
                 ],
                 startTime: Date(),
