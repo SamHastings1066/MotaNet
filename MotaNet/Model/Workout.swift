@@ -264,6 +264,18 @@ struct Superset: Sendable, Identifiable, Hashable, Codable {
     
 }
 
+extension Superset {
+    static func createSuperset(numRounds: Int, exercise: Exercise, weight: Int = 0, reps: Int = 0, rest: Int = 60) throws -> Superset {
+        var rounds: [Round] = []
+        for _ in 0..<numRounds {
+            let singleset = Singleset(exercise: exercise, weight: weight, reps: reps, id: UUID().uuidString)
+            let round = Round(id: UUID().uuidString,singlesets: [singleset], rest: rest)
+            rounds.append(round)
+        }
+        return try Superset(rounds: rounds)
+    }
+}
+
 /// `Round` is a collection of singlesets.
 struct Round: Sendable, Identifiable, Codable {
     var id = UUID().uuidString
@@ -294,7 +306,8 @@ struct Singleset: Sendable, Identifiable, Codable {
         self.exerciseImageUrls = exerciseImageUrls
         self.primaryMuscles = primaryMuscles
     }
-    init(timestamp: Date = Date(), exercise: Exercise, weight: Int, reps: Int) {
+    
+    init(timestamp: Date = Date(), exercise: Exercise, weight: Int, reps: Int, id: String = UUID().uuidString) {
         self.timestamp = timestamp
         self.weight = weight
         self.reps = reps

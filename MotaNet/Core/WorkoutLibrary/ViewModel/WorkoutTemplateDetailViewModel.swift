@@ -17,6 +17,7 @@ class WorkoutTemplateDetailViewModel{
     init(workout: WorkoutTemplate, newlyCreated: Bool = false, onSave: ((WorkoutTemplate) -> Void)? = nil) {
         self.workout = workout
         self.newlyCreated = newlyCreated
+        print("Newly created: \(self.newlyCreated)")
         self.onSave = onSave
     }
     

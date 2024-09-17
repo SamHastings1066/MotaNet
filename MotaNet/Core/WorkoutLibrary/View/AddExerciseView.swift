@@ -26,7 +26,16 @@ struct AddExerciseView: View {
         do {
             let weightInt: Int = Int(weight) ?? 0
             let repsInt: Int = Int(reps) ?? 0
-            workout.supersets.append( try Superset(rounds: Array(repeating: Round(singlesets: [Singleset(exercise: exercise, weight: weightInt, reps: repsInt)], rest: 60), count: 3)))
+            
+            let newSuperset = try Superset.createSuperset(
+                numRounds: 1,
+                exercise: exercise,
+                weight: weightInt,
+                reps: repsInt,
+                rest: 60
+            )
+
+            workout.supersets.append(newSuperset)
             supersetAdded = true
         } catch {
             print("Error adding superset: \(error.localizedDescription)")
