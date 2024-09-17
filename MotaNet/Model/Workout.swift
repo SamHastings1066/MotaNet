@@ -88,10 +88,10 @@ extension WorkoutTemplate {
                 name: "Lower body volume",
                 supersets: [
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120), count: 3)
+                        rounds: [ Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120)]
                     ),
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120), count: 3)
+                        rounds: [ Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120)]
                     )
                 ],
                 startTime: Date(),
@@ -174,10 +174,10 @@ extension WorkoutCompleted {
                 name: "Lower body volume",
                 supersets: [
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120), count: 3)
+                        rounds: [Round(singlesets: [Singleset(timestamp: Date(), weight: 60, reps: 11, exerciseId: "Barbell_Squat", exerciseName: "Barbell Squat", exerciseImageUrls: ["Barbell_Squat/0.jpg", "Barbell_Squat/1.jpg"], primaryMuscles: [.quadriceps])], rest: 120)]
                     ),
                     try Superset(
-                        rounds: Array(repeating: Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120), count: 3)
+                        rounds: [Round(singlesets: [Singleset(timestamp: Date(), weight: 80, reps: 10, exerciseId: "Barbell_Deadlift", exerciseName: "Barbell Deadlift", exerciseImageUrls: ["Barbell_Deadlift/0.jpg", "Barbell_Deadlift/1.jpg"], primaryMuscles: [.glutes, .quadriceps])], rest: 120)]
                     )
                 ],
                 startTime: Date(),
