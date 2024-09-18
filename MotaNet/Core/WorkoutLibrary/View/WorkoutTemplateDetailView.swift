@@ -42,9 +42,7 @@ struct WorkoutTemplateDetailView: View {
                     .onDelete(perform: viewModel.removeSuperset)
                     .onMove(perform: viewModel.moveSuperset)
                 }
-                .navigationDestination(for: Superset.self) { superset in
-                    SupersetDetailView(superset: superset)
-                }
+                
                 
             }
             HStack {
@@ -94,7 +92,9 @@ struct WorkoutTemplateDetailView: View {
             }
             
         }
-        
+        .navigationDestination(for: Superset.self) { superset in
+            SupersetDetailView(superset: superset)
+        }
         .popover(isPresented: $isAddExercisePresented, content: {
             AddExerciseView(workout: $viewModel.workout, supersetAdded: $supersetAdded)
         })
