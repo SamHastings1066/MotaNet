@@ -59,7 +59,8 @@ protocol Workout: Identifiable, Sendable, Codable {
     var userId: String? { get set }
 }
 
-struct WorkoutTemplate: Workout, Hashable {
+@Observable
+final class WorkoutTemplate: Workout, Hashable {
     
     static func == (lhs: WorkoutTemplate, rhs: WorkoutTemplate) -> Bool {
         lhs.id == rhs.id
@@ -77,6 +78,17 @@ struct WorkoutTemplate: Workout, Hashable {
     var user: User?
     var userId: String?
     var lastUpdated: Date = Date()
+    
+    init(id: String = UUID().uuidString, ownerId: String = UUID().uuidString, name: String, supersets: [Superset], startTime: Date = Date(), user: User? = nil, userId: String? = nil, lastUpdated: Date = Date()) {
+        self.id = id
+        self.ownerId = ownerId
+        self.name = name
+        self.supersets = supersets
+        self.startTime = startTime
+        self.user = user
+        self.userId = userId
+        self.lastUpdated = lastUpdated
+    }
     
 }
 
@@ -96,7 +108,8 @@ extension WorkoutTemplate {
                 ],
                 startTime: Date(),
                 user: User.MOCK_USERS[0],
-                userId: "kNGoA7iAzxbWxlztKNUF4ojsN6v2"
+                userId: "kNGoA7iAzxbWxlztKNUF4ojsN6v2",
+                lastUpdated: Date()
             )
             mockWorkouts.append(lowerBodyVolume)
             
@@ -117,7 +130,8 @@ extension WorkoutTemplate {
                     )
                 ],
                 startTime: Date(),
-                user: User.MOCK_USERS[0]
+                user: User.MOCK_USERS[0],
+                lastUpdated: Date()
             )
             mockWorkouts.append(upperBodyVolume)
         } catch {
@@ -127,7 +141,8 @@ extension WorkoutTemplate {
     }
 }
 
-struct WorkoutCompleted: Workout, Hashable {
+@Observable
+final class WorkoutCompleted: Workout, Hashable {
     static func == (lhs: WorkoutCompleted, rhs: WorkoutCompleted) -> Bool {
         lhs.id == rhs.id
     }
@@ -145,6 +160,18 @@ struct WorkoutCompleted: Workout, Hashable {
     var caption: String = ""
     var likes: Int = 0
     var userId: String?
+    
+    init(id: String = UUID().uuidString, ownerId: String = UUID().uuidString, name: String, supersets: [Superset], startTime: Date = Date(), user: User? = nil, caption: String, likes: Int, userId: String? = nil) {
+        self.id = id
+        self.ownerId = ownerId
+        self.name = name
+        self.supersets = supersets
+        self.startTime = startTime
+        self.user = user
+        self.caption = caption
+        self.likes = likes
+        self.userId = userId
+    }
 }
 
 extension WorkoutCompleted {
