@@ -18,7 +18,6 @@ struct WorkoutLibraryView: View {
     @State var searchText = ""
     @State var viewModel = WorkoutLibraryViewModel()
     @State private var isNewlyCreatedWorkout = false
-    @State var newWorkout = WorkoutTemplate(name: "New Workout", supersets: [])
     let user: User
     
     var body: some View {
@@ -38,7 +37,6 @@ struct WorkoutLibraryView: View {
             .toolbar {
                 Button(action: {
                     isNewlyCreatedWorkout = true
-                    newWorkout = viewModel.createNewWorkout(userId: user.id)
                 }, label: {
                     Image(systemName: "plus")
                 })
@@ -47,7 +45,7 @@ struct WorkoutLibraryView: View {
                 //let newWorkout = viewModel.createNewWorkout(userId: user.id)
                 NavigationStack {
                     WorkoutTemplateDetailView(
-                        viewModel: WorkoutTemplateDetailViewModel(workout: newWorkout, newlyCreated: true){ updatedWorkout in
+                        viewModel: WorkoutTemplateDetailViewModel(workout: viewModel.createNewWorkout(userId: user.id), newlyCreated: true){ updatedWorkout in
                             viewModel.updateWorkout(updatedWorkout)
                         }
                     )
