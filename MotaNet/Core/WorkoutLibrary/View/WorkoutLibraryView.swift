@@ -49,8 +49,6 @@ struct WorkoutLibraryView: View {
                     WorkoutTemplateDetailView(
                         viewModel: WorkoutTemplateDetailViewModel(workout: newWorkout, newlyCreated: true){ updatedWorkout in
                             viewModel.updateWorkout(updatedWorkout)
-                            // TODO: Must change this: the below line will keep adding another workout to the viewModel list every time the Save button is tapped!
-                            viewModel.templateWorkoutsForUser.append(updatedWorkout)
                         }
                     )
                 }

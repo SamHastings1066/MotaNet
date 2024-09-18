@@ -52,6 +52,8 @@ class WorkoutLibraryViewModel {
     func updateWorkout(_ updatedWorkout: WorkoutTemplate) {
         if let index = templateWorkoutsForUser.firstIndex(where: { $0.id == updatedWorkout.id }) {
             templateWorkoutsForUser[index] = updatedWorkout
+        } else {
+            templateWorkoutsForUser.append(updatedWorkout)
         }
     }
     
