@@ -307,7 +307,8 @@ extension Superset {
 extension Superset {
     func addRound() {
         guard let lastRound = rounds.last else { return }
-        rounds.append(lastRound)
+        let newRound = lastRound.copy()
+        rounds.append(newRound)
     }
 }
 
@@ -326,6 +327,14 @@ final class Round: Sendable, Identifiable, Codable {
         self.rest = rest
     }
     
+    func copy() -> Round {
+        return Round(
+            id: UUID().uuidString,
+            timestamp: self.timestamp,
+            singlesets: self.singlesets, // Assumes singlesets are value types or correctly conform to `Codable`
+            rest: self.rest
+        )
+    }
 }
 
 /// `SingleSet` is the smallest component of a workout. It comprises the exercise being undertaken as well as the parameters of that exercise e.g. weight, repetitions.
