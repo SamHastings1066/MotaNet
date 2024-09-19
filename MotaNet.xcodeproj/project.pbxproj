@@ -79,6 +79,7 @@
 		84F8E5BF2C94893600698A1E /* CompletedWorkoutsForDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5BE2C94893600698A1E /* CompletedWorkoutsForDayViewModel.swift */; };
 		84F8E5C12C949DE400698A1E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5C02C949DE400698A1E /* ToastView.swift */; };
 		84F8E5C32C949E5300698A1E /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5C22C949E5300698A1E /* ViewExtensions.swift */; };
+		84FF16FE2C9C602900C09CFC /* SupersetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF16FD2C9C602900C09CFC /* SupersetDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		84F8E5BE2C94893600698A1E /* CompletedWorkoutsForDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedWorkoutsForDayViewModel.swift; sourceTree = "<group>"; };
 		84F8E5C02C949DE400698A1E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		84F8E5C22C949E5300698A1E /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		84FF16FD2C9C602900C09CFC /* SupersetDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -553,6 +555,7 @@
 				8440CD762C6A987C0082773B /* WorkoutTemplateDetailViewModel.swift */,
 				84F8E5AC2C875A7F00698A1E /* WorkoutLibraryViewModel.swift */,
 				84F8E5BA2C8A17EC00698A1E /* AddExerciseViewModel.swift */,
+				84FF16FD2C9C602900C09CFC /* SupersetDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				8473A31A2C66923600B92948 /* UserService.swift in Sources */,
 				8473A2FE2C658F0700B92948 /* Workout.swift in Sources */,
 				8473A3262C66935600B92948 /* CompleteSignUpView.swift in Sources */,
+				84FF16FE2C9C602900C09CFC /* SupersetDetailViewModel.swift in Sources */,
 				8473A3202C6692F500B92948 /* AddEmailView.swift in Sources */,
 				8440CD7B2C6AA00B0082773B /* ExerciseRowView.swift in Sources */,
 				8440CD732C68431F0082773B /* SupersetDetailView.swift in Sources */,

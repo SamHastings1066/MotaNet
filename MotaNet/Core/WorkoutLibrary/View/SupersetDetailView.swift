@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct SupersetDetailView: View {
-    let superset: Superset
+    @State var viewModel: SupersetDetailViewModel
     
-    // TODO: Consier moving to ViewModel
-    private func addRound() {
-        superset.addRound()
+    init(superset: Superset) {
+        _viewModel = State(initialValue: SupersetDetailViewModel(superset: superset))
     }
     
     var body: some View {
         List {
-            ForEach(superset.rounds) { round in
+            ForEach(viewModel.superset.rounds) { round in
                 VStack(alignment: .listRowSeparatorLeading) {
                     ForEach(round.singlesets) { singletset in
                         SinglesetView(imageUrls: singletset.exerciseImageUrls, exerciseName: singletset.exerciseName, reps: singletset.reps, weight: singletset.weight)
@@ -34,7 +33,7 @@ struct SupersetDetailView: View {
                 }
             }
             Button {
-                addRound()
+                viewModel.addRound()
             } label: {
                 HStack {
                     Spacer()
