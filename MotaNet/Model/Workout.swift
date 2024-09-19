@@ -297,7 +297,7 @@ extension Superset {
         var rounds: [Round] = []
         for _ in 0..<numRounds {
             let singleset = Singleset(exercise: exercise, weight: weight, reps: reps, id: UUID().uuidString)
-            let round = Round(id: UUID().uuidString,singlesets: [singleset], rest: rest)
+            let round = Round(id: UUID().uuidString, singlesets: [singleset], rest: rest)
             rounds.append(round)
         }
         return try Superset(rounds: rounds)
@@ -312,16 +312,25 @@ extension Superset {
 }
 
 /// `Round` is a collection of singlesets.
-struct Round: Sendable, Identifiable, Codable {
+@Observable
+final class Round: Sendable, Identifiable, Codable {
     var id = UUID().uuidString
-    var timestamp: Date = Date()
-    var singlesets: [Singleset] = []
-    var rest: Int = 0
+    var timestamp: Date
+    var singlesets: [Singleset]
+    var rest: Int
+    
+    init(id: String = UUID().uuidString, timestamp: Date = Date(), singlesets: [Singleset] = [], rest: Int = 0) {
+        self.id = id
+        self.timestamp = timestamp
+        self.singlesets = singlesets
+        self.rest = rest
+    }
     
 }
 
 /// `SingleSet` is the smallest component of a workout. It comprises the exercise being undertaken as well as the parameters of that exercise e.g. weight, repetitions.
-struct Singleset: Sendable, Identifiable, Codable {
+@Observable
+final class Singleset: Sendable, Identifiable, Codable {
     var id = UUID().uuidString
     var timestamp: Date = Date()
     //var exercise: Exercise
