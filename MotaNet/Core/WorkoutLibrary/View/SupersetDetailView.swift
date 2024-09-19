@@ -9,6 +9,12 @@ import SwiftUI
 
 struct SupersetDetailView: View {
     let superset: Superset
+    
+    // TODO: Consier moving to ViewModel
+    private func addRound() {
+        superset.addRound()
+    }
+    
     var body: some View {
         List {
             ForEach(superset.rounds) { round in
@@ -27,6 +33,18 @@ struct SupersetDetailView: View {
                     }
                 }
             }
+            Button {
+                addRound()
+            } label: {
+                HStack {
+                    Spacer()
+                    Image(systemName: "plus")
+                    Text("Add round")
+                    Spacer()
+                }
+            }
+            
+
         }
         .listStyle(.inset)
     }

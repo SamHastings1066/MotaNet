@@ -245,7 +245,8 @@ extension WorkoutCompleted {
 }
 
 /// `SuperSet` is a collection of  rounds.
-struct Superset: Sendable, Identifiable, Hashable, Codable {
+@Observable
+final class Superset: Sendable, Identifiable, Hashable, Codable {
     
     static func == (lhs: Superset, rhs: Superset) -> Bool {
         lhs.id == rhs.id
@@ -300,6 +301,13 @@ extension Superset {
             rounds.append(round)
         }
         return try Superset(rounds: rounds)
+    }
+}
+
+extension Superset {
+    func addRound() {
+        guard let lastRound = rounds.last else { return }
+        rounds.append(lastRound)
     }
 }
 
