@@ -14,7 +14,6 @@ struct SupersetDetailView: View {
     init(supersetEditContext: SupersetEditContext) {
         _viewModel = State(initialValue: SupersetDetailViewModel(superset: supersetEditContext.superset))
         self._isWorkoutEdited = supersetEditContext.isWorkoutEdited
-        print("SupersetDetailView initialised")
     }
     
     var body: some View {
@@ -34,6 +33,10 @@ struct SupersetDetailView: View {
                         Spacer()
                     }
                 }
+            }
+            .onDelete { indexSet in
+                viewModel.removeRound(at: indexSet)
+                isWorkoutEdited = true
             }
             Button {
                 viewModel.addRound()

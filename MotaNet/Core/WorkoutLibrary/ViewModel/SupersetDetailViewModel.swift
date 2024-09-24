@@ -19,4 +19,8 @@ class SupersetDetailViewModel {
         superset.addRound()
     }
     
+    func removeRound(at offsets: IndexSet) {
+        superset.rounds.remove(atOffsets: offsets)
+    }
+    
 }
