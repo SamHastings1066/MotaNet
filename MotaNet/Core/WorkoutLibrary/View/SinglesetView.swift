@@ -10,9 +10,11 @@ import SwiftUI
 struct SinglesetView: View {
     
     @State var viewModel: SinglesetViewModel
+    @Binding var isWorkoutEdited: Bool
     
-    init(singleset: Singleset) {
+    init(singleset: Singleset, isWorkoutEdited: Binding<Bool>) {
         _viewModel = State(initialValue: SinglesetViewModel(singleset: singleset))
+        _isWorkoutEdited = isWorkoutEdited
     }
     
     var body: some View {
@@ -25,6 +27,7 @@ struct SinglesetView: View {
             }
         } set: { reps in
             viewModel.reps = Int(reps)
+            isWorkoutEdited = true
         }
         
         let weightBinding: Binding<String> = Binding {
@@ -35,6 +38,7 @@ struct SinglesetView: View {
             }
         } set: { weight in
             viewModel.weight = Int(weight)
+            isWorkoutEdited = true
         }
         
         HStack {
@@ -72,5 +76,5 @@ struct SinglesetView: View {
 }
 
 #Preview {
-    SinglesetView(singleset: WorkoutTemplate.MOCK_WORKOUTS[0].supersets[0].rounds[0].singlesets[0])
+    SinglesetView(singleset: WorkoutTemplate.MOCK_WORKOUTS[0].supersets[0].rounds[0].singlesets[0], isWorkoutEdited: .constant(false))
 }

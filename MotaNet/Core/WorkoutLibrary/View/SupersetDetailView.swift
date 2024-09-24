@@ -21,7 +21,7 @@ struct SupersetDetailView: View {
             ForEach(viewModel.superset.rounds) { round in
                 VStack(alignment: .listRowSeparatorLeading) {
                     ForEach(round.singlesets) { singleset in
-                        SinglesetView(singleset: singleset)
+                        SinglesetView(singleset: singleset, isWorkoutEdited: $isWorkoutEdited)
                     }
                     HStack {
                         Spacer()
