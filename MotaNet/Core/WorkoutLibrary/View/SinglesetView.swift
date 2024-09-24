@@ -8,29 +8,32 @@
 import SwiftUI
 
 struct SinglesetView: View {
-    let imageUrls: [String]
-    let exerciseName: String
-    let reps: Int?
-    let weight: Int?
+    
+    @State var viewModel: SinglesetViewModel
+    
+    init(singleset: Singleset) {
+        _viewModel = State(initialValue: SinglesetViewModel(singleset: singleset))
+    }
+    
     var body: some View {
         HStack {
-            ExerciseImageView(imageURLs: imageUrls, size: .small)
+            ExerciseImageView(imageURLs: viewModel.imageUrls, size: .small)
                 .padding(.horizontal,4)
             //Spacer()
             VStack(alignment: .leading) {
-                Text(exerciseName)
+                Text(viewModel.exerciseName)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 HStack {
                     VStack{
                         Text("Reps")
-                        Text(reps == nil ? "-" : "\(reps!)")
+                        Text(viewModel.reps == nil ? "-" : "\(viewModel.reps!)")
                     }
                     .font(.footnote)
                     //.fontWeight(.semibold)
                     VStack{
                         Text("Weight")
-                        Text(weight == nil ? "-" : "\(weight!)")
+                        Text(viewModel.weight == nil ? "-" : "\(viewModel.weight!)")
                     }
                     .font(.footnote)
                     //.fontWeight(.semibold)
@@ -41,5 +44,5 @@ struct SinglesetView: View {
 }
 
 #Preview {
-    SinglesetView(imageUrls: Exercise.MOCK_EXERCISES[0].images, exerciseName: Exercise.MOCK_EXERCISES[0].name, reps: 12, weight: 70)
+    SinglesetView(singleset: WorkoutTemplate.MOCK_WORKOUTS[0].supersets[0].rounds[0].singlesets[0])
 }

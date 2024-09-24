@@ -20,8 +20,8 @@ struct SupersetDetailView: View {
         List {
             ForEach(viewModel.superset.rounds) { round in
                 VStack(alignment: .listRowSeparatorLeading) {
-                    ForEach(round.singlesets) { singletset in
-                        SinglesetView(imageUrls: singletset.exerciseImageUrls, exerciseName: singletset.exerciseName, reps: singletset.reps, weight: singletset.weight)
+                    ForEach(round.singlesets) { singleset in
+                        SinglesetView(singleset: singleset)
                     }
                     HStack {
                         Spacer()

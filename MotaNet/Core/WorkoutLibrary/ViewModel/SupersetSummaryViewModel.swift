@@ -15,24 +15,17 @@ class SupersetSummaryViewModel {
         self.superset = superset
     }
     
-//    var uniqueExercises: [Exercise] {
-//        superset.rounds[0].singlesets.map{ $0.exercise}
-//    }
-    
-    var exerciseSummaries: [ExerciseSummary] {
+    var representativeSinglesets: [Singleset] {
         let exerciseCount = superset.rounds[0].singlesets.count
-        var summaries = [ExerciseSummary]()
+        var summaries = [Singleset]()
         for exerciseIdx in 0..<exerciseCount {
             let firstRoundReps = superset.rounds[0].singlesets[exerciseIdx].reps
             let firstRoundWeight = superset.rounds[0].singlesets[exerciseIdx].weight
             let consistentReps = superset.rounds.allSatisfy{$0.singlesets[exerciseIdx].reps == firstRoundReps} ? firstRoundReps : nil
             let consistentWeight = superset.rounds.allSatisfy{$0.singlesets[exerciseIdx].weight == firstRoundWeight} ? firstRoundWeight : nil
-            summaries.append(ExerciseSummary(
-                exerciseName: superset.rounds[0].singlesets[exerciseIdx].exerciseName,
-                imageUrls: superset.rounds[0].singlesets[exerciseIdx].exerciseImageUrls,
-                consistentReps: consistentReps,
-                consistentWeight: consistentWeight
-            ))
+            summaries.append(
+                Singleset(timestamp: Date(), weight: consistentWeight ?? 0, reps: consistentReps ?? 0, exerciseId: UUID().uuidString, exerciseName: superset.rounds[0].singlesets[exerciseIdx].exerciseName, exerciseImageUrls: superset.rounds[0].singlesets[exerciseIdx].exerciseImageUrls, primaryMuscles: [])
+            )
         }
         return summaries
     }
@@ -45,12 +38,4 @@ class SupersetSummaryViewModel {
     var numRounds: Int {
         superset.rounds.count
     }
-}
-
-struct ExerciseSummary: Identifiable {
-    let id = UUID()
-    var exerciseName: String
-    var imageUrls: [String]
-    var consistentReps: Int?
-    var consistentWeight: Int?
 }
