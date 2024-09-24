@@ -15,26 +15,6 @@ struct CollapsedSinglesetView: View {
     }
     
     var body: some View {
-        // TODO: move these binding definitions out of view body
-        let repsBinding: Binding<String> = Binding {
-            if let reps = viewModel.reps {
-                return String(reps)
-            } else {
-                return "-"
-            }
-        } set: { reps in
-            viewModel.reps = Int(reps)
-        }
-        
-        let weightBinding: Binding<String> = Binding {
-            if let weight = viewModel.weight {
-                return String(weight)
-            } else {
-                return "-"
-            }
-        } set: { weight in
-            viewModel.weight = Int(weight)
-        }
         
         HStack {
             ExerciseImageView(imageURLs: viewModel.imageUrls, size: .small)

@@ -28,8 +28,6 @@ struct SupersetDetailView: View {
                         Text("Rest")
                             .font(.footnote)
                             .fontWeight(.semibold)
-                        //                        Text("\(round.rest)")
-                        //                            .font(.footnote)
                         TextField(
                             "", text: Binding{
                                 
