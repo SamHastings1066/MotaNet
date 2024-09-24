@@ -17,9 +17,8 @@ struct SinglesetView: View {
         _isWorkoutEdited = isWorkoutEdited
     }
     
-    var body: some View {
-        // TODO: move these binding definitions out of view body
-        let repsBinding: Binding<String> = Binding {
+    private var repsBinding: Binding<String> {
+        Binding<String> {
             if let reps = viewModel.reps {
                 return String(reps)
             } else {
@@ -29,8 +28,10 @@ struct SinglesetView: View {
             viewModel.reps = Int(reps)
             isWorkoutEdited = true
         }
-        
-        let weightBinding: Binding<String> = Binding {
+    }
+    
+    private var weightBinding: Binding<String> {
+        Binding<String> {
             if let weight = viewModel.weight {
                 return String(weight)
             } else {
@@ -40,6 +41,9 @@ struct SinglesetView: View {
             viewModel.weight = Int(weight)
             isWorkoutEdited = true
         }
+    }
+    
+    var body: some View {
         
         HStack {
             ExerciseImageView(imageURLs: viewModel.imageUrls, size: .small)
@@ -56,7 +60,6 @@ struct SinglesetView: View {
                             .fixedSize()
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .keyboardType(.numberPad)
-                        //Text(viewModel.reps == nil ? "-" : "\(viewModel.reps!)")
                     }
                     .font(.footnote)
                     VStack{
@@ -65,10 +68,8 @@ struct SinglesetView: View {
                             .fixedSize()
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .keyboardType(.numberPad)
-                        //Text(viewModel.weight == nil ? "-" : "\(viewModel.weight!)")
                     }
                     .font(.footnote)
-                    //.fontWeight(.semibold)
                 }
             }
         }
