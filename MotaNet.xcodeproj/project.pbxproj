@@ -81,6 +81,8 @@
 		84F8E5C32C949E5300698A1E /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E5C22C949E5300698A1E /* ViewExtensions.swift */; };
 		84FF16FE2C9C602900C09CFC /* SupersetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF16FD2C9C602900C09CFC /* SupersetDetailViewModel.swift */; };
 		84FF17012CA313A900C09CFC /* SinglesetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF17002CA313A800C09CFC /* SinglesetViewModel.swift */; };
+		84FF17032CA3262500C09CFC /* CollapsedSinglesetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF17022CA3262500C09CFC /* CollapsedSinglesetView.swift */; };
+		84FF17052CA3278900C09CFC /* CollapsedSinglesetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF17042CA3278900C09CFC /* CollapsedSinglesetViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +175,8 @@
 		84F8E5C22C949E5300698A1E /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		84FF16FD2C9C602900C09CFC /* SupersetDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetDetailViewModel.swift; sourceTree = "<group>"; };
 		84FF17002CA313A800C09CFC /* SinglesetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglesetViewModel.swift; sourceTree = "<group>"; };
+		84FF17022CA3262500C09CFC /* CollapsedSinglesetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedSinglesetView.swift; sourceTree = "<group>"; };
+		84FF17042CA3278900C09CFC /* CollapsedSinglesetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedSinglesetViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -559,6 +563,7 @@
 				84F8E5BA2C8A17EC00698A1E /* AddExerciseViewModel.swift */,
 				84FF16FD2C9C602900C09CFC /* SupersetDetailViewModel.swift */,
 				84FF17002CA313A800C09CFC /* SinglesetViewModel.swift */,
+				84FF17042CA3278900C09CFC /* CollapsedSinglesetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -573,6 +578,7 @@
 				8440CD742C6846770082773B /* SinglesetView.swift */,
 				8440CD782C6A9EFF0082773B /* AddExerciseView.swift */,
 				8440CD7A2C6AA00B0082773B /* ExerciseRowView.swift */,
+				84FF17022CA3262500C09CFC /* CollapsedSinglesetView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -746,6 +752,7 @@
 				8440CD842C6E85E80082773B /* ExerciseDownloader.swift in Sources */,
 				8473A3162C6691D700B92948 /* RegistrationViewModel.swift in Sources */,
 				8473A2F62C65483A00B92948 /* EditProfileView.swift in Sources */,
+				84FF17032CA3262500C09CFC /* CollapsedSinglesetView.swift in Sources */,
 				8473A3042C6646F900B92948 /* CompletedWorkoutSummaryListView.swift in Sources */,
 				84F8E5BB2C8A17EC00698A1E /* AddExerciseViewModel.swift in Sources */,
 				8473A2F42C6547E700B92948 /* ProfileStatView.swift in Sources */,
@@ -777,6 +784,7 @@
 				847763502C87488200D62511 /* WorkoutService.swift in Sources */,
 				84F8E5B32C88CD8900698A1E /* CalendarViewModel.swift in Sources */,
 				84FF17012CA313A900C09CFC /* SinglesetViewModel.swift in Sources */,
+				84FF17052CA3278900C09CFC /* CollapsedSinglesetViewModel.swift in Sources */,
 				8473A30E2C667CD100B92948 /* FeedCell.swift in Sources */,
 				8473A30A2C6669BD00B92948 /* DateExtensions.swift in Sources */,
 				8436852A2C6542CF00FA935E /* ProfileView.swift in Sources */,

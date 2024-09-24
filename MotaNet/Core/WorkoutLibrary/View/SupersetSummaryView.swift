@@ -18,8 +18,8 @@ struct SupersetSummaryView: View {
     var body: some View {
         HStack {
             VStack(alignment:.leading) {
-                ForEach(viewModel.representativeSinglesets) { singleset in
-                    SinglesetView(singleset: singleset)
+                ForEach(viewModel.collapsedSinglesets) { collapsedSingleset in
+                    CollapsedSinglesetView(collapsedSingleset: collapsedSingleset)
                 }
             }
             Spacer()

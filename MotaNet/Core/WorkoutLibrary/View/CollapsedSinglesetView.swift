@@ -1,18 +1,17 @@
 //
-//  SinglesetView.swift
+//  CollapsedSinglesetView.swift
 //  MotaNet
 //
-//  Created by sam hastings on 10/08/2024.
+//  Created by sam hastings on 24/09/2024.
 //
 
 import SwiftUI
 
-struct SinglesetView: View {
+struct CollapsedSinglesetView: View {
+    @State var viewModel: CollapsedSinglesetViewModel
     
-    @State var viewModel: SinglesetViewModel
-    
-    init(singleset: Singleset) {
-        _viewModel = State(initialValue: SinglesetViewModel(singleset: singleset))
+    init(collapsedSingleset: CollapsedSingleset) {
+        _viewModel = State(initialValue: CollapsedSinglesetViewModel(collapsedSingleset: collapsedSingleset))
     }
     
     var body: some View {
@@ -48,23 +47,14 @@ struct SinglesetView: View {
                 HStack {
                     VStack{
                         Text("Reps")
-                        TextField("", text: repsBinding)
-                            .fixedSize()
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numberPad)
-                        //Text(viewModel.reps == nil ? "-" : "\(viewModel.reps!)")
+                        Text(viewModel.reps == nil ? "-" : "\(viewModel.reps!)")
                     }
                     .font(.footnote)
                     VStack{
                         Text("Weight")
-                        TextField("", text: weightBinding)
-                            .fixedSize()
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(.numberPad)
-                        //Text(viewModel.weight == nil ? "-" : "\(viewModel.weight!)")
+                        Text(viewModel.weight == nil ? "-" : "\(viewModel.weight!)")
                     }
                     .font(.footnote)
-                    //.fontWeight(.semibold)
                 }
             }
         }
@@ -72,5 +62,5 @@ struct SinglesetView: View {
 }
 
 #Preview {
-    SinglesetView(singleset: WorkoutTemplate.MOCK_WORKOUTS[0].supersets[0].rounds[0].singlesets[0])
+    CollapsedSinglesetView(collapsedSingleset: CollapsedSingleset(weight: 100, reps: 10, exerciseName: Exercise.MOCK_EXERCISES[0].name, exerciseImageUrls: Exercise.MOCK_EXERCISES[0].imageURLs) )
 }
