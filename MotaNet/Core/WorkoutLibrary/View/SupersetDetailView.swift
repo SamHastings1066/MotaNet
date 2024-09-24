@@ -28,8 +28,22 @@ struct SupersetDetailView: View {
                         Text("Rest")
                             .font(.footnote)
                             .fontWeight(.semibold)
-                        Text("\(round.rest)")
-                            .font(.footnote)
+                        //                        Text("\(round.rest)")
+                        //                            .font(.footnote)
+                        TextField(
+                            "", text: Binding{
+                                
+                                return String(round.rest)
+                                
+                            } set: { rest in
+                                round.rest = Int(rest) ?? 0
+                                isWorkoutEdited = true
+                            }
+                        )
+                        .font(.footnote)
+                        .fixedSize()
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
                         Spacer()
                     }
                 }
@@ -50,7 +64,7 @@ struct SupersetDetailView: View {
                 }
             }
             
-
+            
         }
         .listStyle(.inset)
     }
