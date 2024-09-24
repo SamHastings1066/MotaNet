@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+/// A struct used for passing `Superset` objects and their edit status between views without triggering an inifite loop.
+struct SupersetEditContext: Identifiable, Hashable {
+    var id: String = UUID().uuidString
+    var superset: Superset
+    var isWorkoutEdited: Binding<Bool>
+    
+    static func == (lhs: SupersetEditContext, rhs: SupersetEditContext) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
 struct WorkoutTemplateDetailView: View {
     
     @State var viewModel: WorkoutTemplateDetailViewModel
@@ -34,7 +49,7 @@ struct WorkoutTemplateDetailView: View {
             } else {
                 List {
                     ForEach(viewModel.workout.supersets) {superset in
-                        NavigationLink(value: superset) {
+                        NavigationLink(value: SupersetEditContext(superset: superset, isWorkoutEdited: $viewModel.isWorkoutEditted)) {
                             SupersetSummaryView(superset: superset)
                         }
                         
@@ -92,8 +107,8 @@ struct WorkoutTemplateDetailView: View {
             }
             
         }
-        .navigationDestination(for: Superset.self) { superset in
-            SupersetDetailView(superset: superset)
+        .navigationDestination(for: SupersetEditContext.self) { supersetAndEdit in
+            SupersetDetailView(supersetEditContext: supersetAndEdit)
         }
         .popover(isPresented: $isAddExercisePresented, content: {
             AddExerciseView(workout: $viewModel.workout, supersetAdded: $supersetAdded)

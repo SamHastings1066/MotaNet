@@ -9,9 +9,12 @@ import SwiftUI
 
 struct SupersetDetailView: View {
     @State var viewModel: SupersetDetailViewModel
+    @Binding var isWorkoutEdited: Bool
     
-    init(superset: Superset) {
-        _viewModel = State(initialValue: SupersetDetailViewModel(superset: superset))
+    init(supersetEditContext: SupersetEditContext) {
+        _viewModel = State(initialValue: SupersetDetailViewModel(superset: supersetEditContext.superset))
+        self._isWorkoutEdited = supersetEditContext.isWorkoutEdited
+        print("SupersetDetailView initialised")
     }
     
     var body: some View {
@@ -34,6 +37,7 @@ struct SupersetDetailView: View {
             }
             Button {
                 viewModel.addRound()
+                isWorkoutEdited = true
             } label: {
                 HStack {
                     Spacer()
@@ -50,5 +54,5 @@ struct SupersetDetailView: View {
 }
 
 #Preview {
-    SupersetDetailView(superset: WorkoutTemplate.MOCK_WORKOUTS[1].supersets[0])
+    SupersetDetailView(supersetEditContext: SupersetEditContext(superset: WorkoutTemplate.MOCK_WORKOUTS[1].supersets[0], isWorkoutEdited: .constant(false)))
 }
