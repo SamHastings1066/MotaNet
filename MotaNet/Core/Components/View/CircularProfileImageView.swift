@@ -28,13 +28,13 @@ enum ProfileImageSize {
     }
 }
 
+// TODO: Update CircularProfileImageView to use userId not user since workouts will no longer have users, or else maybe they should have a small amount of info under the user property. Hmm...
 struct CircularProfileImageView: View {
     let user: User
     let size: ProfileImageSize
     
     var body: some View {
         if let imageUrl = user.profileImageUrl {
-            // TODO: Change to KFImage when ready
             KFImage(URL(string: imageUrl))
             //Image(imageUrl)
                 .resizable()

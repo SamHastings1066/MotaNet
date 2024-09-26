@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: Update XSmallUserView to use userId not user since workouts will no longer have users, or else maybe they should have a small amount of info under the user property. Hmm...
 struct XSmallUserView: View {
     let user: User
     var body: some View {

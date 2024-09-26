@@ -67,7 +67,6 @@ struct WorkoutLibraryView: View {
                         ForEach(viewModel.templateWorkoutsForUser) { workout in
                             NavigationLink(value: workout) {
                                 VStack {
-                                    // TODO: Update XSmallUserView to use userId not user since workouts will no longer have users, or else maybe they should have a small amount of info under the user property. Hmm...
                                     if let user = workout.user {
                                         XSmallUserView(user: user)
                                     }
