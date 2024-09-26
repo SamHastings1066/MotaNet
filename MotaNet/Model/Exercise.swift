@@ -19,17 +19,17 @@ final class Exercise: Codable, Hashable, Identifiable, Sendable {
         hasher.combine(id)
     }
     
-    let id: String
-    let name: String
-    let force: Force?
-    let level: Level
-    let mechanic: Mechanic?
-    let equipment: Equipment?
-    let primaryMuscles: [Muscle]
-    let secondaryMuscles: [Muscle]
-    let instructions: [String]
-    let category: Category
-    let images: [String]
+    var id: String
+    var name: String
+    var force: Force?
+    var level: Level
+    var mechanic: Mechanic?
+    var equipment: Equipment?
+    var primaryMuscles: [Muscle]
+    var secondaryMuscles: [Muscle]
+    var instructions: [String]
+    var category: Category
+    var images: [String]
     
     init(id: String, name: String, force: Force?, level: Level, mechanic: Mechanic?, equipment: Equipment?, primaryMuscles: [Muscle], secondaryMuscles: [Muscle], instructions: [String], category: Category, images: [String]) {
         self.id = id
