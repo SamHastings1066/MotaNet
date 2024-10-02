@@ -9,24 +9,43 @@ import XCTest
 @testable import MotaNet
 
 final class SupersetTests: XCTestCase {
-    func test_roundsWithDifferentExerciseOrderAreNotValidSuperset() throws {
-        let exercise1 = Exercise.MOCK_EXERCISES[0]
-        let exercise2 = Exercise.MOCK_EXERCISES[1]
+    var exerciseOne: Exercise!
+    var exerciseTwo: Exercise!
+    
+    override func setUp() {
+        super.setUp()
+        exerciseOne = Exercise.MOCK_EXERCISES[0]
+        exerciseTwo = Exercise.MOCK_EXERCISES[1]
+    }
+    
+    override func tearDown() {
+        exerciseOne = nil
+        exerciseTwo = nil
+        super.tearDown()
+    }
+    
+    func test_validateRounds_withDifferentExerciseOrder_shouldReturnFalse() throws {
         let round1 = Round (
             singlesets: [
-                Singleset(exercise: exercise1 , weight: 10, reps: 100),
-                Singleset(exercise: exercise2 , weight: 12, reps: 90)
+                Singleset(exercise: exerciseOne , weight: 10, reps: 100),
+                Singleset(exercise: exerciseTwo , weight: 12, reps: 90)
             ]
         )
         let round2 = Round (
             singlesets: [
-                Singleset(exercise: exercise2 , weight: 10, reps: 100),
-                Singleset(exercise: exercise1 , weight: 12, reps: 90)
+                Singleset(exercise: exerciseTwo , weight: 10, reps: 100),
+                Singleset(exercise: exerciseOne , weight: 12, reps: 90)
             ]
         )
         
         XCTAssertFalse(Superset.validateRounds([round1, round2]))
         
+    }
+    
+    func test_createSuperset_withNumRoundsEqualTo2_shouldCreateSupersetWithTwoRoundsAndEachRoundHasAUniqueId() throws {
+        let superset = try Superset.createSuperset(numRounds: 2, exercise: exerciseOne)
+        XCTAssertEqual(superset.rounds.count, 2)
+        XCTAssertNotEqual(superset.rounds[0].id, superset.rounds[1].id)
     }
    
 
