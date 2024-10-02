@@ -26,7 +26,7 @@ final class SinglesetTests: XCTestCase {
         //Arrange
         
         //Act
-        var sut = Singleset(exercise: barbellSquat, weight: 0, reps: 0)
+        let sut = Singleset(exercise: barbellSquat, weight: 0, reps: 0)
         
         //Assert
         XCTAssertEqual(sut.exerciseId, barbellSquat.id)
