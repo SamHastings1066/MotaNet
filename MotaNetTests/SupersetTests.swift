@@ -48,5 +48,10 @@ final class SupersetTests: XCTestCase {
         XCTAssertNotEqual(superset.rounds[0].id, superset.rounds[1].id)
     }
    
+    func test_createSuperset_withNumRoundsEqualTo0_shouldCreateSupersetWithEmptyRounds() throws {
+        let superset = try Superset.createSuperset(numRounds: 0, exercise: exerciseOne)
+        XCTAssertEqual(superset.rounds.count, 0)
+        
+    }
 
 }
