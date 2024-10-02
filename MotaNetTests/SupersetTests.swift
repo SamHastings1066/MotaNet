@@ -42,6 +42,29 @@ final class SupersetTests: XCTestCase {
         
     }
     
+    func test_validateRounds_withSameExerciseOrder_shouldReturnTrue() throws {
+        let round1 = Round (
+            singlesets: [
+                Singleset(exercise: exerciseOne , weight: 10, reps: 100),
+                Singleset(exercise: exerciseTwo , weight: 12, reps: 90)
+            ]
+        )
+        let round2 = Round (
+            singlesets: [
+                Singleset(exercise: exerciseOne , weight: 11, reps: 100),
+                Singleset(exercise: exerciseTwo , weight: 12, reps: 90)
+            ]
+        )
+        
+        XCTAssertTrue(Superset.validateRounds([round1, round2]))
+        
+    }
+    
+    func test_validateRounds_withEmptyRounds_shouldReturnTrue() throws {
+        XCTAssertTrue(Superset.validateRounds([]))
+        
+    }
+    
     func test_createSuperset_withNumRoundsEqualTo2_shouldCreateSupersetWithTwoRoundsAndEachRoundHasAUniqueId() throws {
         let superset = try Superset.createSuperset(numRounds: 2, exercise: exerciseOne)
         XCTAssertEqual(superset.rounds.count, 2)
