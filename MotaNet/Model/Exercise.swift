@@ -133,6 +133,12 @@ final class Exercise: Codable, Hashable, Identifiable, Sendable {
     }
 }
 
+//extension Exercise {
+//    var thumbnail0: String {
+//        "https://dbdf01bxei1cc.cloudfront.net/exercisesCompressed/" + String(id) + "/0.jpg"
+//    }
+//}
+
 extension Exercise {
     static var MOCK_EXERCISES: [Exercise] {
         let jsonData = """
